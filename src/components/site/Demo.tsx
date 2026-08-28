@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
 import { ArrowRight, Check, Globe, Loader2, Send, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "./Reveal";
-import { Cta, Eyebrow, Section } from "./ui";
+import { Cta, Section } from "./ui";
 
 const steps = [
   { number: "01", title: "Enter your website", text: "Tell us where your business lives online." },
@@ -17,27 +18,27 @@ const progressStages = [
   "Launching your interactive demo",
 ];
 
-const STAGE_MS = 3800;
-
 export function Demo() {
-  const [status, setStatus] = useState<"idle" | "loading" | "ready">("idle");
-  const [website, setWebsite] = useState("");
-  const [stage, setStage] = useState(0);
-  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const navigate = useNavigate();
+  const [status] = useState<"idle" | "loading" | "ready">("idle");
+  const [stage] = useState(0);
+  const [form, setForm] = useState({ name: "", company: "", phone: "", website: "", email: "" });
 
-  useEffect(() => () => timers.current.forEach(clearTimeout), []);
+  const set = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>
+    setForm((f) => ({ ...f, [key]: e.target.value }));
 
   const start = () => {
-    if (!website.trim() || status === "loading") return;
-    setStatus("loading");
-    setStage(0);
-    timers.current.forEach(clearTimeout);
-    timers.current = progressStages.map((_, i) =>
-      setTimeout(() => {
-        setStage(i + 1);
-        if (i === progressStages.length - 1) setStatus("ready");
-      }, STAGE_MS * (i + 1)),
-    );
+    if (!form.name.trim() || !form.company.trim() || !form.phone.trim() || !form.website.trim()) return;
+    navigate({
+      to: "/demo",
+      search: {
+        name: form.name.trim(),
+        company: form.company.trim(),
+        phone: form.phone.trim(),
+        website: form.website.trim(),
+        email: form.email.trim(),
+      },
+    });
   };
 
   return (
@@ -74,35 +75,50 @@ export function Demo() {
 
           <Reveal delay={120}>
             <form
-              className="mt-9 flex flex-col gap-3 sm:flex-row"
+              className="mt-9 grid gap-3 sm:grid-cols-2"
               onSubmit={(e) => {
                 e.preventDefault();
                 start();
               }}
             >
-              <label className="sr-only" htmlFor="website">
-                Your business website
-              </label>
-              <div className="flex flex-1 items-center gap-2.5 rounded-full border border-border bg-card px-4 py-3 shadow-soft focus-within:border-blue/50">
-                <Globe className="h-4 w-4 shrink-0 text-muted-foreground" />
-                <input
-                  id="website"
-                  value={website}
-                  onChange={(e) => setWebsite(e.target.value)}
-                  placeholder="yourbusiness.com"
-                  className="w-full bg-transparent text-sm text-navy outline-none placeholder:text-muted-foreground"
-                />
-              </div>
-              <Cta type="submit" size="lg" className="shrink-0">
+              {(
+                [
+                  { key: "name", label: "Your name", placeholder: "Jane Smith", type: "text", required: true },
+                  { key: "company", label: "Company name", placeholder: "Smith & Co", type: "text", required: true },
+                  { key: "phone", label: "Phone number", placeholder: "+44 7000 000000", type: "tel", required: true },
+                  { key: "website", label: "Website URL", placeholder: "yourbusiness.com", type: "text", required: true },
+                  { key: "email", label: "Email (optional)", placeholder: "jane@smithco.com", type: "email", required: false },
+                ] as const
+              ).map((field) => (
+                <div key={field.key} className={field.key === "email" ? "sm:col-span-2" : undefined}>
+                  <label className="sr-only" htmlFor={`demo-${field.key}`}>
+                    {field.label}
+                  </label>
+                  <div className="flex items-center gap-2.5 rounded-full border border-border bg-card px-4 py-3 shadow-soft focus-within:border-blue/50">
+                    {field.key === "website" && <Globe className="h-4 w-4 shrink-0 text-muted-foreground" />}
+                    <input
+                      id={`demo-${field.key}`}
+                      type={field.type}
+                      required={field.required}
+                      value={form[field.key]}
+                      onChange={set(field.key)}
+                      placeholder={`${field.placeholder}${field.required ? " *" : ""}`}
+                      className="w-full bg-transparent text-sm text-navy outline-none placeholder:text-muted-foreground"
+                    />
+                  </div>
+                </div>
+              ))}
+              <Cta type="submit" size="lg" className="sm:col-span-2">
                 Create My AI Demo
                 <ArrowRight className="h-4 w-4" />
               </Cta>
+              <p className="text-xs text-muted-foreground sm:col-span-2">* Required fields</p>
             </form>
           </Reveal>
         </div>
 
         <Reveal delay={100}>
-          <DemoPreview status={status} stage={stage} website={website} />
+          <DemoPreview status={status} stage={stage} website={form.website} />
         </Reveal>
       </div>
     </Section>

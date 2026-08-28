@@ -53,7 +53,7 @@ export function Hero() {
               </Cta>
               <Cta href="#how-it-works" variant="ghost" size="lg">
                 <PlayCircle className="h-4.5 w-4.5" />
-                Watch How It Works
+                What AI Employees Can Do for You?
               </Cta>
             </div>
           </Reveal>
