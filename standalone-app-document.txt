@@ -1,0 +1,504 @@
+AI Voice Agent & Chatbot Demo
+Website Intelligence & Important-Page Selection Engine
+Technical Design & Developer Handoff — V1
+This document consolidates the technical orchestration, background website enrichment, Firecrawl-based important-page selection, scoring matrix, and implementation pseudocode for the self-service AI voice agent/chatbot demo.
+1. Architecture Principle
+The system should separate the fast demo path from background website enrichment. The homepage is processed through the GHL Knowledge Base to preserve the minimum demo SLA. A separate Website Intelligence Service runs asynchronously after contact creation to discover, rank, scrape and store the most useful additional pages.
+Fast path: GHL Homepage KB → AI Demo Agent → Personalized Demo. Background path: Firecrawl Map → classify → score → select → Firecrawl Scrape → Website Intelligence Store → deeper knowledge/API.
+2. End-to-End Orchestration
+1. Lead submits the GHL website form, arrives through Facebook/Instagram campaign routing, or is created manually by a salesperson.
+2. GHL creates/updates the contact with business name, contact name, phone, email and website URL.
+3. GHL ContactCreate webhook calls the Demo Orchestrator.
+4. Orchestrator validates the webhook and creates a demo/enrichment job asynchronously.
+5. Fast path starts homepage knowledge-base processing through GHL.
+6. Website Intelligence background path starts from the same contact-created event.
+7. Firecrawl Map discovers candidate URLs without scraping the full site.
+8. URL normalization and hard exclusions remove duplicates and low-value/system pages.
+9. Candidate pages are classified using deterministic rules; an LLM is used only for ambiguous classifications.
+10. Each candidate receives a 0–100 relevance score.
+11. A diversity selector chooses approximately 8–12 additional pages, subject to category limits and coverage rules.
+12. Selected URLs are scraped through Firecrawl.
+13. Scraped content is normalized, stored and optionally chunked/embedded for external knowledge retrieval.
+14. Website presentation processing separately determines iframe availability and captures a mobile homepage screenshot when iframe embedding is blocked.
+15. The personalized demo page loads the customer's website as iframe or screenshot with the AI voice/chat widget overlay.
+16. Demo engagement events are tracked and written back to GHL.
+17. Consultant booking is offered through the GHL calendar.
+18. GHL workflows handle WhatsApp follow-ups, nurture and sales pipeline progression.
+3. Recommended System Components
+Component
+Responsibility
+GHL
+Contacts, workflows, WhatsApp, calendar, CRM, homepage Knowledge Base and initial AI demo configuration.
+Demo Orchestrator
+Receives GHL webhooks, creates jobs, coordinates GHL APIs, manages demo sessions, statuses, retries and security.
+Website Intelligence Service
+Firecrawl Map, URL normalization, page classification, scoring, selection and scraping orchestration.
+Knowledge Store/API
+Stores selected-page content, structured business information and supports deeper knowledge retrieval.
+Website Presentation Engine
+Iframe compatibility detection and screenshot/mobile rendering for blocked sites.
+Demo Frontend
+Personalized URL, phone frame, website/screenshot, AI widget, engagement tracking and consultant CTA.
+Queue/Workers
+Asynchronous processing so website enrichment never delays the initial demo.
+
+4. Website Intelligence Strategy
+Do not use a broad Firecrawl crawl as the primary selection mechanism. Use a Discover → Classify → Select → Scrape pipeline. Firecrawl Map establishes the candidate URL universe; only selected pages are scraped.
+The selection objective is not simply 'most important website pages'. It is: maximum customer-question coverage per scraped page.
+5. Background Processing Flow
+Contact Created → Firecrawl Map → URL Normalizer → Hard Exclusions → Page Classifier → Relevance Scorer → Diversity Selector → Selected 8–12 URLs → Firecrawl Scrape → Knowledge Processing.
+6. Page Categories
+Category
+Description
+HOME
+Homepage; already handled by GHL KB.
+SERVICE_INDEX
+Main services/treatments page.
+SERVICE_DETAIL
+Individual service/treatment.
+PRODUCT_INDEX
+Product catalogue.
+PRODUCT_DETAIL
+Individual product.
+PRICING
+Pricing, packages, costs or fees.
+FAQ
+Frequently asked questions.
+BOOKING
+Appointment/reservation page.
+LOCATION
+Locations, branches or directions.
+CONTACT
+Contact information.
+ABOUT
+About the business.
+TEAM
+Doctors/team/staff/providers.
+TESTIMONIAL
+Reviews/testimonials.
+BLOG
+Blog/news/article pages.
+OTHER
+Everything else.
+
+7. Hard Exclusions
+Exclude pages containing paths such as: /privacy, /privacy-policy, /terms, /terms-of-service, /cookie, /login, /logout, /account, /checkout, /cart, /search, /wp-admin, /feed, /rss, /tag/, /author/, /category/, /careers and /jobs.
+For V1 also exclude standalone files such as PDF, ZIP, JPG/JPEG, PNG, GIF, SVG, MP4, MP3 and XML. A later Document Intelligence pipeline can handle documents separately.
+8. Scoring Matrix — 100 Points
+Signal
+Max
+Purpose
+Page Category
+40
+Core business/receptionist relevance.
+URL Relevance
+15
+Intent/category keywords in URL path.
+Title Relevance
+15
+Business-intent/category signals in title.
+Description Relevance
+10
+Business-intent signals in description.
+Customer Intent
+10
+Likelihood of answering real customer questions.
+Structural Importance
+5
+Depth, homepage link/navigation prominence.
+Business Type Bonus
+5
+Optional industry-specific relevance.
+
+9. Category Base Scores
+Category
+Base Points
+SERVICE_DETAIL
+40
+SERVICE_INDEX
+38
+PRICING
+38
+FAQ
+36
+BOOKING
+36
+LOCATION
+34
+CONTACT
+32
+PRODUCT_DETAIL
+32
+PRODUCT_INDEX
+30
+ABOUT
+28
+TEAM
+22
+TESTIMONIAL
+15
+BLOG
+5
+OTHER
+8
+HOME
+0
+
+HOME receives 0 because the homepage is already handled by the GHL Knowledge Base.
+10. Keyword Configuration
+Keyword Group
+Keywords
+SERVICE
+service, services, treatment, treatments, procedure, procedures, solution, solutions, what-we-do, what-we-offer, offerings
+PRICING
+pricing, price, prices, cost, costs, fees, packages, package, rates
+FAQ
+faq, faqs, frequently-asked-questions, questions
+BOOKING
+book, booking, appointment, appointments, schedule, reservation, reserve
+LOCATION
+location, locations, find-us, directions, clinic, clinics, branches, office, offices
+ABOUT
+about, about-us, our-story, who-we-are, company
+TEAM
+team, our-team, doctors, dentists, providers, practitioners, staff, experts
+BLOG
+blog, news, article, articles, post, posts
+
+11. Selection Rules
+MAX_EXTERNAL_PAGES = 12.
+Homepage is excluded because GHL handles it.
+Required coverage, if available: SERVICE_INDEX, PRICING, FAQ, BOOKING, CONTACT and LOCATION.
+SERVICE_DETAIL pages are capped at 5.
+PRODUCT_DETAIL pages are capped at 5.
+BLOG pages are capped at 0 for V1.
+ABOUT is capped at 1; TEAM at 2; TESTIMONIAL at 1.
+If a required category exists but scores below the normal threshold, it can still be selected to preserve coverage.
+Remaining slots are filled by highest score while respecting category limits.
+Avoid selecting pages with highly overlapping titles/metadata; apply a similarity penalty or skip duplicates.
+12. Score Thresholds
+Score
+Action
+70–100
+Strong candidate
+50–69
+Candidate if slots remain or category coverage requires it
+30–49
+Low priority
+<30
+Do not scrape unless explicitly required for category coverage
+
+13. Business-Type Bonus
+V1 can default to GENERAL. Add configurable industry profiles as the system matures.
+Business Type
+Example Bonuses
+MEDSPA
+SERVICE_DETAIL +5; SERVICE_INDEX +5; PRICING +5; FAQ +5; BOOKING +5; LOCATION +3
+DENTAL
+SERVICE_DETAIL +5; SERVICE_INDEX +5; PRICING +5; FAQ +5; BOOKING +5; LOCATION +3; TEAM +2
+RESTAURANT
+PRICING +3; BOOKING +5; LOCATION +5; CONTACT +4
+
+14. Pseudocode — Main Selection Engine
+FUNCTION selectImportantPages(websiteUrl, businessType):
+
+    candidates = firecrawlMap(websiteUrl)
+
+    normalizedPages = []
+
+    FOR each page IN candidates:
+        normalized = normalizeUrl(page.url, websiteUrl)
+
+        IF normalized is invalid:
+            CONTINUE
+
+        IF isDuplicate(normalized, normalizedPages):
+            CONTINUE
+
+        page.canonicalUrl = normalized
+        normalizedPages.push(page)
+
+    filteredPages = []
+
+    FOR each page IN normalizedPages:
+        exclusionResult = checkHardExclusions(page)
+
+        IF exclusionResult.excluded:
+            CONTINUE
+
+        filteredPages.push(page)
+
+    classifiedPages = []
+
+    FOR each page IN filteredPages:
+        classification = classifyPage(page, businessType)
+
+        page.category = classification.category
+        page.confidence = classification.confidence
+
+        classifiedPages.push(page)
+
+    scoredPages = []
+
+    FOR each page IN classifiedPages:
+        score = calculatePageScore(page, businessType)
+
+        page.score = score.total
+        page.scoreBreakdown = score.breakdown
+
+        scoredPages.push(page)
+
+    selectedPages = selectPages(scoredPages, MAX_EXTERNAL_PAGES = 12)
+
+    RETURN {
+        discoveredCount: candidates.length,
+        candidateCount: filteredPages.length,
+        selectedCount: selectedPages.length,
+        pages: selectedPages
+    }
+15. Pseudocode — Classification
+FUNCTION classifyPage(page, businessType):
+
+    urlText = lowercase(page.path)
+    titleText = lowercase(page.title)
+    descriptionText = lowercase(page.description)
+
+    IF isHomepage(page):
+        RETURN { category: "HOME", confidence: 1.0 }
+
+    rulesResult = ruleBasedClassification(
+        urlText, titleText, descriptionText
+    )
+
+    IF rulesResult.confidence >= 0.65:
+        RETURN rulesResult
+
+    # Ambiguous pages only
+    RETURN classifyWithLLM(
+        url=page.url,
+        title=page.title,
+        description=page.description,
+        businessType=businessType
+    )
+16. Pseudocode — Page Scoring
+FUNCTION calculatePageScore(page, businessType):
+
+    categoryScore = categoryScore(page.category)
+    urlScore = calculateUrlScore(page)                 # max 15
+    titleScore = calculateTitleScore(page)             # max 15
+    descriptionScore = calculateDescriptionScore(page) # max 10
+    intentScore = calculateCustomerIntentScore(page)   # max 10
+    structureScore = calculateStructureScore(page)     # max 5
+    businessBonus = calculateBusinessTypeBonus(
+        page.category, businessType
+    )                                                   # max 5
+
+    total = categoryScore + urlScore + titleScore +
+            descriptionScore + intentScore +
+            structureScore + businessBonus
+
+    RETURN {
+        total: clamp(total, 0, 100),
+        breakdown: {
+            category: categoryScore,
+            url: urlScore,
+            title: titleScore,
+            description: descriptionScore,
+            customerIntent: intentScore,
+            structure: structureScore,
+            businessTypeBonus: businessBonus
+        }
+    }
+17. Pseudocode — Selection / Diversity
+FUNCTION selectPages(pages, maxPages):
+
+    selected = []
+
+    remaining = pages
+        WHERE score > 30
+        AND category != HOME
+
+    # 1. Required coverage
+    requiredCategories = [
+        SERVICE_INDEX, PRICING, FAQ,
+        BOOKING, CONTACT, LOCATION
+    ]
+
+    FOR category IN requiredCategories:
+
+        candidates = remaining
+            WHERE page.category == category
+            SORT BY score DESC
+
+        IF candidates not empty:
+            selected.push(candidates[0])
+            remove candidates[0] FROM remaining
+
+        IF selected.length >= maxPages:
+            RETURN selected
+
+    # 2. Service/product details
+    serviceCandidates = remaining
+        WHERE category IN [SERVICE_DETAIL, PRODUCT_DETAIL]
+        SORT BY score DESC
+
+    WHILE serviceSlotsAvailable AND serviceCandidates:
+        page = highestScoring(serviceCandidates)
+
+        IF NOT isDuplicateInformation(page, selected):
+            selected.push(page)
+
+        remove page FROM remaining
+
+        IF selected.length >= maxPages:
+            RETURN selected
+
+    # 3. Fill remaining slots
+    remaining = sortByScore(remaining)
+
+    FOR page IN remaining:
+
+        IF categoryLimitReached(page.category, selected):
+            CONTINUE
+
+        IF isDuplicateInformation(page, selected):
+            CONTINUE
+
+        selected.push(page)
+
+        IF selected.length >= maxPages:
+            BREAK
+
+    RETURN selected
+18. Pseudocode — URL Normalization & Exclusions
+FUNCTION normalizeUrl(rawUrl, rootWebsite):
+
+    url = parseUrl(rawUrl)
+
+    IF protocol not http/https:
+        RETURN null
+
+    IF domain != rootDomain:
+        RETURN null
+
+    REMOVE fragment
+    REMOVE tracking query parameters
+    NORMALIZE path
+    LOWERCASE hostname
+    REMOVE trailing slash except homepage
+
+    RETURN canonicalUrl(url)
+
+
+FUNCTION checkHardExclusions(page):
+
+    IF path matches excludedPatterns:
+        RETURN { excluded: true, reason: "system_or_low_value_page" }
+
+    IF extension matches excludedFileTypes:
+        RETURN { excluded: true, reason: "unsupported_file_type" }
+
+    RETURN { excluded: false }
+19. Pseudocode — Background Worker
+ASYNC FUNCTION processWebsiteEnrichment(job):
+
+    TRY:
+
+        mapResults = await firecrawlMap(job.websiteUrl)
+
+        pages = normalizeAndDeduplicate(mapResults)
+
+        pages = applyHardExclusions(pages)
+
+        FOR page IN pages:
+            page.classification =
+                await classifyPage(page, job.businessType)
+
+        FOR page IN pages:
+            page.score =
+                calculatePageScore(page, job.businessType)
+
+        selected =
+            selectPages(pages, 12)
+
+        await savePageSelection(
+            job.id, pages, selected
+        )
+
+        await enqueueScrapeJobs(selected)
+
+        await updateJob(job.id, "SCRAPING")
+
+    CATCH error:
+
+        await markJobFailed(job.id, error)
+20. LLM Fallback
+The LLM should not make the final page-selection decision. It is only a classifier for ambiguous URLs where deterministic classification confidence is below 0.65.
+Send only URL, title, description and optional business type. Do not scrape the page just to classify it. Return category, confidence and customer-intent labels as strict JSON.
+21. Data to Persist
+Persist every candidate and its decision so the team can explain why a page was selected or skipped.
+id, demo_id, url, canonical_url, title, description, category, classification_confidence, score, score_category, score_url, score_title, score_description, score_intent, score_structure, score_business_type, selected, selection_reason, created_at
+22. Example Candidate Record
+{
+  "url": "https://example.com/services/botox",
+  "canonical_url": "example.com/services/botox",
+  "title": "Botox Treatments | Example Medspa",
+  "description": "Learn about Botox treatments and pricing.",
+  "category": "SERVICE_DETAIL",
+  "score": 94,
+  "score_breakdown": {
+    "category": 40,
+    "url": 18,
+    "title": 14,
+    "description": 8,
+    "customerIntent": 10,
+    "structure": 4
+  },
+  "confidence": 0.96,
+  "selected": true,
+  "selection_reason": [
+    "High customer-intent relevance",
+    "Service detail page",
+    "Strong URL/title match"
+  ]
+}
+23. Suggested API/Worker Boundaries
+Endpoint
+Purpose
+POST /website/analyze
+Create enrichment job from website URL.
+POST /website/discover
+Run Firecrawl Map and create candidate inventory.
+GET /website/jobs/{id}
+Return job status.
+POST /website/select
+Run classification, scoring and selection.
+POST /website/scrape
+Queue scraping of selected URLs.
+POST /knowledge/query
+Retrieve deeper business knowledge for AI agents.
+GET /demo/{token}
+Return personalized demo configuration.
+
+24. Recommended Technology
+For this workload, Node.js + TypeScript is a strong default if the existing demo/orchestration stack is JavaScript/TypeScript. The workload is primarily API calls, asynchronous jobs, queue processing and JSON transformation, so Python does not provide a material scraping-speed advantage.
+Suggested stack: TypeScript, Fastify or NestJS, BullMQ/Redis for jobs, PostgreSQL for state, Firecrawl API for discovery/scraping, GHL APIs/webhooks, and an LLM only for ambiguous classification.
+25. V1 Acceptance Criteria
+Input: website URL and optional business type.
+Map the site without scraping every page.
+Normalize and deduplicate candidate URLs.
+Apply hard exclusions.
+Classify pages using deterministic rules.
+Use LLM classification only when confidence is below 0.65.
+Score every candidate from 0–100.
+Select a maximum of 12 external pages.
+Preserve required category coverage where those pages exist.
+Limit service/detail-page overrepresentation.
+Return score breakdown and selection reasons.
+Queue selected URLs for Firecrawl scraping.
+Do not block the initial self-service demo on background enrichment.
+Persist decisions for debugging and future scoring optimization.
+26. Future Optimization
+Once real demo traffic exists, capture customer questions, retrieved pages and answer success/failure. After sufficient volume, tune category weights and selection rules using observed question coverage. The intended evolution is: rules → observed usage → data-driven weights, rather than starting with an ML selector.
+27. Reference to Uploaded Project Material
+This document consolidates the technical discussion and the uploaded AI Voice Agent Workflow material provided for this project. fileciteturn0file0

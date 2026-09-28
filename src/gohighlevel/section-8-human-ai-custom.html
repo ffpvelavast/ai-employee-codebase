@@ -1,0 +1,231 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  /* Container & Utilities */
+  .asap-human-ai-section {
+    font-family: 'Inter', sans-serif;
+    color: #0f172a;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .asap-section-white {
+    background-color: #ffffff;
+    padding: 100px 20px;
+  }
+
+  .asap-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .asap-eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #3b82f6; /* Blue */
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  /* ---------------- PART 1: HUMAN + AI ---------------- */
+  .asap-human-ai-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  @media (max-width: 1024px) {
+    .asap-human-ai-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  .asap-human-title {
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #0f172a;
+    margin: 0 0 20px 0;
+  }
+
+  .asap-human-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #64748b;
+    max-width: 450px;
+    margin: 0;
+  }
+
+  /* Comparison Cards */
+  .asap-comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 640px) {
+    .asap-comparison-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Without AI */
+  .asap-card-without {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    padding: 24px;
+    height: 100%;
+    transition: transform 0.3s ease;
+    cursor: default;
+  }
+  .asap-card-without:hover {
+    transform: translateY(-4px);
+  }
+
+  .asap-card-without-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    margin: 0 0 20px 0;
+  }
+
+  /* With AI */
+  .asap-card-with {
+    background-color: #ffffff;
+    border: 1px solid rgba(59, 130, 246, 0.2); /* blue/20 */
+    border-radius: 24px;
+    padding: 24px;
+    height: 100%;
+    box-shadow: 0 12px 32px -18px rgba(15, 23, 42, 0.15);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    cursor: default;
+  }
+  .asap-card-with:hover {
+    transform: translateY(-4px);
+    border-color: rgba(59, 130, 246, 0.5);
+  }
+
+  .asap-card-with-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #3b82f6; /* Blue */
+    margin: 0 0 20px 0;
+  }
+
+  /* Lists */
+  .asap-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .asap-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .asap-list-item.muted {
+    color: #64748b;
+  }
+  .asap-list-item.navy {
+    color: #0f172a;
+  }
+
+  .asap-list-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .asap-list-icon.gray {
+    color: rgba(100, 116, 139, 0.6);
+  }
+  .asap-list-icon.blue {
+    color: #3b82f6;
+  }
+
+</style>
+
+<div class="asap-human-ai-section">
+  
+  <!-- Part 1: Human + AI -->
+  <section class="asap-section-white" id="human-ai">
+    <div class="asap-container asap-human-ai-grid">
+      
+      <!-- Left side -->
+      <div>
+        <span class="asap-eyebrow">Human + AI, not human vs AI</span>
+        <h2 class="asap-human-title">Your Team Stays Focused on What Humans Do Best.</h2>
+        <p class="asap-human-desc">
+          When a customer needs a real person, your team is alerted with the conversation context already available.
+        </p>
+      </div>
+
+      <!-- Right side: Comparison -->
+      <div class="asap-comparison-grid">
+        
+        <!-- Without AI -->
+        <div class="asap-card-without">
+          <h3 class="asap-card-without-title">Without AI</h3>
+          <ul class="asap-list">
+            <li class="asap-list-item muted">
+              <svg class="asap-list-icon gray" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              Interrupted staff
+            </li>
+            <li class="asap-list-item muted">
+              <svg class="asap-list-icon gray" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              Missed calls
+            </li>
+            <li class="asap-list-item muted">
+              <svg class="asap-list-icon gray" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              Slow replies
+            </li>
+            <li class="asap-list-item muted">
+              <svg class="asap-list-icon gray" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              Manual qualification
+            </li>
+            <li class="asap-list-item muted">
+              <svg class="asap-list-icon gray" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              Repetitive questions
+            </li>
+          </ul>
+        </div>
+
+        <!-- With AI -->
+        <div class="asap-card-with">
+          <h3 class="asap-card-with-title">With AI Employees</h3>
+          <ul class="asap-list">
+            <li class="asap-list-item navy">
+              <svg class="asap-list-icon blue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              AI handles routine enquiries
+            </li>
+            <li class="asap-list-item navy">
+              <svg class="asap-list-icon blue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Customers get instant answers
+            </li>
+            <li class="asap-list-item navy">
+              <svg class="asap-list-icon blue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Serious opportunities are identified
+            </li>
+            <li class="asap-list-item navy">
+              <svg class="asap-list-icon blue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Your team joins when they are actually needed
+            </li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+</div>

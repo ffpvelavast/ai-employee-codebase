@@ -1,0 +1,185 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  .asap-team-section {
+    font-family: 'Inter', sans-serif;
+    color: #0f172a;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f8fafc; /* surface */
+    padding: 100px 20px;
+  }
+
+  .asap-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .asap-eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #3b82f6; /* Blue */
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .asap-grow-header {
+    max-width: 672px;
+  }
+
+  .asap-grow-title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #0f172a;
+    margin: 0 0 20px 0;
+  }
+
+  @media (max-width: 768px) {
+    .asap-grow-title {
+      font-size: 36px;
+    }
+  }
+
+  .asap-grow-desc {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #64748b;
+    margin: 0;
+  }
+
+  /* Stages Grid */
+  .asap-stages-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 56px;
+    list-style: none;
+    padding: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .asap-stages-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+  @media (max-width: 640px) {
+    .asap-stages-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .asap-stage-card {
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+  }
+  .asap-stage-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .asap-stage-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #f59e0b; /* Amber */
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .asap-stage-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0 0 8px 0;
+  }
+
+  .asap-stage-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #64748b;
+    margin: 0;
+  }
+
+  /* Connecting Lines (Desktop only) */
+  .asap-stage-line {
+    position: absolute;
+    top: 50%;
+    right: -16px;
+    width: 16px;
+    height: 1px;
+    background-color: #e2e8f0;
+    display: none;
+  }
+  
+  @media (min-width: 1025px) {
+    .asap-stage-line {
+      display: block;
+    }
+  }
+</style>
+
+<section class="asap-team-section" id="team">
+  <div class="asap-container">
+    
+    <div class="asap-grow-header">
+      <span class="asap-eyebrow">Grow at your pace</span>
+      <h2 class="asap-grow-title">Start With One. Grow Into a Team.</h2>
+      <p class="asap-grow-desc">
+        You don't need to transform everything at once. Begin with one business problem, then build your AI Department.
+      </p>
+    </div>
+
+    <ol class="asap-stages-grid">
+      
+      <li>
+        <div class="asap-stage-card">
+          <span class="asap-stage-label">Stage 1</span>
+          <h3 class="asap-stage-title">AI Front Desk</h3>
+          <p class="asap-stage-desc">Start with the enquiries you miss most.</p>
+          <span class="asap-stage-line"></span>
+        </div>
+      </li>
+
+      <li>
+        <div class="asap-stage-card">
+          <span class="asap-stage-label">Stage 2</span>
+          <h3 class="asap-stage-title">AI Sales Consultant</h3>
+          <p class="asap-stage-desc">Qualify and progress serious buyers.</p>
+          <span class="asap-stage-line"></span>
+        </div>
+      </li>
+
+      <li>
+        <div class="asap-stage-card">
+          <span class="asap-stage-label">Stage 3</span>
+          <h3 class="asap-stage-title">AI Customer Experience Team</h3>
+          <p class="asap-stage-desc">Consistent answers across every channel.</p>
+          <span class="asap-stage-line"></span>
+        </div>
+      </li>
+
+      <li>
+        <div class="asap-stage-card">
+          <span class="asap-stage-label">Stage 4</span>
+          <h3 class="asap-stage-title">Your AI Department</h3>
+          <p class="asap-stage-desc">A complete always-on customer layer.</p>
+        </div>
+      </li>
+
+    </ol>
+    
+  </div>
+</section>

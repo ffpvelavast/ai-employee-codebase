@@ -1,0 +1,388 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  .asap-hero-wrapper {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  
+  .asap-hero-container {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  @media (max-width: 1024px) {
+    .asap-hero-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  /* Left Column */
+  .asap-hero-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .asap-eyebrow {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
+  }
+  
+  .asap-pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #f59e0b; /* Amber */
+    border-radius: 50%;
+    animation: asap-pulse 1.5s infinite;
+  }
+  
+  @keyframes asap-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+    70% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+  }
+
+  .asap-hero-title {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0 0 4px 0;
+    color: #0f172a;
+  }
+  
+  .asap-hero-subtitle {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0 0 24px 0;
+    color: #64748b; /* Soft slate */
+  }
+
+  .asap-hero-desc {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #64748b;
+    max-width: 500px;
+    margin-bottom: 32px;
+  }
+
+  .asap-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  .asap-btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 9999px;
+    text-decoration: none;
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .asap-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4);
+  }
+
+  .asap-btn-secondary {
+    background-color: #ffffff;
+    color: #0f172a;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 9999px;
+    text-decoration: none;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .asap-btn-secondary:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+  }
+
+  .asap-hero-bottom-text {
+    font-size: 14px;
+    color: #94a3b8;
+  }
+
+  /* Right Column (Cards) */
+  .asap-hero-right {
+    background-color: #ffffff;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f1f5f9;
+  }
+
+  .asap-card {
+    background-color: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .asap-card:hover {
+    transform: translateY(-2px);
+    border-color: #e2e8f0;
+  }
+
+  .asap-card-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    color: #3b82f6;
+    flex-shrink: 0;
+  }
+
+  .asap-card-content h3 {
+    margin: 0 0 4px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+  }
+  
+  .asap-card-content p {
+    margin: 0;
+    font-size: 13px;
+    color: #64748b;
+  }
+
+  .asap-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 24px 0;
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  
+  .asap-divider::before, .asap-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px dashed #e2e8f0;
+  }
+  
+  .asap-divider:not(:empty)::before { margin-right: .5em; }
+  .asap-divider:not(:empty)::after { margin-left: .5em; }
+
+  .asap-intelligence {
+    background-color: #0f172a;
+    border-radius: 16px;
+    padding: 24px;
+    color: #ffffff;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 24px;
+  }
+  
+  .asap-intelligence-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  .asap-intelligence h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+  
+  .asap-intelligence p {
+    margin: 0;
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.5;
+  }
+
+  .asap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .asap-action-btn {
+    background-color: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #334155;
+    transition: background-color 0.2s ease;
+    cursor: default;
+  }
+  
+  .asap-action-btn:hover {
+    background-color: #f1f5f9;
+  }
+  
+  .asap-action-icon {
+    color: #3b82f6;
+  }
+
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .asap-hero-title, .asap-hero-subtitle {
+      font-size: 42px;
+    }
+    .asap-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="asap-hero-wrapper">
+  <div class="asap-hero-container">
+    
+    <!-- LEFT COLUMN -->
+    <div class="asap-hero-left">
+      <div class="asap-eyebrow">
+        <div class="asap-pulse-dot"></div>
+        AI Employees for phone, WhatsApp &amp; web
+      </div>
+      
+      <h1 class="asap-hero-title">Your Business<br>Doesn't Work 9 to 5.</h1>
+      <h1 class="asap-hero-subtitle">Neither Should<br>Your Customer<br>Experience.</h1>
+      
+      <p class="asap-hero-desc">
+        ASAP AI gives your business AI Employees that answer calls, respond to messages, handle enquiries and help customers move forward &mdash; 24/7.
+      </p>
+      
+      <div class="asap-buttons">
+        <button class="asap-btn-primary">Meet Your First AI Employee</button>
+        <button class="asap-btn-secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+          What AI Employees Can Do for You?
+        </button>
+      </div>
+      
+      <div class="asap-hero-bottom-text">Every call. Every message. Every enquiry.</div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="asap-hero-right">
+      
+      <!-- Phone Card -->
+      <div class="asap-card">
+        <div class="asap-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        </div>
+        <div class="asap-card-content">
+          <h3>Phone</h3>
+          <p>Incoming customer call</p>
+        </div>
+      </div>
+      
+      <!-- WhatsApp Card -->
+      <div class="asap-card">
+        <div class="asap-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+        </div>
+        <div class="asap-card-content">
+          <h3>WhatsApp</h3>
+          <p>Customer asks a question</p>
+        </div>
+      </div>
+      
+      <!-- Website Card -->
+      <div class="asap-card">
+        <div class="asap-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </div>
+        <div class="asap-card-content">
+          <h3>Website</h3>
+          <p>Customer enquiry</p>
+        </div>
+      </div>
+
+      <div class="asap-divider">ROUTED TO</div>
+
+      <!-- Intelligence Layer -->
+      <div class="asap-intelligence">
+        <span class="asap-intelligence-eyebrow">Intelligence Layer</span>
+        <h3>Your AI Employee</h3>
+        <p>Understands the enquiry, replies instantly, decides the next step.</p>
+      </div>
+
+      <!-- Action Buttons Grid -->
+      <div class="asap-grid">
+        <div class="asap-action-btn">
+          <svg class="asap-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Answered
+        </div>
+        <div class="asap-action-btn">
+          <svg class="asap-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          Qualified
+        </div>
+        <div class="asap-action-btn">
+          <svg class="asap-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          Booked
+        </div>
+        <div class="asap-action-btn">
+          <svg class="asap-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+          Escalated
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

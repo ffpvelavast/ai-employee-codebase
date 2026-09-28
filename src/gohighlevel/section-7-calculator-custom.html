@@ -1,0 +1,442 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap');
+
+  .asap-calculator-section {
+    font-family: 'Inter', sans-serif;
+    background-color: #fafafa;
+    padding: 80px 20px;
+    color: #0f172a;
+    box-sizing: border-box;
+  }
+
+  .asap-calc-container {
+    max-width: 1248px;
+    margin: 0 auto;
+    display: grid;
+    gap: 48px;
+    align-items: center;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 1024px) {
+    .asap-calc-container {
+      grid-template-columns: 1fr 1.15fr;
+      gap: 64px;
+    }
+  }
+
+  .asap-calc-left {
+    max-width: 600px;
+  }
+
+  .asap-eyebrow {
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #155EEF;
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .asap-calc-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 2rem;
+    line-height: 1.08;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 16px 0 0 0;
+    letter-spacing: -0.028em;
+  }
+
+  @media (min-width: 640px) {
+    .asap-calc-title {
+      font-size: 3rem;
+    }
+  }
+
+  .asap-calc-title span {
+    color: #155EEF;
+  }
+
+  .asap-calc-desc {
+    margin: 24px 0 0 0;
+    font-size: 1rem;
+    line-height: 1.625;
+    color: #64748b;
+  }
+
+  @media (min-width: 640px) {
+    .asap-calc-desc {
+      font-size: 1.125rem;
+    }
+  }
+
+  .asap-calc-btn-container {
+    margin-top: 40px;
+  }
+
+  .asap-calc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: #155EEF;
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 32px;
+    font-size: 1.125rem;
+    transition: background-color 0.2s;
+  }
+
+  .asap-calc-btn:hover {
+    background-color: #114cd6;
+  }
+
+  .asap-calc-card {
+    border-radius: 24px;
+    border: 1px solid #e2e8f0;
+    background-color: #ffffff;
+    padding: 24px;
+    box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.15);
+  }
+
+  @media (min-width: 640px) {
+    .asap-calc-card {
+      padding: 32px;
+    }
+  }
+
+  .asap-calc-grid {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .asap-calc-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+  }
+
+  .asap-calc-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .asap-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .asap-input-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .asap-input-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0f172a;
+  }
+
+  .asap-input-badge {
+    border-radius: 9999px;
+    background-color: #eff4ff;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #155EEF;
+  }
+
+  .asap-slider-container {
+    padding: 8px 0;
+  }
+
+  .asap-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: #e2e8f0;
+    outline: none;
+  }
+
+  .asap-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #155EEF;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .asap-slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #64748b;
+  }
+
+  .asap-text-input-wrap {
+    position: relative;
+  }
+
+  .asap-text-input-prefix {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 500;
+    color: #64748b;
+  }
+
+  .asap-text-input {
+    width: 100%;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    padding-left: 32px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #0f172a;
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+
+  .asap-text-input:focus {
+    outline: none;
+    border-color: #155EEF;
+  }
+
+  .asap-calc-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background-color: #f8fafc;
+    padding: 24px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .asap-results-icon {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #fef2f2;
+    color: #ef4444;
+  }
+
+  .asap-results-title {
+    margin: 24px 0 0 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0f172a;
+  }
+
+  .asap-results-main {
+    margin: 12px 0 0 0;
+    font-family: 'Sora', sans-serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #f59e0b;
+  }
+
+  @media (min-width: 640px) {
+    .asap-results-main {
+      font-size: 3rem;
+    }
+  }
+
+  .asap-results-sub {
+    margin: 8px 0 0 0;
+    font-size: 0.75rem;
+    color: #64748b;
+  }
+
+  .asap-results-grid {
+    margin-top: 32px;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .asap-results-card {
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    background-color: #ffffff;
+    padding: 12px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+  }
+
+  .asap-results-card-title {
+    margin: 0 0 4px 0;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    text-transform: uppercase;
+  }
+
+  .asap-results-card-value {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+</style>
+
+<section id="calculator" class="asap-calculator-section">
+  <div class="asap-calc-container">
+    
+    <!-- Left: Text & CTA -->
+    <div class="asap-calc-left">
+      <p class="asap-eyebrow">Revenue leak</p>
+      <h2 class="asap-calc-title">
+        Calculate Your <span>Missed Revenue.</span>
+      </h2>
+      <p class="asap-calc-desc">
+        Every missed call could be a missed customer. See how much money is slipping through the cracks, and how an AI Employee can capture it.
+      </p>
+    </div>
+
+    <!-- Right: Calculator Card -->
+    <div class="asap-calc-card">
+      <div class="asap-calc-grid">
+        
+        <!-- Inputs -->
+        <div class="asap-calc-inputs">
+          <!-- Calls Per Week -->
+          <div class="asap-input-group">
+            <div class="asap-input-header">
+              <label class="asap-input-label">Missed Calls / Week</label>
+              <div class="asap-input-badge" id="asap-calls-badge">20</div>
+            </div>
+            <div class="asap-slider-container">
+              <input type="range" id="asap-calls-slider" class="asap-slider" min="0" max="300" step="1" value="20">
+            </div>
+            <div class="asap-slider-labels">
+              <span>0</span>
+              <span>300</span>
+            </div>
+          </div>
+
+          <!-- Average Sale Value -->
+          <div class="asap-input-group">
+            <label class="asap-input-label">Average Sale Value</label>
+            <div class="asap-text-input-wrap">
+              <span class="asap-text-input-prefix">$</span>
+              <input type="number" id="asap-value-input" class="asap-text-input" value="300">
+            </div>
+          </div>
+
+          <!-- Close Rate -->
+          <div class="asap-input-group">
+            <div class="asap-input-header">
+              <label class="asap-input-label">Close Rate</label>
+              <div class="asap-input-badge" id="asap-close-badge">30%</div>
+            </div>
+            <div class="asap-slider-container">
+              <input type="range" id="asap-close-slider" class="asap-slider" min="1" max="100" step="1" value="30">
+            </div>
+            <div class="asap-slider-labels">
+              <span>1%</span>
+              <span>100%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="asap-calc-results">
+          <div class="asap-results-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"></polyline><polyline points="16 17 22 17 22 11"></polyline></svg>
+          </div>
+          
+          <p class="asap-results-title">Lost to Competitors</p>
+          <p class="asap-results-main" id="asap-yearly-result">$312,000</p>
+          <p class="asap-results-sub">Per Year</p>
+
+          <div class="asap-results-grid">
+            <div class="asap-results-card">
+              <p class="asap-results-card-title">Weekly</p>
+              <p class="asap-results-card-value" id="asap-weekly-result">$6,000</p>
+            </div>
+            <div class="asap-results-card">
+              <p class="asap-results-card-title">Monthly</p>
+              <p class="asap-results-card-value" id="asap-monthly-result">$26,000</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const callsSlider = document.getElementById('asap-calls-slider');
+    const callsBadge = document.getElementById('asap-calls-badge');
+    const valueInput = document.getElementById('asap-value-input');
+    const closeSlider = document.getElementById('asap-close-slider');
+    const closeBadge = document.getElementById('asap-close-badge');
+    
+    const yearlyEl = document.getElementById('asap-yearly-result');
+    const weeklyEl = document.getElementById('asap-weekly-result');
+    const monthlyEl = document.getElementById('asap-monthly-result');
+
+    const formatCurrency = (val) => {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0
+      }).format(val);
+    };
+
+    const calculate = () => {
+      const callsPerWeek = parseInt(callsSlider.value) || 0;
+      const closeRate = parseInt(closeSlider.value) || 0;
+      const avgSaleValue = parseInt(valueInput.value) || 0;
+
+      callsBadge.textContent = callsPerWeek;
+      closeBadge.textContent = closeRate + '%';
+
+      const callsPerYear = callsPerWeek * 52;
+      const missedDealsPerYear = callsPerYear * (closeRate / 100);
+      const missedRevenuePerYear = missedDealsPerYear * avgSaleValue;
+      
+      const weeklyMissed = missedRevenuePerYear / 52;
+      const monthlyMissed = missedRevenuePerYear / 12;
+
+      yearlyEl.textContent = formatCurrency(missedRevenuePerYear);
+      weeklyEl.textContent = formatCurrency(weeklyMissed);
+      monthlyEl.textContent = formatCurrency(monthlyMissed);
+    };
+
+    callsSlider.addEventListener('input', calculate);
+    valueInput.addEventListener('input', calculate);
+    closeSlider.addEventListener('input', calculate);
+
+    // Initial calculation
+    calculate();
+  });
+</script>

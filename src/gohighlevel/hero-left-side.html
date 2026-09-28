@@ -1,0 +1,85 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  .asap-hero-left-container {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .asap-eyebrow {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
+  }
+  
+  .asap-pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #f59e0b;
+    border-radius: 50%;
+    animation: asap-pulse 1.5s infinite;
+  }
+  
+  @keyframes asap-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+    70% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+  }
+
+  .asap-hero-title {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0 0 4px 0;
+    color: #0f172a;
+  }
+  
+  .asap-hero-subtitle {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0 0 24px 0;
+    color: #64748b;
+  }
+
+  .asap-hero-desc {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #64748b;
+    max-width: 500px;
+    margin-bottom: 32px;
+  }
+
+  @media (max-width: 768px) {
+    .asap-hero-title, .asap-hero-subtitle {
+      font-size: 42px;
+    }
+  }
+</style>
+
+<div class="asap-hero-left-container">
+  <div class="asap-eyebrow">
+    <div class="asap-pulse-dot"></div>
+    AI Employees for phone, WhatsApp &amp; web
+  </div>
+  
+  <h1 class="asap-hero-title">Your Business<br>Doesn't Work 9 to 5.</h1>
+  <h1 class="asap-hero-subtitle">Neither Should<br>Your Customer<br>Experience.</h1>
+  
+  <p class="asap-hero-desc">
+    ASAP AI gives your business AI Employees that answer calls, respond to messages, handle enquiries and help customers move forward &mdash; 24/7.
+  </p>
+</div>

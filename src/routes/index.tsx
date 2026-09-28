@@ -10,6 +10,9 @@ import { HumanAI } from "@/components/site/HumanAI";
 import { Brand } from "@/components/site/Brand";
 import { Demo } from "@/components/site/Demo";
 import { FaqCta, Footer } from "@/components/site/FaqCta";
+import MissedRevenueCalculator from "@/components/site/MissedRevenueCalculator";
+import AIChatEmployee from "@/components/site/AIChatEmployee";
+import GoogleReviews from "@/components/site/GoogleReviews";
 
 const title = "ASAP AI — AI Employees for Phone, WhatsApp & Website";
 const description =
@@ -40,7 +43,10 @@ function Index() {
         <Speed />
         <Reality />
         <Employees />
+        <MissedRevenueCalculator />
+        <AIChatEmployee />
         <Channels />
+        <GoogleReviews />
         <HumanAI />
         <Brand />
         <FaqCta />

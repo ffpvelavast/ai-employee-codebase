@@ -1,0 +1,241 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  /* Container & Utilities */
+  .asap-cta-footer-section {
+    font-family: 'Inter', sans-serif;
+    color: #0f172a;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .asap-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* ---------------- CTA Section ---------------- */
+  .asap-cta-block {
+    background: linear-gradient(160deg, #0f172a 0%, #090e1a 100%); /* gradient-navy */
+    padding: 100px 20px;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .asap-cta-inner {
+    max-width: 768px; /* max-w-3xl */
+    margin: 0 auto;
+  }
+
+  .asap-cta-title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .asap-cta-title {
+      font-size: 36px;
+    }
+  }
+
+  .asap-cta-desc {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7); /* navy-foreground/70 */
+    max-width: 576px;
+    margin: 24px auto 0 auto;
+  }
+
+  .asap-cta-btn-wrapper {
+    margin-top: 36px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .asap-cta-btn {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 36px;
+    border-radius: 9999px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .asap-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4);
+  }
+
+  .asap-cta-footer-text {
+    margin-top: 28px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  /* ---------------- Footer Section ---------------- */
+  .asap-footer-block {
+    background-color: #ffffff;
+    border-top: 1px solid #e2e8f0; /* hairline */
+    padding: 48px 20px;
+  }
+
+  .asap-footer-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  @media (min-width: 640px) {
+    .asap-footer-grid {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  /* Left Side */
+  .asap-footer-left {
+    max-width: 384px; /* max-w-sm */
+  }
+
+  .asap-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #0f172a;
+    text-decoration: none;
+  }
+
+  .asap-logo-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #f59e0b; /* amber */
+  }
+
+  .asap-footer-left p {
+    margin: 16px 0 0 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #64748b;
+  }
+
+  /* Right Side */
+  .asap-footer-right {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  @media (min-width: 640px) {
+    .asap-footer-right {
+      align-items: flex-end;
+      text-align: right;
+    }
+  }
+
+  .asap-footer-email {
+    font-size: 14px;
+    font-weight: 500;
+    color: #0f172a;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .asap-footer-email:hover {
+    color: #3b82f6;
+  }
+
+  .asap-footer-links {
+    display: flex;
+    gap: 24px;
+    font-size: 14px;
+    color: #64748b;
+  }
+
+  .asap-footer-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .asap-footer-link:hover {
+    color: #0f172a;
+  }
+
+  .asap-footer-copy {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0;
+  }
+
+</style>
+
+<div class="asap-cta-footer-section" id="cta-footer">
+  
+  <!-- CTA Block -->
+  <section class="asap-cta-block">
+    <div class="asap-container asap-cta-inner">
+      <h2 class="asap-cta-title">Start With Your First AI Employee.</h2>
+      <p class="asap-cta-desc">
+        See how AI could answer, qualify and support your customers around the clock.
+      </p>
+      
+      <div class="asap-cta-btn-wrapper">
+        <a href="#demo" class="asap-cta-btn">
+          Put AI To Work
+        </a>
+      </div>
+      
+      <p class="asap-cta-footer-text">
+        Phone. WhatsApp. Website. One intelligent customer experience.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer Block -->
+  <footer class="asap-footer-block">
+    <div class="asap-container asap-footer-grid">
+      
+      <!-- Left Side -->
+      <div class="asap-footer-left">
+        <a href="#" class="asap-logo">
+          <span class="asap-logo-dot"></span> ASAP AI
+        </a>
+        <p>
+          AI Employees that answer, qualify and book — across phone, WhatsApp and your website.
+        </p>
+      </div>
+
+      <!-- Right Side -->
+      <div class="asap-footer-right">
+        <a href="mailto:hello@asapai.com" class="asap-footer-email">
+          hello@asapai.com
+        </a>
+        
+        <div class="asap-footer-links">
+          <a href="#" class="asap-footer-link">Privacy Policy</a>
+          <a href="#" class="asap-footer-link">Terms</a>
+        </div>
+        
+        <p class="asap-footer-copy">
+          © 2026 ASAP AI. All rights reserved.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+</div>

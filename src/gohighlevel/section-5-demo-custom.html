@@ -1,0 +1,246 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  /* ========================================================
+     RIGHT COLUMN PREVIEW WINDOW STYLES
+     ======================================================== */
+  .asap-demo-preview-container {
+    font-family: 'Inter', sans-serif;
+    color: #0f172a;
+    width: 100%;
+  }
+
+  .asap-demo-preview {
+    background-color: #ffffff;
+    border-radius: 24px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.15);
+  }
+
+  .asap-preview-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 12px 16px;
+  }
+
+  .asap-preview-dots {
+    display: flex;
+    gap: 6px;
+  }
+  .asap-preview-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #e2e8f0;
+  }
+
+  .asap-preview-url {
+    flex: 1;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 9999px;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .asap-preview-body {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+  }
+  
+  @media (max-width: 640px) {
+    .asap-preview-body {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Skeleton Side */
+  .asap-preview-skeleton {
+    border-right: 1px solid #e2e8f0;
+    padding: 24px;
+  }
+  
+  @media (max-width: 640px) {
+    .asap-preview-skeleton {
+      display: none;
+    }
+  }
+
+  .asap-skel-line {
+    background-color: #f1f5f9; /* surface-2 */
+    border-radius: 9999px;
+    margin-bottom: 12px;
+  }
+
+  /* Chat Side */
+  .asap-preview-chat {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .asap-chat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+
+  .asap-chat-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(160deg, #0f172a 0%, #090e1a 100%);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .asap-chat-title h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0 0 2px 0;
+  }
+
+  .asap-chat-title p {
+    font-size: 11px;
+    color: #64748b;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .asap-chat-pulse {
+    width: 6px;
+    height: 6px;
+    background-color: #3b82f6;
+    border-radius: 50%;
+    animation: asap-pulse-dot 1.6s ease-in-out infinite;
+  }
+  
+  @keyframes asap-pulse-dot {
+    0%, 100% { opacity: 0.35; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1); }
+  }
+
+  .asap-chat-bubbles {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .asap-bubble {
+    max-width: 85%;
+    padding: 10px 14px;
+    font-size: 13px;
+    line-height: 1.5;
+    border-radius: 16px;
+  }
+
+  .asap-bubble-customer {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: #ffffff;
+    border-top-right-radius: 4px;
+  }
+
+  .asap-bubble-ai {
+    align-self: flex-start;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    color: #0f172a;
+    border-top-left-radius: 4px;
+  }
+
+  .asap-chat-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 9999px;
+    padding: 10px 16px;
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: auto;
+  }
+</style>
+
+<div class="asap-demo-preview-container">
+  <!-- Interactive Preview Window -->
+  <div class="asap-demo-preview">
+    
+    <!-- Window Header -->
+    <div class="asap-preview-header">
+      <div class="asap-preview-dots">
+        <span class="asap-preview-dot"></span>
+        <span class="asap-preview-dot"></span>
+        <span class="asap-preview-dot"></span>
+      </div>
+      <div class="asap-preview-url">
+        yourbusiness.com
+      </div>
+    </div>
+
+    <div class="asap-preview-body">
+      
+      <!-- Skeleton Left -->
+      <div class="asap-preview-skeleton">
+        <div class="asap-skel-line" style="height: 10px; width: 40%;"></div>
+        <div class="asap-skel-line" style="height: 20px; width: 100%; margin-top: 20px;"></div>
+        <div class="asap-skel-line" style="height: 20px; width: 80%;"></div>
+        
+        <div style="margin-top: 24px;">
+          <div class="asap-skel-line" style="height: 8px; width: 100%; background-color: #f8fafc;"></div>
+          <div class="asap-skel-line" style="height: 8px; width: 90%; background-color: #f8fafc;"></div>
+          <div class="asap-skel-line" style="height: 8px; width: 75%; background-color: #f8fafc;"></div>
+        </div>
+        
+        <div class="asap-skel-line" style="height: 36px; width: 120px; margin-top: 28px;"></div>
+      </div>
+
+      <!-- Chat Right -->
+      <div class="asap-preview-chat">
+        
+        <div class="asap-chat-header">
+          <div class="asap-chat-avatar">FD</div>
+          <div class="asap-chat-title">
+            <h4>AI Front Desk</h4>
+            <p>
+              <span class="asap-chat-pulse"></span> Online now
+            </p>
+          </div>
+        </div>
+
+        <div class="asap-chat-bubbles">
+          <div class="asap-bubble asap-bubble-customer">Hi, do you have availability this Saturday?</div>
+          <div class="asap-bubble asap-bubble-ai">We do — there are two slots left on Saturday. Would 10:30am or 2:00pm suit you better?</div>
+          <div class="asap-bubble asap-bubble-customer">2pm works.</div>
+          <div class="asap-bubble asap-bubble-ai">Booked. I've added it to the calendar and sent a confirmation. Anything else before Saturday?</div>
+        </div>
+
+        <div class="asap-chat-input">
+          Ask your AI Employee a question…
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #3b82f6;"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+</div>

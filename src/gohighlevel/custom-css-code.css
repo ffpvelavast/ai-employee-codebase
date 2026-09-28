@@ -1,0 +1,150 @@
+/* ==========================================================================
+   PREMIUM PROGRESS HEADER STYLING
+   ========================================================================== */
+
+/* Header Container Glassmorphism */
+
+/* Header Text Wrapper */
+#paragraph-klI-pke0kX {
+    text-align: center !important;
+    margin-bottom: 12px !important;
+}
+
+/* Header Text Badge Look */
+#paragraph-klI-pke0kX p {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    color: #008000 !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    background: rgba(0, 128, 0, 0.08) !important;
+    border: 1px solid rgba(0, 128, 0, 0.25) !important;
+    padding: 6px 18px !important;
+    border-radius: 100px !important;
+    box-shadow: 0 0 15px rgba(0, 128, 0, 0.1) !important;
+}
+
+/* Pulsing Status Dot before text */
+#paragraph-klI-pke0kX p::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 8px !important;
+    height: 8px !important;
+    background-color: #008000 !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 8px #008000 !important;
+    animation: pulse-dot 1.8s infinite !important;
+}
+
+@keyframes pulse-dot {
+    0% {
+        opacity: 0.4;
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 0.4;
+        transform: scale(0.9);
+    }
+}
+
+@keyframes shimmer-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+
+/* ==========================================================================
+   HERO SECTION LIGHT THEME STYLING
+   ========================================================================== */
+
+/* Crisp Light Background for the Hero Section */
+#section-vMgeo5IkgS {
+    background-color: #FFFFFF !important;
+    padding: 60px 0 !important;
+    color: #0F172A !important;
+}
+
+/* Eyebrow / Badge Tagline (Light Theme) */
+#paragraph-wQjh4ZZjjr p {
+    display: inline-block !important;
+    background: #EFF6FF !important;
+               /* Very subtle blue tint */
+    border: 1px solid #BFDBFE !important;
+          /* Light blue accent border */
+    color: #1D4ED8 !important;
+                     /* Professional dark blue text */
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    padding: 6px 14px !important;
+    border-radius: 100px !important;
+    margin-bottom: 18px !important;
+}
+
+/* Main Hero Heading (H1) */
+#heading-yLjOPOETae h1 {
+    color: #0F172A !important;
+                     /* Deep slate text for high readability */
+    font-size: 38px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 18px !important;
+}
+
+/* Sub-Heading Text */
+#sub-heading-sGgjjQuMVw h2 {
+    color: #475569 !important;
+                     /* Soft dark grey text */
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 1.6 !important;
+}
+
+/* Bullet Points List */
+#bulletList-A42l0JnWex ul {
+    list-style: none !important;
+    margin-bottom: 32px !important;
+}
+
+
+/* Primary Call-to-Action Button */
+#button--Aq_0xtuzu_btn {
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%) !important;
+    color: #FFFFFF !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    padding: 16px 32px !important;
+    border-radius: 12px !important;
+    border: none !important;
+    box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4) !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+#button--Aq_0xtuzu_btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.6) !important;
+    background: linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%) !important;
+}

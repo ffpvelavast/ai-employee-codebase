@@ -1,0 +1,2 @@
+**Tech Stack for Backend Intelligence Engine:**
+We are building a standalone **Node.js/Express** backend to handle GoHighLevel webhooks asynchronously. We're using **Supabase + Drizzle ORM** for lightweight, serverless relational data storage, and **BullMQ + Upstash Redis** to manage long-running scraping queues (since standard serverless routes timeout). Finally, we are utilizing **Firecrawl** to map/scrape sites directly into LLM-ready Markdown, with **OpenAI** as a quick fallback to classify ambiguous URLs.

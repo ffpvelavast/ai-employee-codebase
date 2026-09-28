@@ -1,0 +1,116 @@
+/* ========================================================
+   GHL FORM OVERRIDES (Styles the form on the left side)
+   ======================================================== */
+
+/* Main form wrapper */
+.hl_form-builder--main {
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Hide labels to match the custom design, since it uses placeholders */
+.hl_form-builder--main .field-label,
+.hl_form-builder--main .label-alignment {
+  display: none !important;
+}
+
+/* Re-show terms and conditions label */
+.hl_form-builder--main .terms-and-conditions label {
+  display: flex !important;
+  align-items: flex-start !important;
+}
+
+/* Ensure the grid spacing matches */
+.hl_form-builder--main .menu-field-wrap {
+  margin-bottom: 12px !important;
+}
+
+/* Input fields (.form-control targets text, email, tel, etc.) */
+.hl_form-builder--main .form-control {
+  background-color: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 9999px !important;
+  padding: 12px 16px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+  transition: border-color 0.2s ease !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  color: #0f172a !important;
+  width: 100% !important;
+  height: auto !important; /* Override GHL fixed heights */
+}
+
+/* Focus state for inputs */
+.hl_form-builder--main .form-control:focus {
+  border-color: rgba(59, 130, 246, 0.5) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Placeholder text styling */
+.hl_form-builder--main .form-control::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Handle the email icon specifically to fit inside the pill shape */
+.hl_form-builder--main .email-input {
+  position: relative !important;
+}
+.hl_form-builder--main .email-input svg.input-icon {
+  position: absolute !important;
+  left: 16px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 18px !important;
+  height: 18px !important;
+  color: #64748b !important;
+  z-index: 2 !important;
+}
+.hl_form-builder--main .email-input input {
+  padding-left: 42px !important; /* Make room for the icon */
+}
+
+/* Terms and conditions text */
+.hl_form-builder--main .terms-and-conditions p,
+.hl_form-builder--main .terms-and-conditions span {
+  font-family: 'Inter', sans-serif !important;
+  color: #64748b !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+}
+
+/* Submit Button Container */
+.hl_form-builder--main .form-builder--btn-submit {
+  margin-top: 24px !important;
+}
+
+/* Submit Button */
+.hl_form-builder--main .form-builder--btn-submit button.btn {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+  color: #ffffff !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  padding: 16px 32px !important;
+  border-radius: 9999px !important;
+  border: none !important;
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3) !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  width: 100% !important;
+  font-family: 'Inter', sans-serif !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.hl_form-builder--main .form-builder--btn-submit button.btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4) !important;
+}
+
+/* Override inner GHL text wrappers for the button */
+.hl_form-builder--main .form-builder--btn-submit button.btn .button-text p,
+.hl_form-builder--main .form-builder--btn-submit button.btn div {
+  font-family: 'Inter', sans-serif !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}

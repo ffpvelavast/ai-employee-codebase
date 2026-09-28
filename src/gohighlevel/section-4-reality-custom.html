@@ -1,0 +1,280 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  /* Container & Utilities */
+  .asap-reality-section {
+    font-family: 'Inter', sans-serif;
+    color: #0f172a;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .asap-section-white {
+    background-color: #ffffff;
+    padding: 100px 20px;
+  }
+  
+  .asap-section-surface {
+    background-color: #f8fafc;
+    padding: 100px 20px;
+  }
+
+  .asap-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .asap-eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #3b82f6; /* Blue */
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  /* ---------------- PART 1: THE REALITY ---------------- */
+  .asap-reality-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 80px;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 1024px) {
+    .asap-reality-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  .asap-reality-title {
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #0f172a;
+    margin: 0 0 20px 0;
+  }
+
+  .asap-reality-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #64748b;
+    max-width: 450px;
+    margin: 0;
+  }
+
+  .asap-timeline {
+    position: relative;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* The vertical line */
+  .asap-timeline::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 19px;
+    width: 1px;
+    background-color: #e2e8f0; /* Hairline */
+  }
+
+  .asap-timeline-item {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    padding-bottom: 36px;
+  }
+  .asap-timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .asap-timeline-icon-wrap {
+    position: relative;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0f172a;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+  }
+
+  .asap-timeline-text {
+    padding-top: 8px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #0f172a;
+    margin: 0;
+  }
+
+  /* ---------------- PART 2: THE ALTERNATIVE ---------------- */
+  .asap-alt-header {
+    text-align: center;
+    max-width: 768px;
+    margin: 0 auto;
+  }
+
+  .asap-alt-title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #0f172a;
+    margin: 0 0 20px 0;
+  }
+
+  .asap-alt-desc {
+    font-size: 18px;
+    color: #64748b;
+    margin: 0;
+  }
+
+  .asap-capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 48px;
+    margin-top: 64px;
+  }
+
+  @media (max-width: 1024px) {
+    .asap-capabilities-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 640px) {
+    .asap-capabilities-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .asap-capability {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 24px;
+    transition: transform 0.3s ease;
+  }
+  .asap-capability:hover {
+    transform: translateY(-4px);
+  }
+
+  .asap-cap-icon {
+    color: #3b82f6; /* Blue */
+    margin-bottom: 16px;
+  }
+
+  .asap-cap-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0 0 8px 0;
+  }
+
+  .asap-cap-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #64748b;
+    margin: 0;
+  }
+</style>
+
+<div class="asap-reality-section">
+  
+  <!-- The Reality -->
+  <section class="asap-section-white">
+    <div class="asap-container asap-reality-grid">
+      
+      <!-- Left text -->
+      <div>
+        <span class="asap-eyebrow">The reality</span>
+        <h2 class="asap-reality-title">Good Businesses Miss Enquiries Every Day.</h2>
+        <p class="asap-reality-desc">Not because they don't care. Because good businesses have a lot happening at once.</p>
+      </div>
+
+      <!-- Right Timeline -->
+      <ul class="asap-timeline">
+        <li class="asap-timeline-item">
+          <div class="asap-timeline-icon-wrap">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="16" y2="8"></line><line x1="16" y1="2" x2="22" y2="8"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <p class="asap-timeline-text">The phone rings while you're helping a customer.</p>
+        </li>
+        <li class="asap-timeline-item">
+          <div class="asap-timeline-icon-wrap">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+          </div>
+          <p class="asap-timeline-text">A WhatsApp message arrives late at night.</p>
+        </li>
+        <li class="asap-timeline-item">
+          <div class="asap-timeline-icon-wrap">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+          </div>
+          <p class="asap-timeline-text">Someone asks for a quote on Sunday.</p>
+        </li>
+        <li class="asap-timeline-item">
+          <div class="asap-timeline-icon-wrap">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"></path><path d="M16 2v4"></path><path d="M8 2v4"></path><path d="M3 10h5"></path><path d="M17.5 17.5 16 16.25V14"></path><path d="M22 16a6 6 0 1 1-12 0 6 6 0 0 1 12 0Z"></path></svg>
+          </div>
+          <p class="asap-timeline-text">By Monday, they've already spoken to your competitor.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- The Alternative -->
+  <section class="asap-section-surface">
+    <div class="asap-container">
+      <div class="asap-alt-header">
+        <span class="asap-eyebrow">The alternative</span>
+        <h2 class="asap-alt-title">What If Every Customer Got an Answer?</h2>
+        <p class="asap-alt-desc">Day or night. Phone, WhatsApp or website.</p>
+      </div>
+
+      <div class="asap-capabilities-grid">
+        <div class="asap-capability">
+          <svg class="asap-cap-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="16" y2="8"></line><line x1="16" y1="2" x2="22" y2="8"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <h3 class="asap-cap-title">Every call picked up</h3>
+          <p class="asap-cap-desc">No ringing out, no voicemail dead ends.</p>
+        </div>
+        <div class="asap-capability">
+          <svg class="asap-cap-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+          <h3 class="asap-cap-title">Every WhatsApp answered</h3>
+          <p class="asap-cap-desc">Natural replies, at any hour.</p>
+        </div>
+        <div class="asap-capability">
+          <svg class="asap-cap-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <h3 class="asap-cap-title">Every website question handled</h3>
+          <p class="asap-cap-desc">Visitors get answers while intent is high.</p>
+        </div>
+        <div class="asap-capability">
+          <svg class="asap-cap-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
+          <h3 class="asap-cap-title">Serious buyers identified</h3>
+          <p class="asap-cap-desc">Qualified before they reach your team.</p>
+        </div>
+        <div class="asap-capability">
+          <svg class="asap-cap-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="m9 16 2 2 4-4"></path></svg>
+          <h3 class="asap-cap-title">Appointments added to your calendar</h3>
+          <p class="asap-cap-desc">Booked directly into real availability.</p>
+        </div>
+        <div class="asap-capability">
+          <svg class="asap-cap-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          <h3 class="asap-cap-title">No enquiry forgotten</h3>
+          <p class="asap-cap-desc">Nothing slips. No unnecessary delay.</p>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+</div>

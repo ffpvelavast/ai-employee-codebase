@@ -1,0 +1,150 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  .asap-why-section {
+    font-family: 'Inter', sans-serif;
+    color: #0f172a;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f8fafc; /* tone="surface" */
+    padding: 100px 20px;
+  }
+
+  .asap-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* Header */
+  .asap-why-header {
+    max-width: 672px; /* max-w-2xl */
+  }
+
+  .asap-eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #3b82f6; /* Blue */
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .asap-title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #0f172a; /* Navy */
+    margin: 0 0 20px 0;
+  }
+
+  @media (max-width: 768px) {
+    .asap-title {
+      font-size: 36px;
+    }
+  }
+
+  .asap-desc {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #64748b; /* Muted foreground */
+    margin: 0;
+  }
+
+  /* Pillars Grid */
+  .asap-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 56px;
+  }
+
+  @media (max-width: 768px) {
+    .asap-pillars-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .asap-pillar {
+    border-top: 2px solid #0f172a; /* border-navy */
+    padding-top: 24px;
+  }
+
+  .asap-pillar-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0 0 12px 0;
+  }
+
+  .asap-pillar-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #64748b;
+    margin: 0;
+  }
+
+  /* Footer Text */
+  .asap-footer-text {
+    margin-top: 56px;
+    max-width: 768px; /* max-w-3xl */
+    font-size: 24px;
+    line-height: 1.35;
+    font-weight: 600;
+    color: #0f172a;
+  }
+  
+  @media (max-width: 768px) {
+    .asap-footer-text {
+      font-size: 20px;
+    }
+  }
+</style>
+
+<section class="asap-why-section" id="about">
+  <div class="asap-container">
+    
+    <div class="asap-why-header">
+      <span class="asap-eyebrow">Why ASAP AI</span>
+      <h2 class="asap-title">AI That Understands Business Before Technology.</h2>
+      <p class="asap-desc">
+        Built by a team with over twenty years of experience across enterprise strategy, customer experience design, innovation and software development.
+      </p>
+    </div>
+
+    <div class="asap-pillars-grid">
+      
+      <!-- Pillar 1 -->
+      <div class="asap-pillar">
+        <h3 class="asap-pillar-title">Enterprise Thinking</h3>
+        <p class="asap-pillar-desc">
+          Experience designing solutions for complex organisations.
+        </p>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="asap-pillar">
+        <h3 class="asap-pillar-title">Customer Experience</h3>
+        <p class="asap-pillar-desc">
+          Technology designed around how real customers behave.
+        </p>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="asap-pillar">
+        <h3 class="asap-pillar-title">Practical AI Implementation</h3>
+        <p class="asap-pillar-desc">
+          AI systems designed to create measurable business outcomes.
+        </p>
+      </div>
+
+    </div>
+
+    <p class="asap-footer-text">
+      We've worked with global brands. Now we're bringing the same thinking to businesses ready to put AI to work.
+    </p>
+
+  </div>
+</section>

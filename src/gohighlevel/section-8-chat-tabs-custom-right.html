@@ -1,0 +1,319 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap');
+
+  .asap-phone-container {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+  }
+
+  @media (min-width: 1024px) {
+    .asap-phone-container {
+      justify-content: flex-end;
+    }
+  }
+
+  .asap-phone {
+    position: relative;
+    width: 320px;
+    height: 640px;
+    border-radius: 3rem;
+    border: 12px solid #0f172a;
+    background-color: #0f172a;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: transform 0.7s ease;
+  }
+
+  .asap-phone:hover {
+    transform: rotateY(-6deg);
+  }
+
+  .asap-phone-notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 144px;
+    height: 28px;
+    background-color: #0f172a;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    z-index: 20;
+  }
+
+  .asap-phone-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    padding-bottom: 24px;
+    transition: background-color 0.5s, color 0.5s;
+  }
+
+  .asap-phone-screen.theme-light {
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
+
+  .asap-phone-screen.theme-dark {
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  .asap-chat-header {
+    padding: 0 20px 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .asap-phone-screen.theme-dark .asap-chat-header {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .asap-chat-header-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .asap-chat-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #eff4ff;
+    margin-bottom: 8px;
+    border: 2px solid #ffffff;
+    overflow: hidden;
+  }
+
+  .asap-chat-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .asap-chat-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .asap-chat-sub {
+    font-size: 0.65rem;
+    opacity: 0.6;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  .asap-chat-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .asap-chat-timestamp {
+    text-align: center;
+    font-size: 0.65rem;
+    opacity: 0.5;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 8px 0;
+  }
+
+  .asap-chat-msg {
+    max-width: 85%;
+    border-radius: 16px;
+    padding: 14px;
+    font-size: 0.9rem;
+    line-height: 1.625;
+    animation: msgFadeIn 0.5s both;
+  }
+
+  @keyframes msgFadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .asap-msg-user {
+    background-color: #155EEF;
+    color: #ffffff;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+
+  .asap-msg-agent.theme-light {
+    background-color: #ffffff;
+    color: #0f172a;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+  }
+
+  .asap-msg-agent.theme-dark {
+    background-color: #1f2937;
+    color: #ffffff;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    border: 1px solid #374151;
+  }
+
+  .asap-chat-input-area {
+    padding: 12px 20px 0 20px;
+  }
+
+  .asap-chat-input {
+    width: 100%;
+    height: 44px;
+    border-radius: 9999px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .asap-phone-screen.theme-light .asap-chat-input {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #94a3b8;
+  }
+
+  .asap-phone-screen.theme-dark .asap-chat-input {
+    background-color: #111827;
+    border: 1px solid #374151;
+    color: #6b7280;
+  }
+</style>
+
+<div class="asap-phone-container">
+  <div class="asap-phone">
+    <div class="asap-phone-notch"></div>
+    <div class="asap-phone-screen theme-light" id="asap-phone-screen">
+      
+      <div class="asap-chat-header">
+        <div class="asap-chat-header-inner">
+          <div class="asap-chat-avatar">
+            <img id="asap-chat-avatar-img" src="https://api.dicebear.com/7.x/notionists/svg?seed=Jaci Smith" alt="avatar">
+          </div>
+          <p class="asap-chat-name" id="asap-chat-name">Jaci Smith</p>
+          <p class="asap-chat-sub" id="asap-chat-sub">Text Message</p>
+        </div>
+      </div>
+
+      <div class="asap-chat-body" id="asap-chat-body">
+        <div class="asap-chat-timestamp">Today 3:25 PM</div>
+        <!-- Dynamic Messages Go Here -->
+      </div>
+
+      <div class="asap-chat-input-area">
+        <div class="asap-chat-input">Message...</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabData = {
+      'sms': {
+        headerName: 'Jaci Smith',
+        headerSub: 'Text Message',
+        theme: 'light',
+        messages: [
+          { role: 'agent', text: "Hi there! It's Alex Bella Aesthetic Artistic. I remember you contacted us a while back, and I just wanted to check in. How have you been doing since we last spoke?" },
+          { role: 'user', text: "About your laser hair removal services. Can you tell me more about it?" }
+        ]
+      },
+      'missed-call': {
+        headerName: 'John Smith',
+        headerSub: 'Text Message',
+        theme: 'light',
+        messages: [
+          { role: 'agent', text: "Hi there! I'm Alex from Harper & Quinn Law Partners. Sorry we missed your call, how can we help you?" },
+          { role: 'user', text: "I was injured in an accident and need some advice." },
+          { role: 'agent', text: "Sorry to hear that! Was it an auto accident?" }
+        ]
+      },
+      'webchat': {
+        headerName: 'Harper & Quinn',
+        headerSub: 'Website Chat',
+        theme: 'light',
+        messages: [
+          { role: 'agent', text: "Of course! I'd be happy to help. What do you need assistance with?" },
+          { role: 'user', text: "What information will you need from me during the consultation?" },
+          { role: 'agent', text: "During the consultation, we'll ask about the specifics of your accident, any communication you've had with insurance companies, and how your injuries have affected you." }
+        ]
+      },
+      'meta': {
+        headerName: 'WrapWorx Auto Studio',
+        headerSub: 'Instagram',
+        theme: 'dark',
+        messages: [
+          { role: 'agent', text: "Hey! 👋 Excited you're thinking about a vehicle wrap. Got any questions before we check the calendar?" },
+          { role: 'user', text: "Sure, how long does the wrapping take?" },
+          { role: 'agent', text: "For most cars, it usually takes between 2 to 3 days. We focus on quality to make sure your wrap looks amazing." }
+        ]
+      }
+    };
+
+    const screen = document.getElementById('asap-phone-screen');
+    const avatarImg = document.getElementById('asap-chat-avatar-img');
+    const nameEl = document.getElementById('asap-chat-name');
+    const subEl = document.getElementById('asap-chat-sub');
+    const chatBody = document.getElementById('asap-chat-body');
+
+    window.asapRenderChat = function(id) {
+      const data = tabData[id];
+      if(!data) return;
+
+      screen.className = 'asap-phone-screen theme-' + data.theme;
+      avatarImg.src = 'https://api.dicebear.com/7.x/notionists/svg?seed=' + data.headerName;
+      nameEl.textContent = data.headerName;
+      subEl.textContent = data.headerSub;
+
+      chatBody.innerHTML = '<div class="asap-chat-timestamp">Today 3:25 PM</div>';
+
+      data.messages.forEach((msg, idx) => {
+        const div = document.createElement('div');
+        let classes = 'asap-chat-msg ';
+        
+        if(msg.role === 'user') {
+          classes += 'asap-msg-user';
+        } else {
+          classes += 'asap-msg-agent theme-' + data.theme;
+        }
+        
+        div.className = classes;
+        div.textContent = msg.text;
+        div.style.animationDelay = (idx * 150) + 'ms';
+        
+        chatBody.appendChild(div);
+      });
+
+      // Update button classes if they exist on the page
+      const btns = document.querySelectorAll('.asap-tab-btn');
+      if (btns.length > 0) {
+        btns.forEach(b => b.classList.remove('active'));
+        const activeBtn = document.querySelector('.asap-tab-btn[data-tab="' + id + '"]');
+        if (activeBtn) activeBtn.classList.add('active');
+      }
+    };
+
+    window.asapRenderChat('sms');
+  });
+</script>

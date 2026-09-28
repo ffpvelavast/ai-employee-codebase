@@ -1,0 +1,151 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  .asap-brand-section {
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    /* gradient-navy */
+    background: linear-gradient(160deg, #0f172a 0%, #090e1a 100%);
+    width: 100%;
+    padding: 100px 20px;
+    box-sizing: border-box;
+  }
+
+  .asap-brand-container {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .asap-brand-header {
+    text-align: center;
+    max-width: 672px;
+    margin: 0 auto;
+  }
+
+  .asap-brand-title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin: 0 0 24px 0;
+  }
+
+  .asap-brand-title-highlight {
+    color: #f59e0b; /* Amber */
+    display: block;
+  }
+  
+  @media (max-width: 768px) {
+    .asap-brand-title {
+      font-size: 36px;
+    }
+  }
+
+  .asap-brand-desc {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+
+  /* Highlights Grid */
+  .asap-highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 40px;
+    margin-top: 64px;
+  }
+
+  @media (max-width: 768px) {
+    .asap-highlights-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 480px) {
+    .asap-highlights-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .asap-highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12); /* border-navy-foreground/12 */
+    padding-top: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .asap-highlight-item:hover {
+    transform: translateY(-2px);
+  }
+
+  .asap-highlight-icon {
+    color: #f59e0b; /* Amber */
+    flex-shrink: 0;
+  }
+
+  .asap-highlight-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+  }
+
+</style>
+
+<section class="asap-brand-section" id="brand">
+  <div class="asap-brand-container">
+    
+    <div class="asap-brand-header">
+      <h2 class="asap-brand-title">
+        Always On.
+        <span class="asap-brand-title-highlight">Never Off-Brand.</span>
+      </h2>
+      <p class="asap-brand-desc">
+        Your AI Employees are trained to understand your business, communicate in your preferred tone and respond consistently across customer channels.
+      </p>
+    </div>
+
+    <div class="asap-highlights-grid">
+      
+      <!-- Highlight 1 -->
+      <div class="asap-highlight-item">
+        <svg class="asap-highlight-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <span class="asap-highlight-label">24/7 availability</span>
+      </div>
+
+      <!-- Highlight 2 -->
+      <div class="asap-highlight-item">
+        <svg class="asap-highlight-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z"></path><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"></path></svg>
+        <span class="asap-highlight-label">Consistent brand communication</span>
+      </div>
+
+      <!-- Highlight 3 -->
+      <div class="asap-highlight-item">
+        <svg class="asap-highlight-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        <span class="asap-highlight-label">Faster customer response</span>
+      </div>
+
+      <!-- Highlight 4 -->
+      <div class="asap-highlight-item">
+        <svg class="asap-highlight-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
+        <span class="asap-highlight-label">Lead qualification</span>
+      </div>
+
+      <!-- Highlight 5 -->
+      <div class="asap-highlight-item">
+        <svg class="asap-highlight-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <span class="asap-highlight-label">Human escalation</span>
+      </div>
+
+      <!-- Highlight 6 -->
+      <div class="asap-highlight-item">
+        <svg class="asap-highlight-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><path d="m9 16 2 2 4-4"></path></svg>
+        <span class="asap-highlight-label">Calendar booking</span>
+      </div>
+
+    </div>
+  </div>
+</section>

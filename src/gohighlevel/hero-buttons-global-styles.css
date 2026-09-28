@@ -1,0 +1,81 @@
+/* ========================================================
+   HERO SECTION BUTTON STYLES (Primary and Secondary)
+   ======================================================== */
+
+/* =======================================
+   1. PRIMARY BUTTON (First Button)
+   ======================================= */
+#button-D1obi8JxzQ_btn {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+  color: #ffffff !important;
+  font-size: 16px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  padding: 16px 32px !important;
+  border-radius: 9999px !important;
+  border: none !important;
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3) !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#button-D1obi8JxzQ_btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4) !important;
+}
+
+/* Ensure inner text inherits the styling correctly */
+#button-D1obi8JxzQ_btn .main-heading-button {
+  font-family: 'Inter', sans-serif !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+}
+
+/* =======================================
+   2. SECONDARY BUTTON (Second Button)
+   ======================================= */
+#button-LAwAezB80H_btn {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  font-size: 16px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  padding: 16px 32px !important;
+  border-radius: 9999px !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#button-LAwAezB80H_btn:hover {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Ensure inner text inherits the styling correctly */
+#button-LAwAezB80H_btn .main-heading-button {
+  font-family: 'Inter', sans-serif !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+}
+
+/* Optional: Make them sit side-by-side on desktop if they are in a row */
+@media (min-width: 768px) {
+  #button-D1obi8JxzQ,
+  #button-LAwAezB80H {
+    display: inline-block !important;
+    width: auto !important;
+    margin-right: 16px !important;
+  }
+}

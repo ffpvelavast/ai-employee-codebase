@@ -1,0 +1,555 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap');
+
+  .asap-chat-section {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(160deg, #0f172a 0%, #090e1a 100%);
+    padding: 80px 20px;
+    color: #ffffff;
+    box-sizing: border-box;
+  }
+
+  .asap-chat-container {
+    max-width: 1248px;
+    margin: 0 auto;
+    display: grid;
+    gap: 48px;
+    align-items: center;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 1024px) {
+    .asap-chat-container {
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+  }
+
+  .asap-eyebrow {
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #f59e0b;
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .asap-chat-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 2rem;
+    line-height: 1.08;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 16px 0 0 0;
+    letter-spacing: -0.028em;
+  }
+
+  @media (min-width: 640px) {
+    .asap-chat-title {
+      font-size: 3rem;
+    }
+  }
+
+  .asap-chat-title span {
+    color: #f59e0b;
+  }
+
+  .asap-chat-desc {
+    margin: 24px 0 0 0;
+    font-size: 1rem;
+    line-height: 1.625;
+    color: rgba(255,255,255,0.7);
+    max-width: 600px;
+  }
+
+  @media (min-width: 640px) {
+    .asap-chat-desc {
+      font-size: 1.125rem;
+    }
+  }
+
+  .asap-chat-tabs-list {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .asap-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-radius: 16px;
+    padding: 16px;
+    text-align: left;
+    transition: all 0.3s ease;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: inherit;
+    width: 100%;
+  }
+
+  .asap-tab-btn:hover:not(.active) {
+    background-color: rgba(255,255,255,0.05);
+  }
+
+  .asap-tab-btn.active {
+    background-color: rgba(255,255,255,0.1);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.2);
+  }
+
+  .asap-tab-icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background-color: rgba(255,255,255,0.1);
+    color: #ffffff;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+
+  .asap-tab-btn.active .asap-tab-icon {
+    background-color: #f59e0b;
+    color: #0f172a;
+  }
+
+  .asap-tab-label {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #ffffff;
+    margin: 0;
+    transition: color 0.3s ease;
+  }
+
+  .asap-tab-btn.active .asap-tab-label {
+    color: #f59e0b;
+  }
+
+  .asap-tab-content {
+    margin-top: 4px;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.625;
+    display: none;
+  }
+
+  .asap-tab-btn.active .asap-tab-content {
+    display: block;
+    animation: fadein 0.5s;
+  }
+
+  @keyframes fadein {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .asap-btn-container {
+    margin-top: 40px;
+  }
+
+  .asap-chat-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: #155EEF;
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 32px;
+    font-size: 1.125rem;
+    transition: background-color 0.2s;
+  }
+
+  .asap-chat-btn:hover {
+    background-color: #114cd6;
+  }
+
+  .asap-phone-container {
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+  }
+
+  @media (min-width: 1024px) {
+    .asap-phone-container {
+      justify-content: flex-end;
+    }
+  }
+
+  .asap-phone {
+    position: relative;
+    width: 320px;
+    height: 640px;
+    border-radius: 3rem;
+    border: 12px solid #0f172a;
+    background-color: #0f172a;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: transform 0.7s ease;
+  }
+
+  .asap-phone:hover {
+    transform: rotateY(-6deg);
+  }
+
+  .asap-phone-notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 144px;
+    height: 28px;
+    background-color: #0f172a;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    z-index: 20;
+  }
+
+  .asap-phone-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    padding-bottom: 24px;
+    transition: background-color 0.5s, color 0.5s;
+  }
+
+  .asap-phone-screen.theme-light {
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
+
+  .asap-phone-screen.theme-dark {
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  .asap-chat-header {
+    padding: 0 20px 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .asap-phone-screen.theme-dark .asap-chat-header {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .asap-chat-header-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .asap-chat-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #eff4ff;
+    margin-bottom: 8px;
+    border: 2px solid #ffffff;
+    overflow: hidden;
+  }
+
+  .asap-chat-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .asap-chat-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .asap-chat-sub {
+    font-size: 0.65rem;
+    opacity: 0.6;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+  }
+
+  .asap-chat-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .asap-chat-timestamp {
+    text-align: center;
+    font-size: 0.65rem;
+    opacity: 0.5;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 8px 0;
+  }
+
+  .asap-chat-msg {
+    max-width: 85%;
+    border-radius: 16px;
+    padding: 14px;
+    font-size: 0.9rem;
+    line-height: 1.625;
+    animation: msgFadeIn 0.5s both;
+  }
+
+  @keyframes msgFadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .asap-msg-user {
+    background-color: #155EEF;
+    color: #ffffff;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+
+  .asap-msg-agent.theme-light {
+    background-color: #ffffff;
+    color: #0f172a;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+  }
+
+  .asap-msg-agent.theme-dark {
+    background-color: #1f2937;
+    color: #ffffff;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    border: 1px solid #374151;
+  }
+
+  .asap-chat-input-area {
+    padding: 12px 20px 0 20px;
+  }
+
+  .asap-chat-input {
+    width: 100%;
+    height: 44px;
+    border-radius: 9999px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .asap-phone-screen.theme-light .asap-chat-input {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #94a3b8;
+  }
+
+  .asap-phone-screen.theme-dark .asap-chat-input {
+    background-color: #111827;
+    border: 1px solid #374151;
+    color: #6b7280;
+  }
+
+  .asap-tab-icon svg { width: 24px; height: 24px; }
+</style>
+
+<section id="chat-employee" class="asap-chat-section">
+  <div class="asap-chat-container">
+    
+    <!-- Left: Text & Tabs -->
+    <div>
+      <p class="asap-eyebrow">Omnichannel Chat</p>
+      <h2 class="asap-chat-title">
+        Meet Your <span>AI Chat Employee.</span>
+      </h2>
+      <p class="asap-chat-desc">
+        Engage with leads and customers across all channels instantly. Never miss a message, a lead, or an opportunity again.
+      </p>
+
+      <div class="asap-chat-tabs-list" id="asap-tabs">
+        <!-- Tab 1 -->
+        <button class="asap-tab-btn active" data-tab="sms">
+          <div class="asap-tab-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div>
+            <p class="asap-tab-label">SMS</p>
+            <p class="asap-tab-content">Your leads are texting — are you responding fast enough? AI Chat engages instantly with inbound SMS, delivering answers, qualifying prospects, and moving them down your sales funnel 24/7. No more missed messages or delayed replies.</p>
+          </div>
+        </button>
+
+        <!-- Tab 2 -->
+        <button class="asap-tab-btn" data-tab="missed-call">
+          <div class="asap-tab-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 2 6 6"/><path d="m22 2-6 6"/><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+          </div>
+          <div>
+            <p class="asap-tab-label">Missed Call</p>
+            <p class="asap-tab-content">Most leads won't leave a voicemail — they'll call your competitor. With AI-powered Missed Call Text Back, every lost call becomes a new opportunity. Instantly text back missed calls, start the conversation, and let AI qualify and convert leads automatically.</p>
+          </div>
+        </button>
+
+        <!-- Tab 3 -->
+        <button class="asap-tab-btn" data-tab="webchat">
+          <div class="asap-tab-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          </div>
+          <div>
+            <p class="asap-tab-label">Webchat</p>
+            <p class="asap-tab-content">Your website should do more than look pretty — it should convert. AI Chat engages visitors the moment they land, answers their questions, captures their info, and guides them toward buying decisions. It's like having your best salesperson on your homepage 24/7.</p>
+          </div>
+        </button>
+
+        <!-- Tab 4 -->
+        <button class="asap-tab-btn" data-tab="meta">
+          <div class="asap-tab-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </div>
+          <div>
+            <p class="asap-tab-label">Meta Ad</p>
+            <p class="asap-tab-content">Clicks are expensive — don't let them go to waste. AI Chat responds immediately when prospects engage with your Meta Ads, turning curiosity into conversations. Whether it's Messenger or comment triggers, your AI Chat is always ready to nurture leads and turn ad spend into ROI.</p>
+          </div>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Right: Phone Mockup -->
+    <div class="asap-phone-container">
+      <div class="asap-phone">
+        <div class="asap-phone-notch"></div>
+        <div class="asap-phone-screen theme-light" id="asap-phone-screen">
+          
+          <div class="asap-chat-header">
+            <div class="asap-chat-header-inner">
+              <div class="asap-chat-avatar">
+                <img id="asap-chat-avatar-img" src="https://api.dicebear.com/7.x/notionists/svg?seed=Jaci Smith" alt="avatar">
+              </div>
+              <p class="asap-chat-name" id="asap-chat-name">Jaci Smith</p>
+              <p class="asap-chat-sub" id="asap-chat-sub">Text Message</p>
+            </div>
+          </div>
+
+          <div class="asap-chat-body" id="asap-chat-body">
+            <div class="asap-chat-timestamp">Today 3:25 PM</div>
+            <!-- Dynamic Messages Go Here -->
+          </div>
+
+          <div class="asap-chat-input-area">
+            <div class="asap-chat-input">Message...</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabData = {
+      'sms': {
+        headerName: 'Jaci Smith',
+        headerSub: 'Text Message',
+        theme: 'light',
+        messages: [
+          { role: 'agent', text: "Hi there! It's Alex Bella Aesthetic Artistic. I remember you contacted us a while back, and I just wanted to check in. How have you been doing since we last spoke?" },
+          { role: 'user', text: "About your laser hair removal services. Can you tell me more about it?" }
+        ]
+      },
+      'missed-call': {
+        headerName: 'John Smith',
+        headerSub: 'Text Message',
+        theme: 'light',
+        messages: [
+          { role: 'agent', text: "Hi there! I'm Alex from Harper & Quinn Law Partners. Sorry we missed your call, how can we help you?" },
+          { role: 'user', text: "I was injured in an accident and need some advice." },
+          { role: 'agent', text: "Sorry to hear that! Was it an auto accident?" }
+        ]
+      },
+      'webchat': {
+        headerName: 'Harper & Quinn',
+        headerSub: 'Website Chat',
+        theme: 'light',
+        messages: [
+          { role: 'agent', text: "Of course! I'd be happy to help. What do you need assistance with?" },
+          { role: 'user', text: "What information will you need from me during the consultation?" },
+          { role: 'agent', text: "During the consultation, we'll ask about the specifics of your accident, any communication you've had with insurance companies, and how your injuries have affected you." }
+        ]
+      },
+      'meta': {
+        headerName: 'WrapWorx Auto Studio',
+        headerSub: 'Instagram',
+        theme: 'dark',
+        messages: [
+          { role: 'agent', text: "Hey! 👋 Excited you're thinking about a vehicle wrap. Got any questions before we check the calendar?" },
+          { role: 'user', text: "Sure, how long does the wrapping take?" },
+          { role: 'agent', text: "For most cars, it usually takes between 2 to 3 days. We focus on quality to make sure your wrap looks amazing." }
+        ]
+      }
+    };
+
+    const btns = document.querySelectorAll('.asap-tab-btn');
+    const screen = document.getElementById('asap-phone-screen');
+    const avatarImg = document.getElementById('asap-chat-avatar-img');
+    const nameEl = document.getElementById('asap-chat-name');
+    const subEl = document.getElementById('asap-chat-sub');
+    const chatBody = document.getElementById('asap-chat-body');
+
+    function renderChat(id) {
+      const data = tabData[id];
+      if(!data) return;
+
+      screen.className = 'asap-phone-screen theme-' + data.theme;
+      avatarImg.src = 'https://api.dicebear.com/7.x/notionists/svg?seed=' + data.headerName;
+      nameEl.textContent = data.headerName;
+      subEl.textContent = data.headerSub;
+
+      chatBody.innerHTML = '<div class="asap-chat-timestamp">Today 3:25 PM</div>';
+
+      data.messages.forEach((msg, idx) => {
+        const div = document.createElement('div');
+        let classes = 'asap-chat-msg ';
+        
+        if(msg.role === 'user') {
+          classes += 'asap-msg-user';
+        } else {
+          classes += 'asap-msg-agent theme-' + data.theme;
+        }
+        
+        div.className = classes;
+        div.textContent = msg.text;
+        div.style.animationDelay = (idx * 150) + 'ms';
+        
+        chatBody.appendChild(div);
+      });
+    }
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const tabId = btn.getAttribute('data-tab');
+        renderChat(tabId);
+      });
+    });
+
+    renderChat('sms');
+  });
+</script>
