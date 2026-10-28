@@ -1,0 +1,173 @@
+<!-- ==========================================================================
+     ASAP AI - THANK YOU PAGE HEADER (NO MENUS, NO HAMBURGER)
+     Component File: src/gohighlevel/header-thank-you-page.html
+     
+     Usage:
+     - Paste into a single GoHighLevel "Custom HTML / JS" element at the top of your Thank You Page.
+     
+     Features:
+     - Clean, focused minimalist design (ASAP AI Logo on left, Live Support Badge on right).
+     - No navigation menu items ("How it Works", "AI Roles", "FAQ") and NO hamburger button.
+     - Perfectly responsive across mobile, tablet, and desktop screens.
+     - Automatically hides previous GHL header section #section-IiulQh_Vv9 if present.
+     ========================================================================== -->
+
+<header id="asapThankYouHeader" class="asap-header-root asap-header-simple">
+  <div class="asap-header-container">
+    
+    <!-- 1. Brand Logo (Clicking takes user back to Landing Page) -->
+    <a href="https://demo.asapai.ai/landing-page-page" class="asap-header-logo" aria-label="ASAP AI Home">
+      <picture>
+        <source media="(max-width: 640px)" srcset="https://images.leadconnectorhq.com/image/f_webp/q_80/r_480/u_https://assets.cdn.filesafe.space/VU1vYA2ZpTbrXSZ2wwtg/media/6a980b5f738fb3768deca63e.svg">
+        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/VU1vYA2ZpTbrXSZ2wwtg/media/6a980b5f738fb3768deca63e.svg" alt="ASAP AI" class="asap-logo-img">
+      </picture>
+    </a>
+
+    <!-- 2. Right Action Area: Support Email Badge Only -->
+    <div class="asap-header-actions">
+      <a href="mailto:support@asapai.com" class="asap-support-badge" aria-label="Contact Support">
+        <span class="asap-status-dot"></span>
+        <span class="asap-support-email">support@asapai.com</span>
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  /* If the old GHL section-IiulQh_Vv9 is still present in the page, keep it cleanly hidden */
+  #section-IiulQh_Vv9 {
+    display: none !important;
+  }
+
+  /* Root Header Element */
+  .asap-header-root {
+    width: 100% !important;
+    background-color: #0d0d0f !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    box-sizing: border-box !important;
+    transition: background 0.3s ease, border-color 0.3s ease !important;
+  }
+
+  .asap-header-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-sizing: border-box;
+  }
+
+  /* Brand Logo */
+  .asap-header-logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .asap-header-logo:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+  }
+
+  .asap-logo-img {
+    height: 38px;
+    width: auto;
+    max-height: 38px;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* Right Action Area */
+  .asap-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  /* Support Badge */
+  .asap-support-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    background: rgba(229, 46, 46, 0.08);
+    border: 1px solid rgba(229, 46, 46, 0.25);
+    padding: 7px 16px;
+    border-radius: 9999px;
+    color: #ff4d4d;
+    font-size: 13.5px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+  }
+
+  .asap-support-badge:hover {
+    background: rgba(229, 46, 46, 0.18);
+    border-color: rgba(229, 46, 46, 0.45);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(229, 46, 46, 0.2);
+  }
+
+  .asap-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #22c55e;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  /* ==========================================================================
+     RESPONSIVE BREAKPOINTS (Tablets & Mobile)
+     ========================================================================== */
+  @media (max-width: 991px) {
+    .asap-header-container {
+      padding: 12px 20px;
+    }
+
+    .asap-logo-img {
+      height: 32px;
+      max-height: 32px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .asap-header-container {
+      padding: 10px 16px;
+    }
+
+    .asap-logo-img {
+      height: 28px;
+      max-height: 28px;
+    }
+
+    .asap-support-badge {
+      font-size: 11.5px;
+      padding: 5px 12px;
+      max-width: 165px;
+    }
+
+    .asap-support-email {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+</style>

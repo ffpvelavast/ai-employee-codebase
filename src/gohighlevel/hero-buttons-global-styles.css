@@ -6,7 +6,8 @@
    1. PRIMARY BUTTON (First Button)
    ======================================= */
 #button-D1obi8JxzQ_btn {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+  background: #e52e2e !important;
+  background-color: #e52e2e !important;
   color: #ffffff !important;
   font-size: 16px !important;
   font-family: 'Inter', sans-serif !important;
@@ -14,7 +15,7 @@
   padding: 16px 32px !important;
   border-radius: 9999px !important;
   border: none !important;
-  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3) !important;
+  box-shadow: 0 10px 20px -4px rgba(229, 46, 46, 0.35) !important;
   cursor: pointer !important;
   transition: all 0.3s ease !important;
   display: inline-flex !important;
@@ -23,8 +24,9 @@
 }
 
 #button-D1obi8JxzQ_btn:hover {
+  background-color: #d12222 !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4) !important;
+  box-shadow: 0 15px 25px -4px rgba(229, 46, 46, 0.45) !important;
 }
 
 /* Ensure inner text inherits the styling correctly */

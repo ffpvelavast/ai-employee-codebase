@@ -1,0 +1,229 @@
+<!-- ========================================================
+     ASAP AI - SECTION 8 TOP: HOW IT WORKS (5 STEPS)
+     Ready to paste into GoHighLevel Custom HTML element
+     ======================================================== -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,500;1,600;1,700&display=swap');
+
+  .asap-how-it-works-top {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 56px auto;
+    box-sizing: border-box;
+    text-align: left;
+    background-color: #f6f4f0;
+  }
+
+  .asap-hiw-eyebrow {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #e52e2e;
+    margin: 0 0 18px 0;
+    display: block;
+  }
+
+  /* Two-column headline row */
+  .asap-hiw-headline-row {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .asap-hiw-main-title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: #111827;
+    margin: 0;
+    max-width: 580px;
+  }
+
+  .asap-hiw-sub-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.3;
+    color: #1f2937;
+    margin: 0;
+    font-weight: 500;
+    max-width: 380px;
+  }
+
+  /* 5 Horizontal Process Cards Grid */
+  .asap-hiw-cards-grid {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .asap-hiw-card {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #ffffff;
+    border-radius: 22px;
+    padding: 26px 20px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .asap-hiw-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.08);
+  }
+
+  .asap-hiw-card-badge {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #e52e2e;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .asap-hiw-card-title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 10px 0;
+    line-height: 1.25;
+  }
+
+  .asap-hiw-card-desc {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: #64748b;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  @media (max-width: 1024px) {
+    .asap-hiw-cards-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .asap-hiw-main-title {
+      font-size: 42px;
+    }
+    .asap-hiw-sub-title {
+      font-size: 24px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .asap-hiw-headline-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .asap-hiw-main-title {
+      font-size: 34px;
+    }
+    .asap-hiw-sub-title {
+      font-size: 20px;
+    }
+    .asap-hiw-cards-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .asap-hiw-card {
+      padding: 20px 18px;
+    }
+  }
+</style>
+
+<div class="asap-how-it-works-top">
+  <!-- Eyebrow -->
+  <span class="asap-hiw-eyebrow">HOW IT WORKS</span>
+  
+  <!-- Headline Row -->
+  <div class="asap-hiw-headline-row">
+    <h2 class="asap-hiw-main-title">
+      Turn more<br>
+      enquiries into<br>
+      customers.
+    </h2>
+    <p class="asap-hiw-sub-title">
+      One customer question.<br>
+      A whole business response.
+    </p>
+  </div>
+
+  <!-- 5 Process Cards -->
+  <div class="asap-hiw-cards-grid">
+    
+    <!-- Step 1 -->
+    <div class="asap-hiw-card">
+      <div class="asap-hiw-card-badge">1</div>
+      <h3 class="asap-hiw-card-title">Customer asks</h3>
+      <p class="asap-hiw-card-desc">
+        &ldquo;Do you have a slot on Saturday?&rdquo; on WhatsApp, your website or by phone.
+      </p>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="asap-hiw-card">
+      <div class="asap-hiw-card-badge">2</div>
+      <h3 class="asap-hiw-card-title">AI understands</h3>
+      <p class="asap-hiw-card-desc">
+        It works out what the customer wants and what they've told you so far.
+      </p>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="asap-hiw-card">
+      <div class="asap-hiw-card-badge">3</div>
+      <h3 class="asap-hiw-card-title">AI answers</h3>
+      <p class="asap-hiw-card-desc">
+        From your approved information, in your brand's voice.
+      </p>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="asap-hiw-card">
+      <div class="asap-hiw-card-badge">4</div>
+      <h3 class="asap-hiw-card-title">Action happens</h3>
+      <p class="asap-hiw-card-desc">
+        It books, qualifies, follows up or routes to the right person.
+      </p>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="asap-hiw-card">
+      <div class="asap-hiw-card-badge">5</div>
+      <h3 class="asap-hiw-card-title">Your team joins</h3>
+      <p class="asap-hiw-card-desc">
+        When it matters, with the full conversation and a summary.
+      </p>
+    </div>
+
+  </div>
+</div>

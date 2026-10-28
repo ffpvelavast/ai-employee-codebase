@@ -1,0 +1,357 @@
+<!-- ========================================================
+     ASAP AI - "REAL BUSINESS ROLES. REAL RESULTS." SECTION
+     Self-contained file for GoHighLevel Custom HTML/JS element
+     ======================================================== -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600;1,700&display=swap');
+
+  .asap-roles-section {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f5f2eb; /* Warm light beige background */
+    color: #171717;
+    padding: 100px 0px 60px 0px;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .asap-roles-container {
+    max-width: 1120px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  /* Red Eyebrow Kicker */
+  .asap-roles-eyebrow {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #e52e2e;
+    margin: 0 0 20px 0;
+    display: block;
+    line-height: 1.2;
+  }
+
+  /* Two-column Header Row */
+  .asap-roles-header-row {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+    width: 100%;
+    margin-bottom: 44px;
+  }
+
+  /* Left Headline */
+  .asap-roles-heading {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .asap-roles-heading-bold {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 54px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: #171717;
+  }
+
+  .asap-roles-heading-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 52px;
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: #242426;
+  }
+
+  /* Right Header Question in Editorial Italic Serif */
+  .asap-roles-header-question {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: #383838;
+    max-width: 360px;
+    margin: 0;
+    text-align: left;
+  }
+
+  /* 4 Cards Grid */
+  .asap-roles-grid {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Individual Role Card */
+  .asap-role-card {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #ffffff;
+    border-radius: 24px;
+    padding: 26px 22px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.03);
+    box-sizing: border-box;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    min-height: 380px;
+    position: relative;
+  }
+
+  .asap-role-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Card Top Section */
+  .asap-role-top {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Badge with Avatar & Red Dot */
+  .asap-role-badge-wrap {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    margin-bottom: 20px;
+  }
+
+  .asap-role-avatar {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background-color: #171717;
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .asap-role-dot {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #e52e2e;
+    border: 2px solid #ffffff;
+  }
+
+  /* Role Eyebrow Kicker in Red */
+  .asap-role-category {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #e52e2e;
+    margin: 0 0 12px 0;
+    line-height: 1.25;
+  }
+
+  /* Card Main Headline */
+  .asap-role-title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.25;
+    color: #171717;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.02em;
+  }
+
+  /* Role Description */
+  .asap-role-desc {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 13.5px;
+    line-height: 1.52;
+    color: #555555;
+    margin: 0 0 20px 0;
+    font-weight: 400;
+  }
+
+  /* Card Footer Channels */
+  .asap-role-channels {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #888888;
+    padding-top: 14px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: auto;
+    font-weight: 500;
+  }
+
+  /* ========================================================
+     RESPONSIVE BREAKPOINTS
+     ======================================================== */
+  @media (max-width: 1024px) {
+    .asap-roles-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .asap-roles-heading-bold {
+      font-size: 42px;
+    }
+    .asap-roles-heading-serif {
+      font-size: 40px;
+    }
+    .asap-roles-header-question {
+      font-size: 22px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .asap-roles-section {
+      padding: 70px 18px 40px 18px;
+    }
+    .asap-roles-header-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .asap-roles-heading-bold {
+      font-size: 34px;
+    }
+    .asap-roles-heading-serif {
+      font-size: 32px;
+    }
+    .asap-roles-header-question {
+      font-size: 20px;
+      max-width: 100%;
+    }
+    .asap-roles-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .asap-role-card {
+      min-height: auto;
+      padding: 24px 20px;
+    }
+  }
+</style>
+
+<div class="asap-roles-section" id="real-business-roles">
+  <div class="asap-roles-container">
+
+    <!-- Red Eyebrow Kicker -->
+    <span class="asap-roles-eyebrow">YOUR AI TEAM</span>
+
+    <!-- Header Row -->
+    <div class="asap-roles-header-row">
+      <div class="asap-roles-heading">
+        <h2 class="asap-roles-heading-bold">Real business</h2>
+        <h2 class="asap-roles-heading-bold">roles.</h2>
+        <h3 class="asap-roles-heading-serif">Real results.</h3>
+      </div>
+      <p class="asap-roles-header-question">
+        What job would you give your first AI Employee?
+      </p>
+    </div>
+
+    <!-- 4 Roles Grid -->
+    <div class="asap-roles-grid">
+
+      <!-- Card 1: AI Front Desk -->
+      <div class="asap-role-card">
+        <div class="asap-role-top">
+          <div class="asap-role-badge-wrap">
+            <div class="asap-role-avatar">FD</div>
+            <span class="asap-role-dot"></span>
+          </div>
+          <div class="asap-role-category">AI FRONT DESK</div>
+          <h4 class="asap-role-title">Welcome. Answer. Route.</h4>
+          <p class="asap-role-desc">
+            Greets every enquiry, answers routine questions and routes customers to the right person.
+          </p>
+        </div>
+        <div class="asap-role-channels">
+          Calls · WhatsApp · website
+        </div>
+      </div>
+
+      <!-- Card 2: Brand Genie -->
+      <div class="asap-role-card">
+        <div class="asap-role-top">
+          <div class="asap-role-badge-wrap">
+            <div class="asap-role-avatar">BG</div>
+            <span class="asap-role-dot"></span>
+          </div>
+          <div class="asap-role-category">BRAND GENIE™</div>
+          <h4 class="asap-role-title">Give your website a voice.</h4>
+          <p class="asap-role-desc">
+            Talks visitors through your business by voice or text, handles objections and guides them to book or buy.
+          </p>
+        </div>
+        <div class="asap-role-channels">
+          Website · voice and text
+        </div>
+      </div>
+
+      <!-- Card 3: AI Customer Concierge -->
+      <div class="asap-role-card">
+        <div class="asap-role-top">
+          <div class="asap-role-badge-wrap">
+            <div class="asap-role-avatar">CC</div>
+            <span class="asap-role-dot"></span>
+          </div>
+          <div class="asap-role-category">AI CUSTOMER CONCIERGE</div>
+          <h4 class="asap-role-title">Meet customers where they message.</h4>
+          <p class="asap-role-desc">
+            Looks after existing customers: orders, returns, reminders and follow-ups, in one consistent voice.
+          </p>
+        </div>
+        <div class="asap-role-channels">
+          WhatsApp · Instagram · Messenger
+        </div>
+      </div>
+
+      <!-- Card 4: AI Sales Consultant -->
+      <div class="asap-role-card">
+        <div class="asap-role-top">
+          <div class="asap-role-badge-wrap">
+            <div class="asap-role-avatar">SC</div>
+            <span class="asap-role-dot"></span>
+          </div>
+          <div class="asap-role-category">AI SALES CONSULTANT</div>
+          <h4 class="asap-role-title">Qualify and move opportunities forward.</h4>
+          <p class="asap-role-desc">
+            Qualifies new leads, follows up quiet ones and books meetings before your team steps in.
+          </p>
+        </div>
+        <div class="asap-role-channels">
+          Ads · WhatsApp · email
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

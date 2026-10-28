@@ -1,0 +1,92 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  .asap-slow-response-right-container {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    width: 100%;
+    max-width: 540px;
+    box-sizing: border-box;
+  }
+
+  .asap-stat-card {
+    background-color: #1a1a1d;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
+    padding: 34px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .asap-stat-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .asap-stat-card-number {
+    font-size: 68px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin: 0 0 20px 0;
+  }
+
+  .asap-stat-card-number.asap-red-stat {
+    color: #e52e2e;
+  }
+
+  .asap-stat-card-number.asap-white-stat {
+    color: #ffffff;
+  }
+
+  .asap-stat-card-desc {
+    font-size: 13.5px;
+    line-height: 1.48;
+    color: #9ca3af;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .asap-stat-card-desc sup {
+    font-size: 0.7em;
+    color: #71717a;
+  }
+
+  @media (max-width: 768px) {
+    .asap-slow-response-right-container {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .asap-stat-card {
+      padding: 28px 24px;
+    }
+    .asap-stat-card-number {
+      font-size: 56px;
+      margin-bottom: 14px;
+    }
+  }
+</style>
+
+<div class="asap-slow-response-right-container">
+  <!-- Card 1: 8x (Red) -->
+  <div class="asap-stat-card">
+    <div class="asap-stat-card-number asap-red-stat">8x</div>
+    <p class="asap-stat-card-desc">
+      higher conversion when first contact happens within five minutes.<sup>1</sup>
+    </p>
+  </div>
+
+  <!-- Card 2: 86% (White) -->
+  <div class="asap-stat-card">
+    <div class="asap-stat-card-number asap-white-stat">86%</div>
+    <p class="asap-stat-card-desc">
+      of Singapore marketers say they struggle to respond to customers promptly. Asia-Pacific: 71%.<sup>2</sup>
+    </p>
+  </div>
+</div>

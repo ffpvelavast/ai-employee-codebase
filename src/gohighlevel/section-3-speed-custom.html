@@ -1,322 +1,194 @@
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+<!-- ========================================================
+     ASAP AI - THE COST OF A SLOW RESPONSE / SPEED SECTION
+     Updated GoHighLevel Section
+     ======================================================== -->
 
-  .asap-speed-section {
-    font-family: 'Inter', sans-serif;
-    background-color: #f8fafc; /* Surface tone */
-    color: #0f172a;
-    padding: 100px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  .asap-slow-response-section {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #111113;
+    color: #ffffff;
+    padding: 100px 24px;
     box-sizing: border-box;
     width: 100%;
+    position: relative;
+    overflow: hidden;
   }
 
-  .asap-speed-container {
+  .asap-slow-response-container {
     max-width: 1200px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 56px;
-  }
-
-  /* Top Section */
-  .asap-speed-top {
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1.15fr 1fr;
     gap: 64px;
-    align-items: flex-end;
+    align-items: center;
+    box-sizing: border-box;
   }
 
   @media (max-width: 1024px) {
-    .asap-speed-top {
+    .asap-slow-response-container {
       grid-template-columns: 1fr;
-      gap: 32px;
+      gap: 48px;
     }
   }
 
-  .asap-speed-eyebrow {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #3b82f6; /* Blue */
-    margin-bottom: 16px;
-    display: block;
+  .asap-slow-response-left {
+    max-width: 540px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
   }
 
-  .asap-speed-title {
-    font-size: 48px;
+  .asap-slow-response-eyebrow {
+    font-size: 12px;
     font-weight: 800;
-    line-height: 1.08;
-    letter-spacing: -0.03em;
-    color: #0f172a;
-    margin: 0;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #e52e2e;
+    margin: 0 0 24px 0;
+    display: block;
   }
 
-  .asap-speed-title-highlight {
-    color: #3b82f6; /* Blue */
-    display: block;
-    margin-top: 8px;
+  .asap-slow-response-title {
+    font-size: 60px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: #ffffff;
+    margin: 0 0 24px 0;
+  }
+
+  .asap-slow-response-desc {
+    font-size: 16.5px;
+    line-height: 1.62;
+    color: #9ca3af;
+    margin: 0;
+    font-weight: 400;
+    max-width: 500px;
+  }
+
+  .asap-slow-response-desc sup,
+  .asap-stat-card-desc sup {
+    font-size: 0.7em;
+    color: #71717a;
+  }
+
+  .asap-slow-response-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .asap-stat-card {
-    background-color: #ffffff;
+    background-color: #1a1a1d;
+    border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 24px;
-    border: 1px solid #e2e8f0; /* Hairline */
-    padding: 28px;
+    padding: 34px 28px;
     display: flex;
-    align-items: flex-end;
-    gap: 20px;
-    box-shadow: 0 12px 32px -18px rgba(15, 23, 42, 0.15); /* Soft shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    transition: transform 0.25s ease, border-color 0.25s ease;
   }
-  
+
   .asap-stat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.2);
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.12);
   }
 
-  .asap-stat-number {
-    font-size: 72px;
-    line-height: 1;
+  .asap-stat-card-number {
+    font-size: 68px;
     font-weight: 800;
-    color: #f59e0b; /* Amber */
-    margin: 0;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin: 0 0 20px 0;
   }
 
-  .asap-stat-text {
-    font-size: 14px;
-    color: #64748b;
-    margin: 0;
-    padding-bottom: 6px;
+  .asap-stat-card-number.asap-red-stat {
+    color: #e52e2e;
   }
 
-  /* Description */
-  .asap-speed-desc {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #64748b;
-    max-width: 768px;
-    margin: 0;
+  .asap-stat-card-number.asap-white-stat {
+    color: #ffffff;
   }
 
-  /* Bottom Comparison Cards */
-  .asap-speed-comparison {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+  .asap-stat-card-desc {
+    font-size: 13.5px;
+    line-height: 1.48;
+    color: #9ca3af;
+    margin: 0;
+    font-weight: 400;
   }
 
   @media (max-width: 768px) {
-    .asap-speed-comparison {
-      grid-template-columns: 1fr;
+    .asap-slow-response-section {
+      padding: 70px 20px;
     }
-  }
-
-  /* Fast Card */
-  .asap-fast-card {
-    background-color: #ffffff;
-    border-radius: 24px;
-    border: 1px solid rgba(59, 130, 246, 0.2); /* border-blue/20 */
-    padding: 28px;
-    box-shadow: 0 12px 32px -18px rgba(15, 23, 42, 0.15);
-    height: 100%;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-    cursor: pointer;
-  }
-
-  .asap-fast-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(59, 130, 246, 0.5);
-  }
-
-  /* Slow Card */
-  .asap-slow-card {
-    background-color: #f1f5f9; /* Surface-2 */
-    border-radius: 24px;
-    border: 1px solid #e2e8f0;
-    padding: 28px;
-    height: 100%;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
-
-  .asap-slow-card:hover {
-    transform: translateY(-4px);
-  }
-
-  .asap-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 24px;
-  }
-
-  .asap-card-header h3 {
-    font-size: 14px;
-    font-weight: 600;
-    color: #0f172a;
-    margin: 0;
-  }
-
-  .asap-badge-fast {
-    background-color: #eff6ff; /* blue-soft */
-    color: #3b82f6;
-    padding: 4px 12px;
-    border-radius: 9999px;
-    font-size: 12px;
-    font-weight: 600;
-  }
-
-  .asap-badge-slow {
-    background-color: #ffffff;
-    color: #64748b;
-    padding: 4px 12px;
-    border-radius: 9999px;
-    font-size: 12px;
-    font-weight: 600;
-  }
-
-  .asap-step-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .asap-step-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .asap-step-number-fast {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    color: #ffffff;
-    font-size: 11px;
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .asap-step-text-fast {
-    font-size: 15px;
-    color: #0f172a;
-  }
-
-  .asap-step-number-slow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    border: 1px solid #e2e8f0;
-    color: #64748b;
-    font-size: 11px;
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .asap-step-text-slow {
-    font-size: 15px;
-    color: #64748b;
+    .asap-slow-response-title {
+      font-size: 42px;
+      line-height: 1.08;
+    }
+    .asap-slow-response-desc {
+      font-size: 15.5px;
+    }
+    .asap-slow-response-right {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .asap-stat-card {
+      padding: 28px 24px;
+    }
+    .asap-stat-card-number {
+      font-size: 56px;
+      margin-bottom: 14px;
+    }
   }
 </style>
 
-<section class="asap-speed-section" id="speed">
-  <div class="asap-speed-container">
+<div class="asap-slow-response-section" id="speed">
+  <div class="asap-slow-response-container">
     
-    <!-- Top Section -->
-    <div class="asap-speed-top">
-      <div>
-        <span class="asap-speed-eyebrow">Speed matters</span>
-        <h2 class="asap-speed-title">
-          Reply Within 5 Minutes.
-          <span class="asap-speed-title-highlight">You're 8× More Likely to Win the Customer.</span>
-        </h2>
-      </div>
-
-      <div class="asap-stat-card">
-        <h3 class="asap-stat-number">8×</h3>
-        <p class="asap-stat-text">More likely to convert when businesses respond quickly.</p>
-      </div>
+    <!-- LEFT SIDE -->
+    <div class="asap-slow-response-left">
+      <span class="asap-slow-response-eyebrow">THE COST OF A SLOW RESPONSE</span>
+      
+      <h2 class="asap-slow-response-title">
+        Your next<br>
+        customer<br>
+        won't wait.
+      </h2>
+      
+      <p class="asap-slow-response-desc">
+        Leads contacted within five minutes convert at eight times the rate of leads contacted later that day.<sup>1</sup> Most businesses can't reply that fast, especially after hours.
+      </p>
     </div>
 
-    <!-- Middle Description -->
-    <p class="asap-speed-desc">
-      Research across more than 55 million sales activities found that businesses responding to inbound leads within five minutes achieved dramatically higher conversion rates.
-    </p>
-
-    <!-- Bottom Comparison -->
-    <div class="asap-speed-comparison">
+    <!-- RIGHT SIDE -->
+    <div class="asap-slow-response-right">
       
-      <!-- Fast Card -->
-      <div class="asap-fast-card">
-        <div class="asap-card-header">
-          <h3>Customer Enquiry</h3>
-          <span class="asap-badge-fast">Fast response</span>
-        </div>
-        <ol class="asap-step-list">
-          <li class="asap-step-item">
-            <span class="asap-step-number-fast">1</span>
-            <span class="asap-step-text-fast">Customer asks</span>
-          </li>
-          <li class="asap-step-item">
-            <span class="asap-step-number-fast">2</span>
-            <span class="asap-step-text-fast">AI responds</span>
-          </li>
-          <li class="asap-step-item">
-            <span class="asap-step-number-fast">3</span>
-            <span class="asap-step-text-fast">Lead is qualified</span>
-          </li>
-          <li class="asap-step-item">
-            <span class="asap-step-number-fast">4</span>
-            <span class="asap-step-text-fast">Appointment booked</span>
-          </li>
-        </ol>
+      <!-- Card 1: 8x -->
+      <div class="asap-stat-card">
+        <div class="asap-stat-card-number asap-red-stat">8x</div>
+        <p class="asap-stat-card-desc">
+          higher conversion when first contact happens within five minutes.<sup>1</sup>
+        </p>
       </div>
 
-      <!-- Slow Card -->
-      <div class="asap-slow-card">
-        <div class="asap-card-header">
-          <h3>Customer Enquiry</h3>
-          <span class="asap-badge-slow">Slow response</span>
-        </div>
-        <ol class="asap-step-list">
-          <li class="asap-step-item">
-            <span class="asap-step-number-slow">1</span>
-            <span class="asap-step-text-slow">Customer asks</span>
-          </li>
-          <li class="asap-step-item">
-            <span class="asap-step-number-slow">2</span>
-            <span class="asap-step-text-slow">No immediate response</span>
-          </li>
-          <li class="asap-step-item">
-            <span class="asap-step-number-slow">3</span>
-            <span class="asap-step-text-slow">Customer continues searching</span>
-          </li>
-          <li class="asap-step-item">
-            <span class="asap-step-number-slow">4</span>
-            <span class="asap-step-text-slow">Competitor responds first</span>
-          </li>
-        </ol>
+      <!-- Card 2: 86% -->
+      <div class="asap-stat-card">
+        <div class="asap-stat-card-number asap-white-stat">86%</div>
+        <p class="asap-stat-card-desc">
+          of Singapore marketers say they struggle to respond to customers promptly. Asia-Pacific: 71%.<sup>2</sup>
+        </p>
       </div>
 
     </div>
 
   </div>
-</section>
+</div>

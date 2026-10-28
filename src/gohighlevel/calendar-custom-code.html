@@ -1,0 +1,1204 @@
+<!-- ========================================================
+     ASAP AI - GHL CALENDAR WIDGET CUSTOM STYLING & ENHANCEMENT
+     Paste into: GHL Calendar Settings > Custom Code (or Custom CSS)
+     ======================================================== -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,500;1,600;1,700&display=swap');
+
+  /* ========================================================
+     ROOT PALETTE - DARK THEME
+     ======================================================== */
+  :root {
+    --asap-bg-dark: #121214;
+    --asap-card-bg: #1c1c1f;
+    --asap-slot-bg: #222226;
+    --asap-slot-hover: #2d2d33;
+    --asap-red-primary: #e52e2e;
+    --asap-red-hover: #c92525;
+    --asap-border-dark: #2a2a2e;
+    --asap-text-white: #ffffff;
+    --asap-text-muted: #9c9ca4;
+    --asap-input-bg: #1c1c1f;
+    --asap-input-border: #2e2e33;
+
+    /* Override GHL calendar internal theme colors to prevent black text */
+    --appointment_widgets-light-text-color: #d4d4d8 !important;
+    --appointment_widgets-primary-color: #e52e2e !important;
+    --appointment_widgets-light-primary-color: #222226 !important;
+  }
+
+  /* Main Calendar Outer Card */
+  #calendarAppointmentBookingMain,
+  #appointment_widgets--revamp,
+  .appointment_widgets--revamp,
+  .appointment_widgets-xl--revamp {
+    background-color: var(--asap-bg-dark) !important;
+    border-radius: 24px !important;
+    color: var(--asap-text-white) !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    border: 1px solid var(--asap-border-dark) !important;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7) !important;
+    max-width: 1100px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .appointment_widgets--revamp--inner,
+  .appointment_widgets--revamp--booking {
+    background-color: transparent !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Two Column Container: Left Editorial + Right Picker/Form */
+  .cal-row.appointment_widgets--revamp--container {
+    background-color: transparent !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    padding: 36px 32px !important;
+    gap: 36px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ========================================================
+     LEFT COLUMN: EDITORIAL CARD ("Like what it did?")
+     ======================================================== */
+  .appointment_widgets--revamp--info-container {
+    background-color: transparent !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 10px 32px 10px 10px !important;
+    flex: 0 0 42% !important;
+    max-width: 42% !important;
+    min-width: 320px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Hide default generic service name and duration info in left container */
+  .appointment_widgets--revamp--service-info,
+  .appointment-widgets-service-booking-info,
+  .appointment_widgets--revamp--navigation-container:empty {
+    display: none !important;
+  }
+
+  /* Injected custom left editorial content */
+  .asap-cal-left-editorial {
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  .asap-cal-kicker {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: #e52e2e !important;
+    margin-bottom: 20px !important;
+    position: relative !important;
+    padding-bottom: 8px !important;
+    display: inline-block !important;
+    line-height: 1.4 !important;
+  }
+
+  .asap-cal-kicker::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 28px;
+    height: 2px;
+    background-color: #e52e2e;
+  }
+
+  .asap-cal-title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 38px !important;
+    line-height: 1.08 !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    letter-spacing: -0.03em !important;
+    margin: 0 0 18px 0 !important;
+  }
+
+  .asap-cal-title .serif-italic {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-style: italic !important;
+    font-weight: 600 !important;
+    font-size: 34px !important;
+    color: #f3f3f5 !important;
+  }
+
+  .asap-cal-title .period-red {
+    color: #e52e2e !important;
+  }
+
+  .asap-cal-desc {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    color: #a1a1aa !important;
+    margin: 0 0 24px 0 !important;
+    font-weight: 400 !important;
+  }
+
+  /* 4-5 Bullets List in 2-Column Grid */
+  .asap-cal-bullets {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    column-gap: 16px !important;
+    row-gap: 12px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .asap-cal-bullet-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    color: #d4d4d8 !important;
+  }
+
+  .asap-cal-bullet-dot {
+    width: 6px !important;
+    height: 6px !important;
+    border-radius: 50% !important;
+    background-color: #e52e2e !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Back button styling when in step 2 */
+  .appointment_widgets--revamp--back-button #calendar-back-button svg {
+    stroke: #ffffff !important;
+  }
+  .appointment_widgets--revamp--back-button #calendar-back-button:hover svg {
+    stroke: #e52e2e !important;
+  }
+
+  /* ========================================================
+     RIGHT COLUMN: CALENDAR & SLOTS (STEP 1) & FORM (STEP 2)
+     ======================================================== */
+  .appointment_widgets--revamp--steps {
+    background-color: transparent !important;
+    padding: 10px 10px 10px 16px !important;
+    flex: 1 1 58% !important;
+    max-width: 58% !important;
+    width: 58% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    color: #ffffff !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* Scrollbar override for ANY container inside steps */
+  .appointment_widgets--revamp--steps,
+  .appointment_widgets--revamp--steps > div,
+  .step-form,
+  .widgets-slot-block,
+  .multiselect__content-wrapper {
+    scrollbar-width: thin !important;
+    scrollbar-color: #3f3f46 #18181b !important;
+  }
+
+  .appointment_widgets--revamp--steps::-webkit-scrollbar,
+  .appointment_widgets--revamp--steps > div::-webkit-scrollbar,
+  .step-form::-webkit-scrollbar,
+  .widgets-slot-block::-webkit-scrollbar,
+  .multiselect__content-wrapper::-webkit-scrollbar {
+    width: 6px !important;
+  }
+
+  .appointment_widgets--revamp--steps::-webkit-scrollbar-track,
+  .appointment_widgets--revamp--steps > div::-webkit-scrollbar-track,
+  .step-form::-webkit-scrollbar-track,
+  .widgets-slot-block::-webkit-scrollbar-track,
+  .multiselect__content-wrapper::-webkit-scrollbar-track {
+    background: #18181b !important;
+    border-radius: 8px !important;
+  }
+
+  .appointment_widgets--revamp--steps::-webkit-scrollbar-thumb,
+  .appointment_widgets--revamp--steps > div::-webkit-scrollbar-thumb,
+  .step-form::-webkit-scrollbar-thumb,
+  .widgets-slot-block::-webkit-scrollbar-thumb,
+  .multiselect__content-wrapper::-webkit-scrollbar-thumb {
+    background: #3f3f46 !important;
+    border-radius: 8px !important;
+  }
+
+  .appointment_widgets--revamp--steps::-webkit-scrollbar-thumb:hover,
+  .appointment_widgets--revamp--steps > div::-webkit-scrollbar-thumb:hover,
+  .step-form::-webkit-scrollbar-thumb:hover,
+  .widgets-slot-block::-webkit-scrollbar-thumb:hover,
+  .multiselect__content-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #52525b !important;
+  }
+
+  .widgets-step-1-container,
+  .widgets-step-1-container > div {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .widgets-step-1-container .label-select-date,
+  .appointment_widgets--revamp--steps .text-info {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    letter-spacing: -0.01em !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Date picker on left, Slots on right */
+  .widgets-step-1 {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 24px !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .widgets-date-timezone-wrapper {
+    flex: 0 0 54% !important;
+    max-width: 54% !important;
+    min-width: 250px !important;
+    box-sizing: border-box !important;
+  }
+
+  .calendarVdpComponent,
+  .vdpOuterWrap,
+  .vdpInnerWrap,
+  .vdpTable {
+    width: 100% !important;
+    background: transparent !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Month Header & Prev/Next Arrows */
+  .vdpHeader {
+    background: transparent !important;
+    color: #ffffff !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 14px !important;
+    padding: 0 4px !important;
+  }
+
+  .vdpPeriodControl button {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+  }
+
+  .arrowPrevious, .arrowNext {
+    background: var(--asap-slot-bg) !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--asap-border-dark) !important;
+    color: #ffffff !important;
+    width: 34px !important;
+    height: 34px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .arrowPrevious svg path, .arrowNext svg path {
+    stroke: #ffffff !important;
+  }
+
+  .arrowPrevious:hover:not(.disabled), .arrowNext:hover:not(.disabled) {
+    background: #2d2d33 !important;
+    border-color: #3f3f46 !important;
+  }
+
+  /* Days of Week Header (Sun, Mon, Tue, etc.) */
+  .vdpHeadCell,
+  .vdpHeadCellContent {
+    color: #a1a1aa !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding: 6px 0 !important;
+    text-align: center !important;
+  }
+
+  /* Calendar Day Cells & Numbers Visibility */
+  .vdpTable tbody tr td,
+  .vdpCell {
+    border-radius: 8px !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    padding: 6px 0 !important;
+    transition: all 0.15s ease !important;
+    cursor: pointer !important;
+    background: transparent !important;
+  }
+
+  /* Cell Content Text (e.g. 1, 2, 3... 21, 22...) */
+  .vdpCell .vdpCellContent {
+    color: #e4e4e7 !important;
+    display: inline-block !important;
+    width: 32px !important;
+    height: 32px !important;
+    line-height: 32px !important;
+    border-radius: 50% !important;
+  }
+
+  /* Disabled days (past days / not available) */
+  .vdpCell.disabled .vdpCellContent,
+  .vdpCell.outOfRange .vdpCellContent {
+    color: #52525b !important;
+    opacity: 0.5 !important;
+    cursor: default !important;
+  }
+
+  /* Selectable days (available to book) */
+  .vdpCell.selectable .vdpCellContent {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+  }
+
+  .vdpCell.selectable:hover .vdpCellContent {
+    background-color: #27272a !important;
+    color: #ffffff !important;
+  }
+
+  /* Selected day */
+  .vdpCell.selected .vdpCellContent {
+    background-color: #ffffff !important;
+    color: #121214 !important;
+    font-weight: 700 !important;
+  }
+
+  /* Today highlight */
+  .vdpCell.today:not(.selected) .vdpCellContent {
+    border: 1.5px solid #e52e2e !important;
+    color: #e52e2e !important;
+  }
+
+  /* ========================================================
+     TIMEZONE PICKER & INPUT VISIBILITY FIX
+     ======================================================== */
+  .widgets-timezone-picker {
+    margin-top: 16px !important;
+    font-size: 12px !important;
+    width: 100% !important;
+    position: relative !important;
+  }
+
+  .timezone-label {
+    color: #a1a1aa !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    margin-bottom: 6px !important;
+    font-weight: 600 !important;
+  }
+
+  .widgets-timezone-picker .multiselect,
+  .multiselect.multi_select_calendar {
+    background: transparent !important;
+    width: 100% !important;
+    position: relative !important;
+    border: none !important;
+  }
+
+  .widgets-timezone-picker .multiselect__tags {
+    background-color: #1c1c1f !important;
+    border: 1px solid #2e2e33 !important;
+    border-radius: 8px !important;
+    min-height: 42px !important;
+    padding: 9px 40px 9px 14px !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    cursor: pointer !important;
+    box-shadow: none !important;
+  }
+
+  .widgets-timezone-picker .multiselect__single,
+  .multiselect.multi_select_calendar .multiselect__single {
+    background: transparent !important;
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: normal !important;
+    width: auto !important;
+    position: static !important;
+  }
+
+  .widgets-timezone-picker .multiselect__single svg,
+  .multiselect.multi_select_calendar svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    width: 16px !important;
+    height: 16px !important;
+    flex-shrink: 0 !important;
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .widgets-timezone-picker .multiselect__single svg path {
+    fill: #ffffff !important;
+  }
+
+  /* Centered Down Arrow Aligned to the Field */
+  .widgets-timezone-picker .multiselect__select {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    right: 12px !important;
+    width: 24px !important;
+    height: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    cursor: pointer !important;
+    pointer-events: none !important;
+    z-index: 5 !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .widgets-timezone-picker .multiselect__select::before {
+    content: '' !important;
+    display: block !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-style: solid !important;
+    border-width: 5px 4px 0 4px !important;
+    border-color: #ffffff transparent transparent transparent !important; /* Crisp white arrow */
+    margin: 0 auto !important;
+    position: static !important;
+    top: auto !important;
+    transition: transform 0.2s ease !important;
+  }
+
+  .widgets-timezone-picker .multiselect--active .multiselect__select::before,
+  .multiselect--active .multiselect__select::before {
+    transform: rotate(180deg) !important;
+  }
+
+  /* ========================================================
+     TIMEZONE DROPDOWN POPUP: TOTAL REMOVAL OF WHITE BORDER & BACKGROUND
+     ======================================================== */
+  .widgets-timezone-picker .multiselect__content-wrapper,
+  .multiselect__content-wrapper,
+  .multiselect--above .multiselect__content-wrapper,
+  .multi_select_calendar .multiselect__content-wrapper,
+  div[class*="multiselect__content-wrapper"] {
+    background-color: #18181b !important;
+    background: #18181b !important;
+    border: 1px solid #2e2e33 !important;
+    border-top: 1px solid #2e2e33 !important;
+    border-bottom: 1px solid #2e2e33 !important;
+    border-left: 1px solid #2e2e33 !important;
+    border-right: 1px solid #2e2e33 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85) !important;
+    color: #ffffff !important;
+    z-index: 99999 !important;
+    margin: 4px 0 !important;
+    max-height: 240px !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+  }
+
+  .widgets-timezone-picker .multiselect__content,
+  .multiselect__content,
+  .multi_select_calendar .multiselect__content,
+  ul[class*="multiselect__content"] {
+    background-color: #18181b !important;
+    background: #18181b !important;
+    padding: 4px 0 !important;
+    list-style: none !important;
+    margin: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border: none !important;
+  }
+
+  .widgets-timezone-picker .multiselect__element,
+  .multiselect__element,
+  .multi_select_calendar .multiselect__element,
+  li[class*="multiselect__element"] {
+    background: transparent !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Timezone option item with high contrast white text */
+  .widgets-timezone-picker .multiselect__option,
+  .multiselect__option,
+  .multi_select_calendar .multiselect__option,
+  span[class*="multiselect__option"] {
+    background-color: #18181b !important;
+    background: #18181b !important;
+    color: #ffffff !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding: 12px 16px !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    transition: all 0.15s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+    cursor: pointer !important;
+  }
+
+  .widgets-timezone-picker .multiselect__option span,
+  .multiselect__option span,
+  .multi_select_calendar .multiselect__option span {
+    color: #ffffff !important;
+  }
+
+  /* Hover highlight */
+  .widgets-timezone-picker .multiselect__option--highlight,
+  .multiselect__option--highlight,
+  .multi_select_calendar .multiselect__option--highlight {
+    background-color: #27272a !important;
+    background: #27272a !important;
+    color: #ffffff !important;
+  }
+
+  .widgets-timezone-picker .multiselect__option--highlight span,
+  .multiselect__option--highlight span {
+    color: #ffffff !important;
+  }
+
+  /* Selected item in brand red */
+  .widgets-timezone-picker .multiselect__option--selected,
+  .multiselect__option--selected,
+  .multi_select_calendar .multiselect__option--selected {
+    background-color: #e52e2e !important;
+    background: #e52e2e !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+  }
+
+  .widgets-timezone-picker .multiselect__option--selected span,
+  .multiselect__option--selected span {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+  }
+
+  /* Multiselect search input inside tags */
+  .widgets-timezone-picker .multiselect__input,
+  .multi_select_calendar .multiselect__input {
+    background-color: transparent !important;
+    color: #ffffff !important;
+    font-size: 13px !important;
+  }
+
+  .widgets-timezone-picker .multiselect__input::placeholder,
+  .multi_select_calendar .multiselect__input::placeholder {
+    color: #71717a !important;
+  }
+
+  /* ========================================================
+     TIME SLOTS & MODERN SLEEK SCROLLBAR
+     ======================================================== */
+  .widgets-slot-block {
+    flex: 0 0 46% !important;
+    max-width: 46% !important;
+    min-width: 190px !important;
+    max-height: 380px !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+    padding-right: 6px !important;
+  }
+
+  .widgets-time-slots {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+    width: 100% !important;
+  }
+
+  /* Dark pill card for time slots matching design */
+  .widgets-time-slot {
+    border: 1px solid #2a2a2e !important;
+    background-color: #222226 !important;
+    border-radius: 10px !important;
+    padding: 13px 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+  }
+
+  .widgets-time-slot span {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    background: transparent !important;
+  }
+
+  .widgets-time-slot:hover {
+    background-color: #2e2e33 !important;
+    border-color: #44444a !important;
+    transform: translateY(-1px) !important;
+  }
+
+  /* Selected Time Slot: Crisp White Card with Dark Text (like Image 1 top right) */
+  .widgets-time-slot.selected,
+  .widgets-time-slot:has(button.selected) {
+    background-color: #ffffff !important;
+    border-color: #ffffff !important;
+  }
+
+  .widgets-time-slot.selected span,
+  .widgets-time-slot:has(button.selected) span {
+    color: #121214 !important;
+    font-weight: 700 !important;
+  }
+
+  .widgets-time-slot button.btn {
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    padding: 5px 12px !important;
+    background-color: #e52e2e !important;
+    color: #ffffff !important;
+    border: none !important;
+  }
+
+  /* ========================================================
+     FORM STYLING (STEP 2: ENTER DETAILS)
+     FIX: ICON PADDING TO PREVENT OVERLAP
+     ======================================================== */
+  .step-form {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .hl_form-builder--main {
+    background: transparent !important;
+    width: 100% !important;
+  }
+
+  .hl_form-builder--main .field-label,
+  .hl_form-builder--main label {
+    color: #d4d4d8 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    margin-bottom: 6px !important;
+    display: block !important;
+  }
+
+  .hl_form-builder--main label span {
+    color: #e52e2e !important;
+  }
+
+  /* General Form Inputs */
+  .hl_form-builder--main .form-control,
+  .hl_form-builder--main input[type="text"],
+  .hl_form-builder--main textarea {
+    background-color: var(--asap-input-bg) !important;
+    border: 1px solid var(--asap-input-border) !important;
+    border-radius: 10px !important;
+    color: #ffffff !important;
+    padding: 12px 16px !important;
+    font-size: 13.5px !important;
+    transition: all 0.2s ease !important;
+    box-shadow: none !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  /* EMAIL INPUT WITH SVG ICON: Proper Left Padding */
+  .email-input {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .email-input svg.input-icon {
+    position: absolute !important;
+    left: 14px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 18px !important;
+    height: 18px !important;
+    color: #71717a !important;
+    z-index: 5 !important;
+    pointer-events: none !important;
+  }
+
+  .email-input input#email,
+  .email-input input.form-control,
+  .hl_form-builder--main input[type="email"] {
+    background-color: var(--asap-input-bg) !important;
+    border: 1px solid var(--asap-input-border) !important;
+    border-radius: 10px !important;
+    color: #ffffff !important;
+    padding: 12px 16px 12px 42px !important; /* 42px left padding leaves room for email icon */
+    font-size: 13.5px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    position: relative !important;
+  }
+
+  /* PHONE INPUT WITH FLAG DROPDOWN: Proper Left Padding */
+  .phone-input .iti {
+    width: 100% !important;
+    position: relative !important;
+  }
+
+  .phone-input .iti__flag-container {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    z-index: 10 !important;
+    padding-left: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .phone-input .iti__selected-flag {
+    background-color: transparent !important;
+    padding: 0 8px 0 0 !important;
+    height: 100% !important;
+  }
+
+  .phone-input input.countryphone,
+  .phone-input input#phone,
+  .hl_form-builder--main input[type="tel"] {
+    background-color: var(--asap-input-bg) !important;
+    border: 1px solid var(--asap-input-border) !important;
+    border-radius: 10px !important;
+    color: #ffffff !important;
+    padding: 12px 16px 12px 58px !important; /* 58px left padding leaves ample room for flag & arrow */
+    font-size: 13.5px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  /* Focus states */
+  .hl_form-builder--main .form-control:focus,
+  .hl_form-builder--main input:focus,
+  .hl_form-builder--main textarea:focus {
+    border-color: #e52e2e !important;
+    background-color: #222226 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(229, 46, 46, 0.18) !important;
+  }
+
+  .hl_form-builder--main .form-control::placeholder {
+    color: #71717a !important;
+  }
+
+  /* International dropdown panel */
+  .iti__country-list {
+    background-color: #1c1c1f !important;
+    border: 1px solid #2e2e33 !important;
+    color: #ffffff !important;
+    z-index: 9999 !important;
+  }
+
+  .iti__country-list .iti__country:hover,
+  .iti__country-list .iti__country.iti__highlight {
+    background-color: #27272a !important;
+  }
+
+  /* Checkbox / Terms & Conditions */
+  .terms-and-conditions label span {
+    color: #a1a1aa !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Submit / Schedule Meeting Button */
+  .button-element,
+  .btn-schedule,
+  #schedule-meeting-button,
+  .form-builder--btn-submit button {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    background-color: #e52e2e !important;
+    color: #ffffff !important;
+    border-radius: 10px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.01em !important;
+    padding: 14px 28px !important;
+    border: none !important;
+    box-shadow: 0 8px 24px rgba(229, 46, 46, 0.35) !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    width: 100% !important;
+  }
+
+  .button-element:hover,
+  .btn-schedule:hover,
+  #schedule-meeting-button:hover,
+  .form-builder--btn-submit button:hover {
+    background-color: #cc2525 !important;
+    box-shadow: 0 10px 28px rgba(229, 46, 46, 0.45) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  /* ========================================================
+     STEP 3: CONFIRMATION SUCCESS CARD (Matches Image 2)
+     Clean white text with no blue link highlighting
+     ======================================================== */
+  .appointment_widgets--revamp--confirmation {
+    background-color: transparent !important;
+    padding: 44px 32px !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 640px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .widgets-confirmation-icon {
+    display: none !important;
+  }
+
+  /* Custom Confirmation Header */
+  .asap-confirm-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .asap-confirm-badge {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    background-color: #e52e2e !important;
+    color: #ffffff !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .asap-confirm-badge svg {
+    width: 16px !important;
+    height: 16px !important;
+    stroke: #ffffff !important;
+    stroke-width: 2.5 !important;
+  }
+
+  .asap-confirm-title {
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .asap-confirm-title .period-red {
+    color: #e52e2e !important;
+  }
+
+  .confirmation-message {
+    display: none !important;
+  }
+
+  .confirmation-invite-text {
+    color: #a1a1aa !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* Booking Details Card: Dark container with subtle border */
+  .show-all-details.appointment_widgets--revamp--booking-info {
+    background-color: #1c1c1f !important;
+    border: 1px solid #2a2a2e !important;
+    border-radius: 12px !important;
+    padding: 22px 26px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    margin: 0 auto 28px auto !important;
+    text-align: left !important;
+    max-width: 480px !important;
+  }
+
+  .show-all-details .p-b {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  .show-all-details svg {
+    stroke: #a1a1aa !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Ensure text and phone numbers are crisp white (removes browser blue link) */
+  .show-all-details .booking-info-value,
+  .show-all-details .booking-info-value span,
+  .show-all-details .booking-info--location,
+  .show-all-details a {
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+    background: transparent !important;
+  }
+
+  /* Calendar Export Buttons - Dark clean buttons */
+  .add-calendar-options-container {
+    display: flex !important;
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    border: none !important;
+    background: transparent !important;
+  }
+
+  .add-calendar-options-container > div {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  .add-calendar-button {
+    background-color: #222226 !important;
+    border: 1px solid #2e2e33 !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    padding: 10px 18px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+    box-shadow: none !important;
+  }
+
+  .add-calendar-button:hover {
+    background-color: #2d2d33 !important;
+    border-color: #3f3f46 !important;
+  }
+
+  /* ========================================================
+     RESPONSIVE BREAKPOINTS (Mobile Stacking)
+     ======================================================== */
+  @media (max-width: 900px) {
+    .cal-row.appointment_widgets--revamp--container {
+      flex-direction: column !important;
+      padding: 24px 18px !important;
+    }
+    .appointment_widgets--revamp--info-container {
+      width: 100% !important;
+      max-width: 100% !important;
+      flex: 1 1 100% !important;
+      border-right: none !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+      padding: 10px 0 24px 0 !important;
+    }
+    .appointment_widgets--revamp--steps {
+      width: 100% !important;
+      max-width: 100% !important;
+      flex: 1 1 100% !important;
+      padding: 20px 0 10px 0 !important;
+    }
+    .widgets-step-1 {
+      flex-direction: column !important;
+    }
+    .widgets-date-timezone-wrapper,
+    .widgets-slot-block {
+      width: 100% !important;
+      max-width: 100% !important;
+      flex: 1 1 100% !important;
+    }
+    .asap-cal-title {
+      font-size: 32px !important;
+    }
+  }
+</style>
+
+<script>
+(function() {
+  /* ========================================================
+     INJECT LEFT EDITORIAL CONTENT INTO GHL CALENDAR CONTAINER
+     ======================================================== */
+  function injectEditorialColumn() {
+    const infoContainer = document.querySelector('.appointment_widgets--revamp--info-container');
+    if (!infoContainer) return;
+
+    // Check if already injected
+    if (infoContainer.querySelector('.asap-cal-left-editorial')) return;
+
+    const editorialEl = document.createElement('div');
+    editorialEl.className = 'asap-cal-left-editorial';
+    editorialEl.innerHTML = `
+      <div class="asap-cal-kicker">AI Employee Design Session &middot; 30 MIN &middot; FREE</div>
+      <h2 class="asap-cal-title">
+        Like what<br>
+        it did?<br>
+        <span class="serif-italic">Now let's design the real one</span><span class="period-red">.</span>
+      </h2>
+      <p class="asap-cal-desc">
+        An ASAP AI consultant reviews this demo with you, maps where your enquiries come from and recommends the right first role. No preparation needed.
+      </p>
+      <div class="asap-cal-bullets">
+        <div class="asap-cal-bullet-item">
+          <span class="asap-cal-bullet-dot"></span>
+          <span>Your customer journey</span>
+        </div>
+        <div class="asap-cal-bullet-item">
+          <span class="asap-cal-bullet-dot"></span>
+          <span>Your current channels</span>
+        </div>
+        <div class="asap-cal-bullet-item">
+          <span class="asap-cal-bullet-dot"></span>
+          <span>Hand-over to your team</span>
+        </div>
+        <div class="asap-cal-bullet-item">
+          <span class="asap-cal-bullet-dot"></span>
+          <span>Scope and a fixed quote</span>
+        </div>
+      </div>
+    `;
+
+    infoContainer.appendChild(editorialEl);
+  }
+
+  /* ========================================================
+     ENHANCE CONFIRMATION SUCCESS CARD (Matches Image 2)
+     ======================================================== */
+  function enhanceConfirmationScreen() {
+    const confirmContainer = document.querySelector('.appointment_widgets--revamp--confirmation');
+    if (!confirmContainer) return;
+
+    if (confirmContainer.querySelector('.asap-confirm-header')) return;
+
+    const header = document.createElement('div');
+    header.className = 'asap-confirm-header';
+    header.innerHTML = `
+      <div class="asap-confirm-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h3 class="asap-confirm-title">Your design session is booked<span class="period-red">.</span></h3>
+    `;
+
+    confirmContainer.insertBefore(header, confirmContainer.firstChild);
+
+    // Also update note text if present
+    const note = confirmContainer.querySelector('.confirmation-invite-text');
+    if (note) {
+      note.innerHTML = `Your confirmation and this demo's link are on WhatsApp, and the calendar invite is in your inbox.<br><br><span style="color:#71717a; font-size:13px;">Need to change it? Reply to the WhatsApp confirmation.</span>`;
+    }
+  }
+
+  /* ========================================================
+     ENFORCE TIMEZONE VISIBILITY IN DOM DIRECTLY
+     ======================================================== */
+  function fixTimezoneDisplay() {
+    const tzSingle = document.querySelector('.widgets-timezone-picker .multiselect__single');
+    if (tzSingle) {
+      tzSingle.style.setProperty('color', '#ffffff', 'important');
+      tzSingle.style.setProperty('display', 'inline-flex', 'important');
+      tzSingle.style.setProperty('align-items', 'center', 'important');
+      tzSingle.style.setProperty('opacity', '1', 'important');
+      tzSingle.style.setProperty('visibility', 'visible', 'important');
+      const svg = tzSingle.querySelector('svg');
+      if (svg) {
+        svg.style.setProperty('fill', '#ffffff', 'important');
+        svg.style.setProperty('color', '#ffffff', 'important');
+        svg.style.setProperty('opacity', '1', 'important');
+        svg.style.setProperty('visibility', 'visible', 'important');
+      }
+    }
+
+    // Direct DOM override to remove white border from any multiselect popups created dynamically
+    const wrappers = document.querySelectorAll('.multiselect__content-wrapper');
+    wrappers.forEach(function(w) {
+      w.style.setProperty('background-color', '#18181b', 'important');
+      w.style.setProperty('border', '1px solid #2e2e33', 'important');
+      w.style.setProperty('box-shadow', '0 16px 36px rgba(0,0,0,0.85)', 'important');
+      const options = w.querySelectorAll('.multiselect__option, .multiselect__option span');
+      options.forEach(function(opt) {
+        if (!opt.closest('.multiselect__option--selected')) {
+          opt.style.setProperty('color', '#ffffff', 'important');
+        }
+      });
+    });
+
+    // Also ensure step-form doesn't get clipped by GHL inline style
+    const stepForm = document.querySelector('.appointment_widgets--revamp--steps.step-form');
+    if (stepForm) {
+      stepForm.style.setProperty('max-height', 'none', 'important');
+      stepForm.style.setProperty('overflow', 'visible', 'important');
+    }
+  }
+
+  /* Observer to handle step navigation in GHL Vue app */
+  const observer = new MutationObserver(function() {
+    injectEditorialColumn();
+    enhanceConfirmationScreen();
+    fixTimezoneDisplay();
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      injectEditorialColumn();
+      enhanceConfirmationScreen();
+      fixTimezoneDisplay();
+    });
+  } else {
+    injectEditorialColumn();
+    enhanceConfirmationScreen();
+    fixTimezoneDisplay();
+  }
+})();
+</script>

@@ -1,92 +1,64 @@
 import { Reveal } from "./Reveal";
-import { Eyebrow, Section } from "./ui";
-
-const fast = [
-  "Customer asks",
-  "AI responds",
-  "Lead is qualified",
-  "Appointment booked",
-];
-
-const slow = [
-  "Customer asks",
-  "No immediate response",
-  "Customer continues searching",
-  "Competitor responds first",
-];
 
 export function Speed() {
   return (
-    <Section id="how-it-works" tone="surface">
-      <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-end lg:gap-16">
-        <Reveal>
-          <Eyebrow>Speed matters</Eyebrow>
-          <h2 className="mt-4 text-[2rem] leading-[1.08] font-bold text-navy sm:text-5xl">
-            Reply Within 5 Minutes.
-            <span className="block text-blue">You&apos;re 8× More Likely to Win the Customer.</span>
-          </h2>
-        </Reveal>
+    <section id="cost-of-slow-response" className="relative bg-[#111113] py-24 sm:py-32 text-white overflow-hidden">
+      <div className="container-page relative grid gap-14 lg:grid-cols-[1.15fr_1fr] lg:gap-16 items-center">
+        
+        {/* LEFT COLUMN */}
+        <div>
+          <Reveal>
+            <span className="text-xs font-extrabold tracking-[0.14em] uppercase text-[#e52e2e] block mb-5">
+              THE COST OF A SLOW RESPONSE
+            </span>
+          </Reveal>
 
-        <Reveal delay={100}>
-          <div className="flex items-end gap-5 rounded-3xl border border-hairline bg-card p-7 shadow-soft">
-            <span className="font-display text-6xl leading-none font-bold text-amber sm:text-7xl">8×</span>
-            <p className="pb-1.5 text-sm text-muted-foreground">
-              More likely to convert when businesses respond quickly.
+          <Reveal delay={80}>
+            <h2 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
+              Your next<br />
+              customer<br />
+              won&apos;t wait.
+            </h2>
+          </Reveal>
+
+          <Reveal delay={140}>
+            <p className="mt-6 text-base sm:text-lg leading-relaxed text-neutral-400 max-w-xl">
+              Leads contacted within five minutes convert at eight times the rate of leads contacted later that day.
+              <sup className="text-xs text-neutral-500">1</sup> Most businesses can&apos;t reply that fast, especially after hours.
             </p>
-          </div>
-        </Reveal>
-      </div>
+          </Reveal>
+        </div>
 
-      <Reveal delay={60}>
-        <p className="mt-10 max-w-3xl text-base leading-relaxed text-muted-foreground">
-          Research across more than 55 million sales activities found that businesses responding to inbound leads
-          within five minutes achieved dramatically higher conversion rates.
-        </p>
-      </Reveal>
-
-      <div className="mt-14 grid gap-5 md:grid-cols-2">
-        <Reveal>
-          <div className="h-full rounded-3xl border border-blue/20 bg-card p-7 shadow-soft">
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-semibold text-navy">Customer Enquiry</p>
-              <span className="rounded-full bg-blue-soft px-3 py-1 text-xs font-semibold text-blue">
-                Fast response
-              </span>
+        {/* RIGHT COLUMN (TWO STAT CARDS) */}
+        <Reveal delay={160}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4.5 w-full">
+            
+            {/* Card 1: 8x (Red) */}
+            <div className="rounded-[24px] bg-[#1a1a1d] border border-white/[0.06] p-7 sm:p-8 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] flex flex-col justify-start transition-all hover:-translate-y-1 hover:border-white/[0.12]">
+              <div className="text-5xl sm:text-6xl font-extrabold tracking-tight text-[#e52e2e] mb-4 sm:mb-5 leading-none">
+                8x
+              </div>
+              <p className="text-sm leading-relaxed text-neutral-400">
+                higher conversion when first contact happens within five minutes.
+                <sup className="text-xs text-neutral-500">1</sup>
+              </p>
             </div>
-            <ol className="mt-6 space-y-4">
-              {fast.map((step, i) => (
-                <li key={step} className="flex items-start gap-3">
-                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full gradient-blue text-[0.7rem] font-bold text-navy-foreground">
-                    {i + 1}
-                  </span>
-                  <span className="text-[0.95rem] text-navy">{step}</span>
-                </li>
-              ))}
-            </ol>
+
+            {/* Card 2: 86% (White) */}
+            <div className="rounded-[24px] bg-[#1a1a1d] border border-white/[0.06] p-7 sm:p-8 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] flex flex-col justify-start transition-all hover:-translate-y-1 hover:border-white/[0.12]">
+              <div className="text-5xl sm:text-6xl font-extrabold tracking-tight text-white mb-4 sm:mb-5 leading-none">
+                86%
+              </div>
+              <p className="text-sm leading-relaxed text-neutral-400">
+                of Singapore marketers say they struggle to respond to customers promptly. Asia-Pacific: 71%.
+                <sup className="text-xs text-neutral-500">2</sup>
+              </p>
+            </div>
+
           </div>
         </Reveal>
 
-        <Reveal delay={90}>
-          <div className="h-full rounded-3xl border border-hairline bg-surface-2 p-7">
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-semibold text-navy">Customer Enquiry</p>
-              <span className="rounded-full bg-card px-3 py-1 text-xs font-semibold text-muted-foreground">
-                Slow response
-              </span>
-            </div>
-            <ol className="mt-6 space-y-4">
-              {slow.map((step, i) => (
-                <li key={step} className="flex items-start gap-3">
-                  <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-hairline bg-card text-[0.7rem] font-bold text-muted-foreground">
-                    {i + 1}
-                  </span>
-                  <span className="text-[0.95rem] text-muted-foreground">{step}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </Reveal>
       </div>
-    </Section>
+    </section>
   );
 }

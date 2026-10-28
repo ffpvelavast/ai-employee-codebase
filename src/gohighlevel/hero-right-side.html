@@ -1,216 +1,757 @@
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-  .asap-hero-right-container {
-    font-family: 'Inter', sans-serif;
+  .asap-hero-right-wrapper {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    position: relative;
     width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-top: 30px;
+    padding-bottom: 0;
   }
 
-  .asap-hero-right {
-    background-color: #2563eb4d;
+  /* ========================================================
+     LAYER 1: BOTTOM LAYER (Artwork & 3D Visual Card)
+     ======================================================== */
+  .asap-bottom-art-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    min-height: 440px;
+    background-color: #f5f1eb;
+    background: radial-gradient(circle at 75% 25%, #ffffff 0%, #f6f2ec 45%, #ece6dc 100%);
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 34px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+  }
+
+  /* Bottom-left typography */
+  .asap-art-typography {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.12em;
+    color: #8b8175;
+    text-transform: uppercase;
+    z-index: 2;
+    position: relative;
+  }
+
+  .asap-art-typography div {
+    margin-bottom: 2px;
+  }
+
+  /* 3D Architectural / Arch Illustration in SVG */
+  .asap-art-graphic-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 82%;
+    height: 82%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .asap-art-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 30px rgba(185, 28, 28, 0.15));
+  }
+
+  /* Glass reflection sheen */
+  .asap-art-sheen {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(ellipse at 80% 20%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 65%);
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .asap-custom-bg-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 32px;
+    display: none;
+  }
+
+  /* ========================================================
+     LAYER 2: UPPER LAYER (Floating Animated Conversation Video/GIF Card)
+     Positioned at TOP RIGHT with FIXED HEIGHT to avoid layout jumps
+     ======================================================== */
+  .asap-upper-chat-card {
+    position: absolute;
+    top: -16px;
+    right: -20px;
+    left: auto;
+    bottom: auto;
+    width: 380px;
+    height: 350px;
+    max-width: 95%;
+    background: #ffffff;
     border-radius: 24px;
-    padding: 32px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
-    border: 1px solid #f1f5f9;
+    box-shadow: 0 25px 60px -12px rgba(17, 24, 39, 0.22), 0 0 0 1px rgba(0, 0, 0, 0.04);
+    padding: 18px 20px 16px 20px;
+    box-sizing: border-box;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .asap-card {
-    background-color: #f8fafc;
-    border: 1px solid #f1f5f9;
-    border-radius: 12px;
-    padding: 16px 20px;
+  .asap-upper-chat-card:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Video / Story Progress Bar */
+  .asap-story-bars {
     display: flex;
-    align-items: center;
-    gap: 16px;
+    gap: 4px;
     margin-bottom: 12px;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-  
-  .asap-card:hover {
-    transform: translateY(-2px);
-    border-color: #e2e8f0;
-  }
-
-  .asap-card-icon {
-    width: 40px;
-    height: 40px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-    color: #3b82f6;
+    width: 100%;
     flex-shrink: 0;
   }
 
-  .asap-card-content h3 {
-    margin: 0 0 4px 0;
-    font-size: 15px;
-    font-weight: 600;
-    color: #0f172a;
-  }
-  
-  .asap-card-content p {
-    margin: 0;
-    font-size: 13px;
-    color: #64748b;
-  }
-
-  .asap-divider {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin: 24px 0;
-    color: #94a3b8;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  
-  .asap-divider::before, .asap-divider::after {
-    content: '';
+  .asap-story-bar-item {
     flex: 1;
-    border-bottom: 1px dashed #e2e8f0;
-  }
-  
-  .asap-divider:not(:empty)::before { margin-right: .5em; }
-  .asap-divider:not(:empty)::after { margin-left: .5em; }
-
-  .asap-intelligence {
-    background-color: #0f172a;
-    border-radius: 16px;
-    padding: 24px;
-    color: #ffffff;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    margin-bottom: 24px;
-  }
-  
-  .asap-intelligence-eyebrow {
-    font-size: 11px;
-    font-weight: 700;
-    color: #94a3b8;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    display: block;
-  }
-  
-  .asap-intelligence h3 {
-    margin: 0 0 8px 0;
-    font-size: 18px;
-    font-weight: 600;
-    color: #ffffff;
-  }
-  
-  .asap-intelligence p {
-    margin: 0;
-    font-size: 13px;
-    color: #cbd5e1;
-    line-height: 1.5;
+    height: 3px;
+    background-color: #f1f5f9;
+    border-radius: 9999px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
   }
 
-  .asap-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+  .asap-story-bar-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    background-color: #e52e2e;
+    transition: width 0.25s linear;
   }
 
-  .asap-action-btn {
-    background-color: #f8fafc;
-    border: 1px solid #f1f5f9;
-    border-radius: 12px;
-    padding: 12px;
+  /* Chat Header */
+  .asap-chat-header {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    color: #334155;
-    transition: background-color 0.2s ease;
-    cursor: default;
-  }
-  
-  .asap-action-btn:hover {
-    background-color: #f1f5f9;
-  }
-  
-  .asap-action-icon {
-    color: #3b82f6;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f3f4f6;
+    margin-bottom: 12px;
+    flex-shrink: 0;
   }
 
-  @media (max-width: 768px) {
-    .asap-grid {
-      grid-template-columns: 1fr;
+  .asap-chat-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .asap-chat-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #111827;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .asap-chat-business-title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 14px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+    line-height: 1.25;
+    transition: opacity 0.25s ease;
+  }
+
+  .asap-chat-channel {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 11.5px;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .asap-chat-live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 11px;
+    font-weight: 800;
+    color: #e52e2e;
+    letter-spacing: 0.05em;
+  }
+
+  .asap-live-pulse {
+    width: 7px;
+    height: 7px;
+    background-color: #e52e2e;
+    border-radius: 50%;
+    animation: asap-live-blink 1.4s infinite ease-in-out;
+  }
+
+  @keyframes asap-live-blink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+
+  /* Conversation Stream Body with Fixed Height & Smooth Autoscroll */
+  .asap-chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 200px;
+    min-height: 200px;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding-right: 2px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .asap-chat-messages::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Robust CSS Keyframes Entrance */
+  @keyframes asapBubblePopIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px) scale(0.97);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* User bubble (Dark) */
+  .asap-msg-user {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    align-self: flex-end;
+    background-color: #18181b;
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 1.4;
+    padding: 9px 15px;
+    border-radius: 16px 16px 4px 16px;
+    max-width: 84%;
+    word-break: break-word;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    animation: asapBubblePopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Bot bubble (Light / Warm) */
+  .asap-msg-bot {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    align-self: flex-start;
+    background-color: #f4efe9;
+    color: #1f2937;
+    font-size: 13px;
+    line-height: 1.42;
+    padding: 10px 15px;
+    border-radius: 16px 16px 16px 4px;
+    max-width: 86%;
+    word-break: break-word;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    animation: asapBubblePopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Typing Indicator */
+  .asap-typing-bubble {
+    align-self: flex-start;
+    background-color: #f4efe9;
+    padding: 8px 14px;
+    border-radius: 16px;
+    display: none;
+    align-items: center;
+    gap: 4px;
+    width: fit-content;
+    margin-bottom: 2px;
+    animation: asapBubblePopIn 0.25s ease forwards;
+  }
+
+  .asap-typing-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #9ca3af;
+    border-radius: 50%;
+    animation: asap-bounce 1.3s infinite ease-in-out;
+  }
+
+  .asap-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .asap-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes asap-bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-4px); }
+  }
+
+  /* Chat Footer / Status */
+  .asap-chat-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid #f3f4f6;
+  }
+
+  .asap-chat-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #4b5563;
+  }
+
+  .asap-chat-status-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #e52e2e;
+    border-radius: 50%;
+  }
+
+  .asap-scenario-pill-nav {
+    display: flex;
+    gap: 4px;
+  }
+
+  .asap-scenario-mini-btn {
+    background: none;
+    border: none;
+    font-size: 11px;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .asap-scenario-mini-btn:hover,
+  .asap-scenario-mini-btn.active {
+    color: #e52e2e;
+    font-weight: 700;
+    background-color: #fef2f2;
+  }
+
+  /* Responsive styles */
+  @media (max-width: 900px) {
+    .asap-hero-right-wrapper {
+      max-width: 440px;
+      padding-top: 0;
+      padding-bottom: 20px;
+    }
+    .asap-bottom-art-card {
+      min-height: 380px;
+      border-radius: 28px;
+      padding: 24px;
+    }
+    .asap-upper-chat-card {
+      position: relative;
+      top: auto;
+      right: auto;
+      bottom: auto;
+      left: 0;
+      width: 100%;
+      height: 340px;
+      margin-top: -80px;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.16);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .asap-bottom-art-card {
+      min-height: 320px;
+      padding: 20px;
+    }
+    .asap-upper-chat-card {
+      margin-top: -60px;
+      height: 330px;
+      padding: 16px;
+    }
+    .asap-chat-messages {
+      height: 180px;
+      min-height: 180px;
+      max-height: 180px;
     }
   }
 </style>
 
-<div class="asap-hero-right-container">
-  <div class="asap-hero-right">
+<div class="asap-hero-right-wrapper">
+  
+  <!-- ==========================================
+       LAYER 1: BOTTOM LAYER (Art Card)
+       ========================================== -->
+  <div class="asap-bottom-art-card">
+    <div class="asap-art-sheen"></div>
     
-    <!-- Phone Card -->
-    <div class="asap-card">
-      <div class="asap-card-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-      </div>
-      <div class="asap-card-content">
-        <h3>Phone</h3>
-        <p>Incoming customer call</p>
-      </div>
-    </div>
-    
-    <!-- WhatsApp Card -->
-    <div class="asap-card">
-      <div class="asap-card-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-      </div>
-      <div class="asap-card-content">
-        <h3>WhatsApp</h3>
-        <p>Customer asks a question</p>
-      </div>
-    </div>
-    
-    <!-- Website Card -->
-    <div class="asap-card">
-      <div class="asap-card-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-      </div>
-      <div class="asap-card-content">
-        <h3>Website</h3>
-        <p>Customer enquiry</p>
-      </div>
+    <div class="asap-art-typography">
+      <div>PEOPLE</div>
+      <div>+ AI</div>
+      <div>= A BRIGHTER</div>
+      <div>TOMORROW</div>
     </div>
 
-    <div class="asap-divider">ROUTED TO</div>
+    <div class="asap-art-graphic-container">
+      <svg class="asap-art-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="asapRedArch1" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%" stop-color="#ef4444" />
+            <stop offset="60%" stop-color="#dc2626" />
+            <stop offset="100%" stop-color="#991b1b" />
+          </linearGradient>
+          <linearGradient id="asapRedInner" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%" stop-color="#b91c1c" />
+            <stop offset="100%" stop-color="#580e0e" />
+          </linearGradient>
+          <radialGradient id="asapSphereGrad" cx="35%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#ff7b7b" />
+            <stop offset="35%" stop-color="#ef4444" />
+            <stop offset="75%" stop-color="#b91c1c" />
+            <stop offset="100%" stop-color="#670d0d" />
+          </radialGradient>
+          <linearGradient id="asapPedestalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f5f1eb" />
+            <stop offset="50%" stop-color="#e6dfd5" />
+            <stop offset="100%" stop-color="#d4cbbe" />
+          </linearGradient>
+          <linearGradient id="asapPillarGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+            <stop offset="0%" stop-color="#d6cebf" />
+            <stop offset="40%" stop-color="#fdfbf9" />
+            <stop offset="85%" stop-color="#bfb5a3" />
+            <stop offset="100%" stop-color="#a49987" />
+          </linearGradient>
+          <filter id="asapSoftGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#991b1b" flood-opacity="0.3" />
+          </filter>
+          <filter id="asapSphereShadow" x="-30%" y="-30%" width="160%" height="160%">
+            <feDropShadow dx="4" dy="16" stdDeviation="10" flood-color="#000000" flood-opacity="0.35" />
+          </filter>
+        </defs>
 
-    <!-- Intelligence Layer -->
-    <div class="asap-intelligence">
-      <span class="asap-intelligence-eyebrow">Intelligence Layer</span>
-      <h3>Your AI Employee</h3>
-      <p>Understands the enquiry, replies instantly, decides the next step.</p>
+        <path d="M120 330 L380 330 L380 390 L120 390 Z" fill="url(#asapPedestalGrad)" opacity="0.95" />
+        <path d="M140 310 L360 310 L360 330 L140 330 Z" fill="#ded5c6" />
+        <path d="M165 295 L335 295 L335 310 L165 310 Z" fill="#ece4d6" />
+        <rect x="225" y="195" width="50" height="100" rx="3" fill="url(#asapPillarGrad)" />
+        <path d="M140 300 V180 A110 110 0 0 1 360 180 V300 H320 V180 A70 70 0 0 0 180 180 V300 Z" fill="url(#asapRedArch1)" filter="url(#asapSoftGlow)" />
+        <path d="M180 300 V180 A70 70 0 0 1 320 180 V300 Z" fill="url(#asapRedInner)" />
+        <rect x="235" y="270" width="70" height="30" rx="2" fill="#ece5d8" />
+        <circle cx="242" cy="188" r="26" fill="url(#asapSphereGrad)" filter="url(#asapSphereShadow)" />
+        <ellipse cx="234" cy="178" rx="7" ry="4" transform="rotate(-30 234 178)" fill="#ffffff" opacity="0.65" />
+      </svg>
     </div>
 
-    <!-- Action Buttons Grid -->
-    <div class="asap-grid">
-      <div class="asap-action-btn">
-        <svg class="asap-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-        Answered
-      </div>
-      <div class="asap-action-btn">
-        <svg class="asap-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        Qualified
-      </div>
-      <div class="asap-action-btn">
-        <svg class="asap-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-        Booked
-      </div>
-      <div class="asap-action-btn">
-        <svg class="asap-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-        Escalated
-      </div>
-    </div>
-    
+    <img class="asap-custom-bg-image" src="" alt="People + AI Artwork" />
   </div>
+
+  <!-- ==========================================
+       LAYER 2: UPPER LAYER (Animated Conversation Simulator)
+       ========================================== -->
+  <div class="asap-upper-chat-card">
+    
+    <!-- Video / Story progress bars -->
+    <div class="asap-story-bars" id="asapStoryBars">
+      <div class="asap-story-bar-item" onclick="window.asapPlayHeroScenario && window.asapPlayHeroScenario(0)"><div class="asap-story-bar-fill" style="width: 100%;"></div></div>
+      <div class="asap-story-bar-item" onclick="window.asapPlayHeroScenario && window.asapPlayHeroScenario(1)"><div class="asap-story-bar-fill"></div></div>
+      <div class="asap-story-bar-item" onclick="window.asapPlayHeroScenario && window.asapPlayHeroScenario(2)"><div class="asap-story-bar-fill"></div></div>
+      <div class="asap-story-bar-item" onclick="window.asapPlayHeroScenario && window.asapPlayHeroScenario(3)"><div class="asap-story-bar-fill"></div></div>
+      <div class="asap-story-bar-item" onclick="window.asapPlayHeroScenario && window.asapPlayHeroScenario(4)"><div class="asap-story-bar-fill"></div></div>
+    </div>
+
+    <!-- Chat Card Header -->
+    <div class="asap-chat-header">
+      <div class="asap-chat-profile">
+        <div class="asap-chat-avatar">AI</div>
+        <div>
+          <h4 class="asap-chat-business-title" id="asapChatBusiness">Your Business Assistant</h4>
+          <p class="asap-chat-channel" id="asapChatChannel">Customer Chat &middot; 11:42 pm</p>
+        </div>
+      </div>
+      <div class="asap-chat-live-pill">
+        <span class="asap-live-pulse"></span>
+        LIVE
+      </div>
+    </div>
+
+    <!-- Animated Conversation Bubbles (Pre-rendered default Scenario 1) -->
+    <div class="asap-chat-messages" id="asapChatMessages">
+      <div class="asap-msg-user">Hi! I'd like to book an introductory consultation for this week. Do you have openings?</div>
+      <div class="asap-msg-bot">Hello! Yes, we have Thursday at 2:00 pm or Friday at 10:30 am available. Which works better for you?</div>
+      <div class="asap-msg-user">Friday at 10:30 am works great.</div>
+      <div class="asap-msg-bot">You're all booked for Friday at 10:30 am! A calendar invite and confirmation details have been sent.</div>
+    </div>
+
+    <!-- Typing Indicator -->
+    <div class="asap-typing-bubble" id="asapTypingBubble">
+      <div class="asap-typing-dot"></div>
+      <div class="asap-typing-dot"></div>
+      <div class="asap-typing-dot"></div>
+    </div>
+
+    <!-- Chat Card Footer & Outcome Status -->
+    <div class="asap-chat-footer">
+      <div class="asap-chat-status">
+        <span class="asap-chat-status-dot"></span>
+        <span id="asapChatStatusText">Booked &middot; replied in 2.8 s</span>
+      </div>
+      <div class="asap-scenario-pill-nav" id="asapScenarioNav">
+        <button class="asap-scenario-mini-btn active" onclick="window.asapPlayHeroScenario && window.asapPlayHeroScenario(0)">1</button>
+        <button class="asap-scenario-mini-btn" onclick="window.asapPlayHeroScenario && window.asapPlayHeroScenario(1)">2</button>
+        <button class="asap-scenario-mini-btn" onclick="window.asapPlayHeroScenario && window.asapPlayHeroScenario(2)">3</button>
+        <button class="asap-scenario-mini-btn" onclick="window.asapPlayHeroScenario && window.asapPlayHeroScenario(3)">4</button>
+        <button class="asap-scenario-mini-btn" onclick="window.asapPlayHeroScenario && window.asapPlayHeroScenario(4)">5</button>
+      </div>
+    </div>
+
+  </div>
+
 </div>
+
+<!-- Guaranteed Execution Trigger for Page Builders -->
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" onerror="window.initAsapHeroChat && window.initAsapHeroChat()" style="display:none !important;" />
+
+<!-- Interactive Self-Running Animation Engine -->
+<script>
+(function() {
+  const scenarios = [
+    {
+      business: "Client Bookings & Consultations",
+      channel: "Live Channel · 11:42 pm",
+      status: "Booked · replied in 2.1 s",
+      messages: [
+        { sender: "user", text: "Hi! I'd like to book an introductory consultation for this week. Do you have openings?" },
+        { sender: "bot", text: "Hello! Yes, we have Thursday at 2:00 pm or Friday at 10:30 am available. Which works better for you?" },
+        { sender: "user", text: "Friday at 10:30 am works great." },
+        { sender: "bot", text: "You're all booked for Friday at 10:30 am! A calendar invite and confirmation details have been sent." }
+      ]
+    },
+    {
+      business: "Service & Pricing Inquiries",
+      channel: "Live Channel · 8:15 pm",
+      status: "Qualified & Reserved · replied in 1.9 s",
+      messages: [
+        { sender: "user", text: "Hi, can you send over your standard packages and pricing details?" },
+        { sender: "bot", text: "Certainly! Our standard onboarding starts from $450 with full custom integration. Would you like a 15-min discovery call to review options?" },
+        { sender: "user", text: "Yes, tomorrow at 3pm please." },
+        { sender: "bot", text: "Scheduled for tomorrow at 3:00 pm! Our specialist has been briefed and will connect with you then." }
+      ]
+    },
+    {
+      business: "Lead Qualification & Scheduling",
+      channel: "Live Channel · 10:28 pm",
+      status: "Qualified & Dispatched · replied in 2.4 s",
+      messages: [
+        { sender: "user", text: "Hello, I'm interested in viewing the project specs and available slots this week." },
+        { sender: "bot", text: "Glad to help! We have viewing slots open tomorrow at 11:00 am and 4:30 pm. Which one would you prefer?" },
+        { sender: "user", text: "4:30 pm suits me best." },
+        { sender: "bot", text: "Confirmed for 4:30 pm tomorrow! The overview package and direct confirmation have been dispatched." }
+      ]
+    },
+    {
+      business: "After-Hours Customer Support",
+      channel: "Live Channel · 9:05 pm",
+      status: "Order Updated & Resolved · replied in 2.0 s",
+      messages: [
+        { sender: "user", text: "Hi, can I check the status of my order and update my delivery address?" },
+        { sender: "bot", text: "Of course! Your order #4821 is currently being prepared. What is the updated address you'd like us to route it to?" },
+        { sender: "user", text: "Please update to 12 Marina Boulevard, #14-02." },
+        { sender: "bot", text: "Updated successfully! Your dispatch slip has been amended and a tracking link sent to your phone." }
+      ]
+    },
+    {
+      business: "Urgent Priority Escalations",
+      channel: "Live Channel · 11:10 pm",
+      status: "Escalated to Team · replied in 1.8 s",
+      messages: [
+        { sender: "user", text: "Urgent: I need someone from your executive team to review a time-sensitive request." },
+        { sender: "bot", text: "Understood immediately. Our senior lead can connect with you tomorrow at 9:00 am or 1:30 pm. Which works best?" },
+        { sender: "user", text: "Tomorrow 9:00 am please." },
+        { sender: "bot", text: "Secured for 9:00 am tomorrow. The meeting link and briefing summary have been notified to our team." }
+      ]
+    }
+  ];
+
+  let currentScenarioIndex = 0;
+  let activeTimeouts = [];
+  let isRunning = false;
+
+  function clearAllTimers() {
+    activeTimeouts.forEach(t => clearTimeout(t));
+    activeTimeouts = [];
+  }
+
+  function addTimer(fn, delay) {
+    const t = setTimeout(fn, delay);
+    activeTimeouts.push(t);
+    return t;
+  }
+
+  function getElements() {
+    return {
+      businessEl: document.getElementById("asapChatBusiness"),
+      channelEl: document.getElementById("asapChatChannel"),
+      messagesEl: document.getElementById("asapChatMessages"),
+      typingEl: document.getElementById("asapTypingBubble"),
+      statusTextEl: document.getElementById("asapChatStatusText"),
+      navBtns: document.querySelectorAll(".asap-scenario-mini-btn"),
+      storyFills: document.querySelectorAll(".asap-story-bar-fill")
+    };
+  }
+
+  function updateStoryBars(index, progress) {
+    const { storyFills, navBtns } = getElements();
+    if (!storyFills) return;
+
+    storyFills.forEach((fill, i) => {
+      if (i < index) {
+        fill.style.width = "100%";
+      } else if (i === index) {
+        fill.style.width = progress + "%";
+      } else {
+        fill.style.width = "0%";
+      }
+    });
+
+    if (navBtns) {
+      navBtns.forEach((btn, i) => {
+        btn.classList.toggle("active", i === index);
+      });
+    }
+  }
+
+  function playScenario(index) {
+    clearAllTimers();
+    currentScenarioIndex = index;
+    const scenario = scenarios[index];
+    const els = getElements();
+
+    if (!els.messagesEl) return;
+
+    if (els.businessEl) {
+      els.businessEl.style.opacity = "0";
+      setTimeout(() => {
+        if (els.businessEl) els.businessEl.textContent = scenario.business;
+        if (els.channelEl) els.channelEl.textContent = scenario.channel;
+        if (els.businessEl) els.businessEl.style.opacity = "1";
+      }, 150);
+    }
+
+    els.messagesEl.innerHTML = "";
+    if (els.typingEl) els.typingEl.style.display = "none";
+    if (els.statusTextEl) els.statusTextEl.textContent = "AI Employee active · standby";
+    updateStoryBars(index, 0);
+
+    let delay = 400;
+    const totalSteps = scenario.messages.length;
+
+    scenario.messages.forEach((msg, mIndex) => {
+      if (msg.sender === "bot") {
+        addTimer(() => {
+          const currentEls = getElements();
+          if (currentEls.typingEl && currentEls.messagesEl) {
+            currentEls.typingEl.style.display = "inline-flex";
+            currentEls.messagesEl.appendChild(currentEls.typingEl);
+            currentEls.messagesEl.scrollTop = currentEls.messagesEl.scrollHeight;
+          }
+        }, delay);
+        delay += 950;
+      }
+
+      addTimer(() => {
+        const currentEls = getElements();
+        if (currentEls.typingEl) currentEls.typingEl.style.display = "none";
+        if (!currentEls.messagesEl) return;
+
+        const bubble = document.createElement("div");
+        bubble.className = msg.sender === "user" ? "asap-msg-user" : "asap-msg-bot";
+        bubble.textContent = msg.text;
+        currentEls.messagesEl.appendChild(bubble);
+
+        // Auto-scroll inside the fixed-height message container
+        currentEls.messagesEl.scrollTop = currentEls.messagesEl.scrollHeight;
+
+        const pct = Math.round(((mIndex + 1) / totalSteps) * 100);
+        updateStoryBars(index, pct);
+
+        if (mIndex === totalSteps - 1 && currentEls.statusTextEl) {
+          currentEls.statusTextEl.textContent = scenario.status;
+        }
+      }, delay);
+
+      delay += (msg.sender === "user" ? 1100 : 1600);
+    });
+
+    addTimer(() => {
+      const next = (currentScenarioIndex + 1) % scenarios.length;
+      playScenario(next);
+    }, delay + 3500);
+  }
+
+  window.asapPlayHeroScenario = function(idx) {
+    playScenario(idx);
+  };
+
+  window.initAsapHeroChat = function() {
+    if (isRunning) return;
+    const els = getElements();
+    if (!els.messagesEl) {
+      setTimeout(window.initAsapHeroChat, 150);
+      return;
+    }
+    isRunning = true;
+    playScenario(0);
+  };
+
+  // Immediate start or hook to ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", window.initAsapHeroChat);
+  } else {
+    window.initAsapHeroChat();
+  }
+
+  // Polling fallback to guarantee startup inside builder/delayed iframes
+  let attempts = 0;
+  const poll = setInterval(function() {
+    attempts++;
+    if (isRunning || attempts > 30) {
+      clearInterval(poll);
+    } else {
+      window.initAsapHeroChat();
+    }
+  }, 250);
+})();
+</script>

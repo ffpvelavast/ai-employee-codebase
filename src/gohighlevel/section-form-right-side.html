@@ -1,0 +1,140 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  .asap-demo-right-container {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #111827;
+    width: 100%;
+    max-width: 560px;
+    box-sizing: border-box;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+
+  /* Eyebrow kicker */
+  .asap-demo-eyebrow {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #374151;
+    margin: 0 0 20px 0;
+    display: block;
+  }
+
+  /* Main Headline */
+  .asap-demo-title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 54px;
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    color: #111827;
+    margin: 0 0 20px 0;
+  }
+
+  .asap-demo-title .asap-title-red {
+    color: #e52e2e;
+    display: inline;
+  }
+
+  /* Description paragraph */
+  .asap-demo-desc {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 16.5px;
+    line-height: 1.62;
+    color: #4b5563;
+    max-width: 520px;
+    margin: 0 0 32px 0;
+    font-weight: 400;
+  }
+
+  /* 3-Step Horizontal Breakdown */
+  .asap-demo-steps-row {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 32px;
+    box-sizing: border-box;
+  }
+
+  .asap-demo-step-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    padding-top: 14px;
+    border-top: 2.5px solid #e58371; /* Coral/terracotta accent bar */
+  }
+
+  .asap-demo-step-col h4 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #111827;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .asap-demo-step-col p {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: #6b7280;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  @media (max-width: 768px) {
+    .asap-demo-title {
+      font-size: 38px;
+      line-height: 1.08;
+    }
+    .asap-demo-desc {
+      font-size: 15.5px;
+    }
+    .asap-demo-steps-row {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .asap-demo-step-col {
+      padding-top: 10px;
+      border-top-width: 2px;
+    }
+  }
+</style>
+
+<div class="asap-demo-right-container">
+  <!-- Eyebrow Tag -->
+  <span class="asap-demo-eyebrow">DEMO.ASAPAI.AI</span>
+  
+  <!-- Headline -->
+  <h2 class="asap-demo-title">
+    Meet your first<br>
+    <span class="asap-title-red">AI Employee.</span>
+  </h2>
+  
+  <!-- Description -->
+  <p class="asap-demo-desc">
+    Give us your website. In about a minute, you'll talk to an AI Employee that greets, answers and books customers the way it would for your business.
+  </p>
+
+  <!-- 3-Step Horizontal Breakdown -->
+  <div class="asap-demo-steps-row">
+    <div class="asap-demo-step-col">
+      <h4>1 &middot; Your website</h4>
+      <p>Where your business lives online</p>
+    </div>
+    <div class="asap-demo-step-col">
+      <h4>2 &middot; We prepare it</h4>
+      <p>It learns your services and hours</p>
+    </div>
+    <div class="asap-demo-step-col">
+      <h4>3 &middot; Try it</h4>
+      <p>Ask what your customers ask</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,373 @@
+<!-- ========================================================
+     ASAP AI - "SEE YOURS BEFORE YOU DECIDE" CARD SECTION (WITHOUT BUTTONS)
+     Self-contained file for GoHighLevel Custom HTML/JS element
+     ======================================================== -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,500;1,600;1,700&display=swap');
+
+  .asap-sy-section {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #faf9f6; /* Neutral clean background */
+    padding: 80px 24px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .asap-sy-container {
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  /* Main Floating Card */
+  .asap-sy-card {
+    background-color: #ffffff;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .asap-sy-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 40px 90px -20px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  }
+
+  /* ========================================================
+     TOP BANNER: BEIGE / RED DUAL-TONE WITH 3D EMBLEMS
+     ======================================================== */
+  .asap-sy-banner {
+    position: relative;
+    width: 100%;
+    min-height: 380px;
+    box-sizing: border-box;
+    padding: 48px 48px 36px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    /* Top half soft beige, bottom half deep crimson red with diagonal sheen */
+    background: linear-gradient(
+      180deg,
+      #f5f1eb 0%,
+      #ebe4d8 46%,
+      #a00e17 46.1%,
+      #880b13 100%
+    );
+  }
+
+  /* Subtle diagonal sheen reflex overlay */
+  .asap-sy-banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.38) 0%,
+      rgba(255, 255, 255, 0.15) 35%,
+      transparent 55%
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Large Watermark 'a' in the upper-right */
+  .asap-sy-watermark-a {
+    position: absolute;
+    right: 28px;
+    top: 30px;
+    font-family: 'Inter', sans-serif;
+    font-size: 260px;
+    font-weight: 900;
+    line-height: 0.8;
+    color: rgba(220, 210, 195, 0.65);
+    user-select: none;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* 3D Floating Chrome 'a' Emblem on pedestal */
+  .asap-sy-pedestal-group {
+    position: absolute;
+    right: 200px;
+    top: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  /* Chrome 'a' icon with red dot */
+  .asap-sy-chrome-a-wrap {
+    position: relative;
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ffffff 0%, #d8d8d8 35%, #8f8f94 70%, #58585d 100%);
+    box-shadow: 0 16px 28px -6px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .asap-sy-chrome-inner {
+    font-family: 'Inter', sans-serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: #3b3b40;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    line-height: 1;
+    transform: translateY(-2px);
+  }
+
+  /* Floating 3D Red sphere dot above 'a' */
+  .asap-sy-red-sphere-top {
+    position: absolute;
+    top: -10px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ff6b6b 0%, #e52e2e 50%, #8c0c0c 100%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Floating background larger red sphere */
+  .asap-sy-red-sphere-bg {
+    position: absolute;
+    top: 20px;
+    right: 70px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ff7373 0%, #e52e2e 55%, #8c0c0c 100%);
+    box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Minimalist pedestal block beneath emblem */
+  .asap-sy-pedestal-base {
+    width: 104px;
+    height: 22px;
+    background: linear-gradient(180deg, #ece6dc 0%, #d4ccc0 100%);
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    margin-top: -6px;
+  }
+
+  /* Banner Heading */
+  .asap-sy-banner-heading {
+    position: relative;
+    z-index: 3;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 54px;
+    font-weight: 850;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    margin: 0;
+    max-width: 440px;
+  }
+
+  .asap-sy-banner-heading .asap-period-red {
+    color: #e52e2e;
+    font-size: 1.05em;
+  }
+
+  /* ========================================================
+     BOTTOM BODY CONTENT (CLEAN WITHOUT BUTTONS)
+     ======================================================== */
+  .asap-sy-body {
+    padding: 56px 52px 48px 52px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    background-color: #ffffff;
+  }
+
+  /* Two-tone bold headline */
+  .asap-sy-headline {
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .asap-sy-headline-black {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #171717;
+  }
+
+  .asap-sy-headline-red {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #e52e2e;
+  }
+
+  /* Subtitle explanation */
+  .asap-sy-desc {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555555;
+    max-width: 580px;
+    margin: 0 0 32px 0;
+    font-weight: 400;
+  }
+
+  /* Italic editorial footer signature */
+  .asap-sy-signoff {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 500;
+    color: #262626;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  /* ========================================================
+     RESPONSIVE BREAKPOINTS
+     ======================================================== */
+  @media (max-width: 768px) {
+    .asap-sy-section {
+      padding: 50px 16px;
+    }
+    .asap-sy-banner {
+      min-height: 320px;
+      padding: 36px 28px 28px 28px;
+    }
+    .asap-sy-banner-heading {
+      font-size: 40px;
+    }
+    .asap-sy-pedestal-group {
+      right: 40px;
+      top: 140px;
+      transform: scale(0.85);
+    }
+    .asap-sy-watermark-a {
+      font-size: 190px;
+      right: 10px;
+    }
+    .asap-sy-body {
+      padding: 36px 28px;
+    }
+    .asap-sy-headline-black,
+    .asap-sy-headline-red {
+      font-size: 32px;
+      line-height: 1.12;
+    }
+    .asap-sy-desc {
+      font-size: 14px;
+    }
+    .asap-sy-signoff {
+      font-size: 19px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .asap-sy-banner {
+      min-height: 290px;
+      padding: 28px 20px 22px 20px;
+    }
+    .asap-sy-banner-heading {
+      font-size: 32px;
+      line-height: 0.98;
+    }
+    .asap-sy-pedestal-group {
+      display: none; /* Clean presentation on compact mobile screens */
+    }
+    .asap-sy-watermark-a {
+      font-size: 150px;
+      right: -10px;
+      top: 40px;
+    }
+    .asap-sy-body {
+      padding: 28px 20px;
+    }
+    .asap-sy-headline-black,
+    .asap-sy-headline-red {
+      font-size: 27px;
+    }
+  }
+</style>
+
+<div class="asap-sy-section" id="see-yours-before-you-decide">
+  <div class="asap-sy-container">
+
+    <!-- Card Container -->
+    <div class="asap-sy-card">
+
+      <!-- Top Banner with 3D Accents -->
+      <div class="asap-sy-banner">
+
+        <!-- Background Watermark 'a' -->
+        <span class="asap-sy-watermark-a">a</span>
+
+        <!-- Floating Red Spheres -->
+        <span class="asap-sy-red-sphere-bg"></span>
+
+        <!-- 3D Pedestal & Chrome 'a' Emblem -->
+        <div class="asap-sy-pedestal-group">
+          <div class="asap-sy-chrome-a-wrap">
+            <span class="asap-sy-red-sphere-top"></span>
+            <span class="asap-sy-chrome-inner">a</span>
+          </div>
+          <div class="asap-sy-pedestal-base"></div>
+        </div>
+
+        <!-- Main Banner Heading -->
+        <h2 class="asap-sy-banner-heading">
+          SEE YOURS<br>
+          BEFORE<br>
+          YOU<br>
+          DECIDE<span class="asap-period-red">.</span>
+        </h2>
+
+      </div>
+
+      <!-- Bottom Body Content (Without Buttons) -->
+      <div class="asap-sy-body">
+
+        <!-- Two-tone Headline -->
+        <div class="asap-sy-headline">
+          <h3 class="asap-sy-headline-black">Every enquiry answered.</h3>
+          <h3 class="asap-sy-headline-red">Every opportunity moved forward.</h3>
+        </div>
+
+        <!-- Explanatory Text -->
+        <p class="asap-sy-desc">
+          Your website in, your AI Employee out, in about a minute. Then we design the real one with you.
+        </p>
+
+        <!-- Italic Sign-off -->
+        <p class="asap-sy-signoff">
+          Put AI to work.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

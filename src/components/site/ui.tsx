@@ -36,14 +36,14 @@ export function Cta({
   type = "button",
 }: CtaProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-    size === "lg" ? "px-7 py-3.5 text-[0.98rem]" : "px-5 py-2.5 text-sm",
+    "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+    size === "lg" ? "px-8 py-4 text-[1rem]" : "px-6 py-2.5 text-[0.9rem]",
     variant === "primary" &&
-      "gradient-blue text-navy-foreground shadow-soft hover:-translate-y-0.5 hover:shadow-lift",
+      "bg-gradient-to-br from-red-500 to-red-700 text-white shadow-[0_0_20px_rgba(239,68,68,0.3)] hover:shadow-[0_0_30px_rgba(239,68,68,0.6)] hover:-translate-y-0.5 border border-red-400/30",
     variant === "ghost" &&
-      "border border-border bg-card text-navy hover:border-blue/40 hover:bg-blue-soft",
+      "border border-border bg-card text-navy hover:border-red-500/40 hover:bg-red-50 hover:text-red-600",
     variant === "light" &&
-      "border border-navy-foreground/20 bg-navy-foreground/5 text-navy-foreground hover:bg-navy-foreground/12",
+      "border border-white/10 bg-white/5 backdrop-blur-md text-white hover:bg-white/10 hover:border-white/20 shadow-[0_4px_24px_rgba(0,0,0,0.2)]",
     className,
   );
 
@@ -90,13 +90,16 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "scroll-mt-20 py-20 sm:py-28",
+        "scroll-mt-20 py-20 sm:py-28 relative overflow-hidden",
         tone === "surface" && "bg-surface",
-        tone === "navy" && "gradient-navy text-navy-foreground",
+        tone === "navy" && "bg-gradient-to-b from-black to-zinc-950 text-white border-y border-white/5",
         className,
       )}
     >
-      <div className="container-page">{children}</div>
+      {tone === "navy" && (
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-red-500/10 via-transparent to-transparent opacity-60 blur-3xl pointer-events-none" />
+      )}
+      <div className="container-page relative z-10">{children}</div>
     </section>
   );
 }

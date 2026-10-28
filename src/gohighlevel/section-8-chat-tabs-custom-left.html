@@ -1,188 +1,295 @@
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-  .asap-chat-left {
-    font-family: 'Inter', sans-serif;
+  .asap-chat-tabs-left-container {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     color: #ffffff;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    box-sizing: border-box;
   }
 
-  .asap-eyebrow {
-    letter-spacing: 0.18em;
+  .asap-ct-eyebrow {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #f59e0b;
-    font-size: 0.72rem;
-    font-weight: 700;
-    margin: 0;
+    color: #e52e2e;
+    margin: 0 0 20px 0;
+    display: block;
   }
 
-  .asap-chat-title {
-    font-family: 'Sora', sans-serif;
-    font-size: 2rem;
-    line-height: 1.08;
-    font-weight: 700;
+  .asap-ct-title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
     color: #ffffff;
-    margin: 16px 0 0 0;
-    letter-spacing: -0.028em;
+    margin: 0 0 20px 0;
   }
 
-  @media (min-width: 640px) {
-    .asap-chat-title {
-      font-size: 3rem;
-    }
+  .asap-ct-title .asap-dot-red {
+    color: #e52e2e;
   }
 
-  .asap-chat-title span {
-    color: #f59e0b;
+  .asap-ct-desc {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #9ca3af;
+    margin: 0 0 32px 0;
+    font-weight: 400;
+    max-width: 480px;
   }
 
-  .asap-chat-desc {
-    margin: 24px 0 0 0;
-    font-size: 1rem;
-    line-height: 1.625;
-    color: rgba(255,255,255,0.7);
-    max-width: 600px;
-  }
-
-  @media (min-width: 640px) {
-    .asap-chat-desc {
-      font-size: 1.125rem;
-    }
-  }
-
-  .asap-chat-tabs-list {
-    margin-top: 40px;
+  /* Interactive Industry Tabs List */
+  .asap-ct-tabs-list {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    width: 100%;
+    margin-bottom: 36px;
+    box-sizing: border-box;
   }
 
-  .asap-tab-btn {
+  .asap-ct-tab-item {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #1a1a1d;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+  .asap-ct-tab-item:hover {
+    background-color: #222226;
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+
+  /* Active Tab: Red outline ring matching screenshot */
+  .asap-ct-tab-item.active {
+    background-color: #1e1e23;
+    border-color: #e52e2e;
+    box-shadow: 0 0 0 1px #e52e2e, 0 10px 25px -5px rgba(229, 46, 46, 0.2);
+  }
+
+  .asap-ct-tab-header {
     display: flex;
     align-items: center;
-    gap: 16px;
-    border-radius: 16px;
-    padding: 16px;
-    text-align: left;
-    transition: all 0.3s ease;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: #ffffff;
-    font-family: inherit;
-    width: 100%;
+    justify-content: space-between;
+    gap: 12px;
   }
 
-  .asap-tab-btn:hover:not(.active) {
-    background-color: rgba(255,255,255,0.05);
-  }
-
-  .asap-tab-btn.active {
-    background-color: rgba(255,255,255,0.1);
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.2);
-  }
-
-  .asap-tab-icon {
-    display: grid;
-    place-items: center;
-    width: 56px;
-    height: 56px;
-    border-radius: 12px;
-    background-color: rgba(255,255,255,0.1);
-    color: #ffffff;
-    flex-shrink: 0;
-    transition: all 0.3s ease;
-  }
-
-  .asap-tab-btn.active .asap-tab-icon {
-    background-color: #f59e0b;
-    color: #0f172a;
-  }
-
-  .asap-tab-label {
+  .asap-ct-tab-title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 15.5px;
     font-weight: 700;
-    font-size: 1rem;
     color: #ffffff;
     margin: 0;
-    transition: color 0.3s ease;
+    line-height: 1.3;
   }
 
-  .asap-tab-btn.active .asap-tab-label {
-    color: #f59e0b;
+  .asap-ct-tab-badge {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #71717a;
+    transition: color 0.2s ease;
+    flex-shrink: 0;
   }
 
-  .asap-tab-content {
-    margin-top: 4px;
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.625;
-    display: none;
+  .asap-ct-tab-item.active .asap-ct-tab-badge {
+    color: #e52e2e;
   }
 
-  .asap-tab-btn.active .asap-tab-content {
-    display: block;
-    animation: fadein 0.5s;
+  /* Expandable Description */
+  .asap-ct-tab-body {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.25s ease;
+    margin-top: 0;
   }
 
-  @keyframes fadein {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
+  .asap-ct-tab-item.active .asap-ct-tab-body {
+    max-height: 120px;
+    opacity: 1;
+    margin-top: 10px;
   }
 
-  .asap-tab-icon svg { width: 24px; height: 24px; }
+  .asap-ct-tab-desc {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #a1a1aa;
+    margin: 0;
+  }
+
+  /* Language Capsules Section */
+  .asap-ct-languages-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 24px;
+    box-sizing: border-box;
+  }
+
+  .asap-ct-lang-header {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #71717a;
+  }
+
+  .asap-ct-lang-capsules {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .asap-ct-lang-pill {
+    background-color: #1c1c20;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #e5e7eb;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    cursor: default;
+    user-select: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .asap-ct-lang-pill:hover {
+    background-color: #242429;
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    .asap-ct-title {
+      font-size: 38px;
+    }
+    .asap-ct-desc {
+      font-size: 15px;
+    }
+  }
 </style>
 
-<div class="asap-chat-left">
-  <p class="asap-eyebrow">Omnichannel Chat</p>
-  <h2 class="asap-chat-title">
-    Meet Your <span>AI Chat Employee.</span>
+<div class="asap-chat-tabs-left-container">
+  <!-- Eyebrow -->
+  <span class="asap-ct-eyebrow">BUILT AROUND YOUR BUSINESS</span>
+  
+  <!-- Headline -->
+  <h2 class="asap-ct-title">
+    Not around<br>
+    a template<span class="asap-dot-red">.</span>
   </h2>
-  <p class="asap-chat-desc">
-    Engage with leads and customers across all channels instantly. Never miss a message, a lead, or an opportunity again.
+  
+  <!-- Subtext -->
+  <p class="asap-ct-desc">
+    Every industry has its own questions, decisions and risks. Pick one to see a real exchange.
   </p>
 
-  <div class="asap-chat-tabs-list" id="asap-tabs">
-    <!-- Tab 1 -->
-    <button class="asap-tab-btn active" data-tab="sms" onclick="window.asapRenderChat && window.asapRenderChat('sms')">
-      <div class="asap-tab-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <!-- Interactive 4 Industry Tabs -->
+  <div class="asap-ct-tabs-list" id="asapChatTabsList">
+    
+    <!-- Tab 0: Medical aesthetics / WhatsApp -->
+    <div class="asap-ct-tab-item active" data-index="0" onclick="window.asapSwitchChatTab && window.asapSwitchChatTab(0)">
+      <div class="asap-ct-tab-header">
+        <h3 class="asap-ct-tab-title">Medical aesthetics</h3>
+        <span class="asap-ct-tab-badge">WHATSAPP</span>
       </div>
-      <div>
-        <p class="asap-tab-label">SMS</p>
-        <p class="asap-tab-content">Your leads are texting — are you responding fast enough? AI Chat engages instantly with inbound SMS, delivering answers, qualifying prospects, and moving them down your sales funnel 24/7. No more missed messages or delayed replies.</p>
+      <div class="asap-ct-tab-body">
+        <p class="asap-ct-tab-desc">
+          Answers in seconds at any hour and books the consultation. Clinical questions always go to a clinician.
+        </p>
       </div>
-    </button>
+    </div>
 
-    <!-- Tab 2 -->
-    <button class="asap-tab-btn" data-tab="missed-call" onclick="window.asapRenderChat && window.asapRenderChat('missed-call')">
-      <div class="asap-tab-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 2 6 6"/><path d="m22 2-6 6"/><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
+    <!-- Tab 1: Education & enrichment / Missed call -->
+    <div class="asap-ct-tab-item" data-index="1" onclick="window.asapSwitchChatTab && window.asapSwitchChatTab(1)">
+      <div class="asap-ct-tab-header">
+        <h3 class="asap-ct-tab-title">Education &amp; enrichment</h3>
+        <span class="asap-ct-tab-badge">MISSED CALL</span>
       </div>
-      <div>
-        <p class="asap-tab-label">Missed Call</p>
-        <p class="asap-tab-content">Most leads won't leave a voicemail — they'll call your competitor. With AI-powered Missed Call Text Back, every lost call becomes a new opportunity. Instantly text back missed calls, start the conversation, and let AI qualify and convert leads automatically.</p>
+      <div class="asap-ct-tab-body">
+        <p class="asap-ct-tab-desc">
+          Instantly texts missed callers back, qualifies grade &amp; subject needs, and books trial classes automatically.
+        </p>
       </div>
-    </button>
+    </div>
 
-    <!-- Tab 3 -->
-    <button class="asap-tab-btn" data-tab="webchat" onclick="window.asapRenderChat && window.asapRenderChat('webchat')">
-      <div class="asap-tab-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+    <!-- Tab 2: Property / Website chat -->
+    <div class="asap-ct-tab-item" data-index="2" onclick="window.asapSwitchChatTab && window.asapSwitchChatTab(2)">
+      <div class="asap-ct-tab-header">
+        <h3 class="asap-ct-tab-title">Property</h3>
+        <span class="asap-ct-tab-badge">WEBSITE CHAT</span>
       </div>
-      <div>
-        <p class="asap-tab-label">Webchat</p>
-        <p class="asap-tab-content">Your website should do more than look pretty — it should convert. AI Chat engages visitors the moment they land, answers their questions, captures their info, and guides them toward buying decisions. It's like having your best salesperson on your homepage 24/7.</p>
+      <div class="asap-ct-tab-body">
+        <p class="asap-ct-tab-desc">
+          Qualifies buyers on budget &amp; timeline 24/7, answers project specs, and schedules viewing slots directly.
+        </p>
       </div>
-    </button>
+    </div>
 
-    <!-- Tab 4 -->
-    <button class="asap-tab-btn" data-tab="meta" onclick="window.asapRenderChat && window.asapRenderChat('meta')">
-      <div class="asap-tab-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+    <!-- Tab 3: Retail / Meta ad -->
+    <div class="asap-ct-tab-item" data-index="3" onclick="window.asapSwitchChatTab && window.asapSwitchChatTab(3)">
+      <div class="asap-ct-tab-header">
+        <h3 class="asap-ct-tab-title">Retail</h3>
+        <span class="asap-ct-tab-badge">INSTAGRAM AD</span>
       </div>
-      <div>
-        <p class="asap-tab-label">Meta Ad</p>
-        <p class="asap-tab-content">Clicks are expensive — don't let them go to waste. AI Chat responds immediately when prospects engage with your Meta Ads, turning curiosity into conversations. Whether it's Messenger or comment triggers, your AI Chat is always ready to nurture leads and turn ad spend into ROI.</p>
+      <div class="asap-ct-tab-body">
+        <p class="asap-ct-tab-desc">
+          Engages leads straight from Instagram &amp; Facebook ads, checks stock availability, and reserves items.
+        </p>
       </div>
-    </button>
+    </div>
+
+  </div>
+
+  <!-- Languages Capsules -->
+  <div class="asap-ct-languages-wrap">
+    <div class="asap-ct-lang-header">SPEAKS YOUR CUSTOMER'S LANGUAGE</div>
+    <div class="asap-ct-lang-capsules">
+      <span class="asap-ct-lang-pill">English</span>
+      <span class="asap-ct-lang-pill">中文</span>
+      <span class="asap-ct-lang-pill">Bahasa Melayu</span>
+      <span class="asap-ct-lang-pill">தமிழ்</span>
+      <span class="asap-ct-lang-pill">+ more</span>
+    </div>
   </div>
 </div>
+
+<script>
+(function() {
+  window.asapSwitchChatTab = function(index) {
+    const tabs = document.querySelectorAll('.asap-ct-tab-item');
+    tabs.forEach((tab, i) => {
+      tab.classList.toggle('active', i === index);
+    });
+
+    // Notify right-side phone simulator (works across separate GHL blocks or iframe)
+    if (typeof window.asapPlayPhoneConversation === 'function') {
+      window.asapPlayPhoneConversation(index);
+    }
+
+    try {
+      window.dispatchEvent(new CustomEvent('asapTabChange', { detail: { tabIndex: index } }));
+    } catch(e) {}
+  };
+})();
+</script>

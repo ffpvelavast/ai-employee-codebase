@@ -1,13 +1,148 @@
 /* ========================================================
-   GHL FORM OVERRIDES (Styles the form on the left side)
+   SECTION FORM GLOBAL STYLES
+   1. Left Side: GHL Element #image-feature-cWvXEulJvE (4:5 Editorial Portrait Card)
+   2. Right Side: GHL Form Builder Styling (Inputs, Buttons, Focus States)
    ======================================================== */
 
-/* Main form wrapper */
-.hl_form-builder--main {
-  font-family: 'Inter', sans-serif !important;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap');
+
+/* ========================================================
+   1. LEFT SIDE: GHL ELEMENT #image-feature-cWvXEulJvE
+   ======================================================== */
+#image-feature-cWvXEulJvE,
+.image-feature-cWvXEulJvE {
+  width: 100% !important;
+  max-width: 440px !important;
+  margin: 0 auto !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 
-/* Hide labels to match the custom design, since it uses placeholders */
+#image-feature-cWvXEulJvE .img-feature-container {
+  position: relative !important;
+  width: 100% !important;
+  aspect-ratio: 4 / 5 !important;
+  min-height: 480px !important;
+  border-radius: 32px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.16) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  background-color: #d6cebe !important;
+  background: radial-gradient(circle at 50% 25%, #ede6d8 0%, #cfc5b4 55%, #2a2826 100%) !important;
+}
+
+/* Force full-cover absolute positioning for the image */
+#image-feature-cWvXEulJvE .img-container {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 1 !important;
+}
+
+#image-feature-cWvXEulJvE .image-container,
+#image-feature-cWvXEulJvE .hl-image-picture,
+#image-feature-cWvXEulJvE img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* Dark gradient overlay for text readability */
+#image-feature-cWvXEulJvE .img-feature-container::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(
+    to top,
+    rgba(24, 23, 22, 0.92) 0%,
+    rgba(35, 33, 31, 0.55) 45%,
+    rgba(0, 0, 0, 0.02) 80%
+  ) !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+/* Editorial Top Pill Badge */
+#image-feature-cWvXEulJvE .asap-editorial-badge {
+  position: absolute !important;
+  top: 20px !important;
+  left: 20px !important;
+  background: rgba(28, 25, 23, 0.65) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  color: #f3f4f6 !important;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  padding: 6px 14px !important;
+  border-radius: 9999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  z-index: 4 !important;
+  margin: 0 !important;
+  user-select: none !important;
+}
+
+/* Glass reflection sheen */
+#image-feature-cWvXEulJvE .asap-card-sheen {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  width: 65% !important;
+  height: 65% !important;
+  background: radial-gradient(ellipse at 85% 15%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 70%) !important;
+  z-index: 3 !important;
+  pointer-events: none !important;
+}
+
+/* Text Container: Overlayed at bottom */
+#image-feature-cWvXEulJvE .txt-container {
+  position: relative !important;
+  z-index: 4 !important;
+  padding: 32px 30px !important;
+  margin: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  text-align: left !important;
+}
+
+/* Editorial Quote Styling */
+#image-feature-cWvXEulJvE .asap-editorial-quote {
+  font-family: 'Newsreader', Georgia, 'Times New Roman', serif !important;
+  font-size: 24px !important;
+  line-height: 1.35 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  font-weight: 400 !important;
+}
+
+#image-feature-cWvXEulJvE .asap-quote-coral {
+  color: #e58371 !important;
+  font-style: italic !important;
+}
+
+/* Hide default placeholder text in GHL builder if present */
+#image-feature-cWvXEulJvE .featureHeadline h2:not(.asap-editorial-quote) {
+  display: none !important;
+}
+#image-feature-cWvXEulJvE .featureText p:not(.asap-editorial-quote) {
+  display: none !important;
+}
+
+
+/* ========================================================
+   2. RIGHT SIDE: GHL FORM OVERRIDES
+   ======================================================== */
+.hl_form-builder--main {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+/* Hide raw labels to match custom pill design */
 .hl_form-builder--main .field-label,
 .hl_form-builder--main .label-alignment {
   display: none !important;
@@ -19,98 +154,82 @@
   align-items: flex-start !important;
 }
 
-/* Ensure the grid spacing matches */
+/* Grid spacing */
 .hl_form-builder--main .menu-field-wrap {
-  margin-bottom: 12px !important;
+  margin-bottom: 14px !important;
 }
 
-/* Input fields (.form-control targets text, email, tel, etc.) */
+/* Pill Input fields */
 .hl_form-builder--main .form-control {
   background-color: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
+  border: 1.5px solid #e5e7eb !important;
   border-radius: 9999px !important;
-  padding: 12px 16px !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
-  transition: border-color 0.2s ease !important;
+  padding: 14px 20px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+  transition: all 0.2s ease !important;
   font-family: 'Inter', sans-serif !important;
-  font-size: 14px !important;
-  color: #0f172a !important;
+  font-size: 14.5px !important;
+  color: #111827 !important;
   width: 100% !important;
-  height: auto !important; /* Override GHL fixed heights */
+  height: 50px !important;
+  box-sizing: border-box !important;
 }
 
-/* Focus state for inputs */
+/* Focus state with red accent */
 .hl_form-builder--main .form-control:focus {
-  border-color: rgba(59, 130, 246, 0.5) !important;
+  border-color: #e52e2e !important;
   outline: none !important;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  box-shadow: 0 0 0 3px rgba(229, 46, 46, 0.15) !important;
 }
 
-/* Placeholder text styling */
 .hl_form-builder--main .form-control::placeholder {
-  color: #94a3b8 !important;
+  color: #9ca3af !important;
+  font-weight: 400 !important;
 }
 
-/* Handle the email icon specifically to fit inside the pill shape */
-.hl_form-builder--main .email-input {
-  position: relative !important;
-}
-.hl_form-builder--main .email-input svg.input-icon {
-  position: absolute !important;
-  left: 16px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  width: 18px !important;
-  height: 18px !important;
-  color: #64748b !important;
-  z-index: 2 !important;
-}
-.hl_form-builder--main .email-input input {
-  padding-left: 42px !important; /* Make room for the icon */
-}
-
-/* Terms and conditions text */
+/* Terms and conditions */
 .hl_form-builder--main .terms-and-conditions p,
 .hl_form-builder--main .terms-and-conditions span {
   font-family: 'Inter', sans-serif !important;
-  color: #64748b !important;
+  color: #6b7280 !important;
   font-size: 12px !important;
   line-height: 1.5 !important;
 }
 
 /* Submit Button Container */
 .hl_form-builder--main .form-builder--btn-submit {
-  margin-top: 24px !important;
+  margin-top: 20px !important;
 }
 
-/* Submit Button */
+/* Red Pill Submit Button */
 .hl_form-builder--main .form-builder--btn-submit button.btn {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+  background: #e52e2e !important;
+  background-color: #e52e2e !important;
   color: #ffffff !important;
   font-size: 16px !important;
-  font-weight: 600 !important;
-  padding: 16px 32px !important;
+  font-weight: 700 !important;
+  padding: 15px 32px !important;
   border-radius: 9999px !important;
   border: none !important;
-  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3) !important;
+  box-shadow: 0 10px 20px -4px rgba(229, 46, 46, 0.35) !important;
   cursor: pointer !important;
-  transition: all 0.3s ease !important;
+  transition: all 0.25s ease !important;
   width: 100% !important;
   font-family: 'Inter', sans-serif !important;
   display: flex !important;
-  justify-content: center !important;
   align-items: center !important;
+  justify-content: center !important;
 }
 
 .hl_form-builder--main .form-builder--btn-submit button.btn:hover {
+  background-color: #d12222 !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4) !important;
+  box-shadow: 0 14px 24px -4px rgba(229, 46, 46, 0.45) !important;
 }
 
-/* Override inner GHL text wrappers for the button */
-.hl_form-builder--main .form-builder--btn-submit button.btn .button-text p,
-.hl_form-builder--main .form-builder--btn-submit button.btn div {
-  font-family: 'Inter', sans-serif !important;
-  color: #ffffff !important;
-  font-weight: 600 !important;
+@media (max-width: 480px) {
+  #image-feature-cWvXEulJvE .img-feature-container {
+    min-height: 400px !important;
+    border-radius: 24px !important;
+  }
 }

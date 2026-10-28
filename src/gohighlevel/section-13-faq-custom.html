@@ -1,103 +1,174 @@
+<!-- ========================================================
+     ASAP AI - "QUESTIONS OWNERS ASK US." FAQ SECTION
+     Updated src/gohighlevel/section-13-faq-custom.html
+     Self-contained file for GoHighLevel Custom HTML/JS element
+     ======================================================== -->
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
   .asap-faq-section {
-    font-family: 'Inter', sans-serif;
-    color: #0f172a;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #171717;
+    background-color: #ffffff;
     width: 100%;
     box-sizing: border-box;
-    background-color: #f8fafc; /* tone="surface" */
-    padding: 100px 20px;
+    padding: 100px 24px;
+    position: relative;
+    overflow: hidden;
   }
 
-  .asap-container {
-    max-width: 1200px;
+  .asap-faq-container {
+    max-width: 1160px;
     margin: 0 auto;
     width: 100%;
-  }
-
-  .asap-faq-grid {
+    box-sizing: border-box;
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: 64px;
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: 72px;
+    align-items: flex-start;
   }
 
-  @media (max-width: 1024px) {
-    .asap-faq-grid {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
+  /* Left Column: Heading & WhatsApp Sub-link */
+  .asap-faq-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    position: sticky;
+    top: 40px;
   }
 
-  /* Left Side: Header */
-  .asap-eyebrow {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #3b82f6; /* Blue */
-    margin-bottom: 16px;
-    display: block;
-  }
-
-  .asap-title {
-    font-size: 40px;
+  .asap-faq-main-title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 54px;
     font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: #0f172a; /* Navy */
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: #171717;
+    margin: 0 0 24px 0;
+  }
+
+  .asap-faq-main-title .asap-period-red {
+    color: #e52e2e;
+  }
+
+  .asap-faq-subtext {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555555;
     margin: 0;
+    font-weight: 400;
   }
 
-  @media (max-width: 768px) {
-    .asap-title {
-      font-size: 32px;
-    }
+  .asap-faq-subtext a {
+    color: #171717;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1.5px;
+    transition: color 0.2s ease;
   }
 
-  /* Right Side: Accordion */
+  .asap-faq-subtext a:hover {
+    color: #e52e2e;
+  }
+
+  /* Right Column: FAQ Accordion List */
   .asap-faq-list {
+    display: flex;
+    flex-direction: column;
     width: 100%;
   }
 
   .asap-faq-item {
-    border-bottom: 1px solid #e2e8f0; /* hairline */
+    border-bottom: 1px solid #e5e5e5;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
   }
 
+  .asap-faq-item:first-child {
+    border-top: 1px solid #e5e5e5;
+  }
+
+  /* FAQ Accordion Toggle Button */
   .asap-faq-button {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
-    padding: 20px 0;
+    gap: 20px;
+    padding: 22px 0;
     background: none;
     border: none;
     text-align: left;
     font-size: 16px;
-    font-weight: 600;
-    color: #0f172a;
-    font-family: inherit;
+    font-weight: 700;
+    color: #171717;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     cursor: pointer;
-  }
-  
-  @media (min-width: 640px) {
-    .asap-faq-button {
-      font-size: 18px;
-    }
+    box-sizing: border-box;
+    user-select: none;
+    line-height: 1.35;
+    transition: color 0.2s ease;
   }
 
-  .asap-faq-icon {
+  .asap-faq-button:hover {
+    color: #e52e2e;
+  }
+
+  /* Red Circular Toggle Badge with Plus/Minus Icon */
+  .asap-faq-toggle-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #cc1818;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
-    color: #0f172a;
-    transition: transform 0.3s ease;
+    position: relative;
+    transition: transform 0.25s ease, background-color 0.2s ease;
   }
 
+  .asap-faq-button:hover .asap-faq-toggle-circle {
+    background-color: #b01414;
+  }
+
+  /* Icon lines for Plus/Minus inside circle */
+  .asap-toggle-icon-minus {
+    position: absolute;
+    width: 10px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 1px;
+  }
+
+  .asap-toggle-icon-plus {
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background-color: #ffffff;
+    border-radius: 1px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  /* When Active: Plus line collapses into Minus */
+  .asap-faq-item.active .asap-toggle-icon-plus {
+    transform: rotate(90deg);
+    opacity: 0;
+  }
+
+  /* Accordion Expand/Collapse Content */
   .asap-faq-content {
     display: grid;
     grid-template-rows: 0fr;
     opacity: 0;
-    transition: grid-template-rows 0.3s ease, opacity 0.3s ease;
+    visibility: hidden;
+    transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.35s;
   }
 
   .asap-faq-content-inner {
@@ -105,158 +176,275 @@
   }
 
   .asap-faq-content p {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 15px;
-    line-height: 1.6;
-    color: #64748b;
-    margin: 0 0 20px 0;
+    line-height: 1.62;
+    color: #555555;
+    margin: 0 0 22px 0;
+    font-weight: 400;
+    padding-right: 32px;
   }
 
-  /* Active States */
-  .asap-faq-item.active .asap-faq-icon {
-    transform: rotate(180deg);
-  }
-
+  /* Active Open State */
   .asap-faq-item.active .asap-faq-content {
     grid-template-rows: 1fr;
     opacity: 1;
+    visibility: visible;
+  }
+
+  /* ========================================================
+     RESPONSIVE BREAKPOINTS
+     ======================================================== */
+  @media (max-width: 1024px) {
+    .asap-faq-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .asap-faq-left {
+      position: static;
+    }
+    .asap-faq-main-title {
+      font-size: 42px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .asap-faq-section {
+      padding: 70px 18px;
+    }
+    .asap-faq-main-title {
+      font-size: 34px;
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+    .asap-faq-button {
+      font-size: 15px;
+      padding: 18px 0;
+      gap: 14px;
+    }
+    .asap-faq-content p {
+      font-size: 14px;
+      line-height: 1.55;
+      padding-right: 0;
+      margin-bottom: 18px;
+    }
   }
 </style>
 
 <section class="asap-faq-section" id="faq">
-  <div class="asap-container">
-    <div class="asap-faq-grid">
-      
-      <!-- Left: Header -->
-      <div>
-        <span class="asap-eyebrow">FAQ</span>
-        <h2 class="asap-title">Questions Business Owners Ask Us.</h2>
-      </div>
+  <div class="asap-faq-container">
 
-      <!-- Right: Accordion -->
-      <div class="asap-faq-list">
-        
-        <!-- FAQ 1 -->
-        <div class="asap-faq-item">
-          <button class="asap-faq-button" aria-expanded="false">
-            What exactly is an AI Employee?
-            <svg class="asap-faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="asap-faq-content">
-            <div class="asap-faq-content-inner">
-              <p>A specialised AI team member trained on your business to perform one role — answering calls, handling enquiries, qualifying leads or booking appointments.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- FAQ 2 -->
-        <div class="asap-faq-item">
-          <button class="asap-faq-button" aria-expanded="false">
-            Can the AI answer calls?
-            <svg class="asap-faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="asap-faq-content">
-            <div class="asap-faq-content-inner">
-              <p>Yes. Your AI Front Desk picks up incoming calls, understands the enquiry, answers it and takes the next step.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- FAQ 3 -->
-        <div class="asap-faq-item">
-          <button class="asap-faq-button" aria-expanded="false">
-            Can it work with WhatsApp?
-            <svg class="asap-faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="asap-faq-content">
-            <div class="asap-faq-content-inner">
-              <p>Yes. It replies naturally on WhatsApp and continues the conversation until the customer has what they need.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- FAQ 4 -->
-        <div class="asap-faq-item">
-          <button class="asap-faq-button" aria-expanded="false">
-            Can it book appointments?
-            <svg class="asap-faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="asap-faq-content">
-            <div class="asap-faq-content-inner">
-              <p>It checks real availability and books straight into your calendar, then confirms with the customer.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- FAQ 5 -->
-        <div class="asap-faq-item">
-          <button class="asap-faq-button" aria-expanded="false">
-            Will the AI replace my staff?
-            <svg class="asap-faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="asap-faq-content">
-            <div class="asap-faq-content-inner">
-              <p>No. It handles routine enquiries so your team spends time on the conversations that need a person — with full context when they step in.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- FAQ 6 -->
-        <div class="asap-faq-item">
-          <button class="asap-faq-button" aria-expanded="false">
-            How does the AI learn about my business?
-            <svg class="asap-faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="asap-faq-content">
-            <div class="asap-faq-content-inner">
-              <p>It's trained on your website, services, tone of voice and the answers you already give customers every day.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- FAQ 7 -->
-        <div class="asap-faq-item">
-          <button class="asap-faq-button" aria-expanded="false">
-            Can customers speak in different languages?
-            <svg class="asap-faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <div class="asap-faq-content">
-            <div class="asap-faq-content-inner">
-              <p>Yes. Customers can interact in the language they're most comfortable using, including English, Mandarin, Bahasa, Thai, Korean and Japanese.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
+    <!-- Left Column: Big Headline & Consultant Link -->
+    <div class="asap-faq-left">
+      <h2 class="asap-faq-main-title">
+        Questions<br>
+        owners ask us<span class="asap-period-red">.</span>
+      </h2>
+      <p class="asap-faq-subtext">
+        Still unsure? Ask your demo, or <a href="https://wa.me/" target="_blank" rel="noopener">WhatsApp a consultant</a>
+      </p>
     </div>
+
+    <!-- Right Column: Accordion Questions -->
+    <div class="asap-faq-list" id="asapFaqList">
+
+      <!-- Question 1 (Open by default matching screenshot) -->
+      <div class="asap-faq-item active">
+        <button class="asap-faq-button" aria-expanded="true">
+          <span>Will it work for my kind of business?</span>
+          <span class="asap-faq-toggle-circle">
+            <span class="asap-toggle-icon-minus"></span>
+            <span class="asap-toggle-icon-plus"></span>
+          </span>
+        </button>
+        <div class="asap-faq-content">
+          <div class="asap-faq-content-inner">
+            <p>
+              If customers contact you by WhatsApp, phone or your website to ask, book or buy, almost certainly. Clinics, salons, enrichment centres, property agencies, professional firms and retailers are typical. The quickest way to know is to try the demo with your own website.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 2 (Open by default matching screenshot) -->
+      <div class="asap-faq-item">
+        <button class="asap-faq-button" aria-expanded="false">
+          <span>Can I control what it says?</span>
+          <span class="asap-faq-toggle-circle">
+            <span class="asap-toggle-icon-minus"></span>
+            <span class="asap-toggle-icon-plus"></span>
+          </span>
+        </button>
+        <div class="asap-faq-content">
+          <div class="asap-faq-content-inner">
+            <p>
+              Yes. It answers only from information you approve, in the tone you choose, and takes only the actions you allow. You approve its rules before it goes live and can change them at any time.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 3 (Open by default matching screenshot) -->
+      <div class="asap-faq-item">
+        <button class="asap-faq-button" aria-expanded="false">
+          <span>What happens when it doesn't know the answer?</span>
+          <span class="asap-faq-toggle-circle">
+            <span class="asap-toggle-icon-minus"></span>
+            <span class="asap-toggle-icon-plus"></span>
+          </span>
+        </button>
+        <div class="asap-faq-content">
+          <div class="asap-faq-content-inner">
+            <p>
+              It says so, asks a clarifying question, or hands the conversation to the right person on your team with a summary, so the customer never repeats themselves.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 4 (Open by default matching screenshot) -->
+      <div class="asap-faq-item">
+        <button class="asap-faq-button" aria-expanded="false">
+          <span>Does it work with WhatsApp, my phone line, calendar and CRM?</span>
+          <span class="asap-faq-toggle-circle">
+            <span class="asap-toggle-icon-minus"></span>
+            <span class="asap-toggle-icon-plus"></span>
+          </span>
+        </button>
+        <div class="asap-faq-content">
+          <div class="asap-faq-content-inner">
+            <p>
+              Yes. WhatsApp runs through the official WhatsApp Business Platform on the number your customers already use. Phone, calendar and CRM connections are confirmed in your design session.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 5 (Open by default matching screenshot) -->
+      <div class="asap-faq-item">
+        <button class="asap-faq-button" aria-expanded="false">
+          <span>How much does it cost?</span>
+          <span class="asap-faq-toggle-circle">
+            <span class="asap-toggle-icon-minus"></span>
+            <span class="asap-toggle-icon-plus"></span>
+          </span>
+        </button>
+        <div class="asap-faq-content">
+          <div class="asap-faq-content-inner">
+            <p>
+              Plans start from [S$ price] a month, plus a one-time design and setup fee. Your design session ends with a fixed quote for your first AI Employee.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 6 (Open by default matching screenshot) -->
+      <div class="asap-faq-item">
+        <button class="asap-faq-button" aria-expanded="false">
+          <span>How long until it's live?</span>
+          <span class="asap-faq-toggle-circle">
+            <span class="asap-toggle-icon-minus"></span>
+            <span class="asap-toggle-icon-plus"></span>
+          </span>
+        </button>
+        <div class="asap-faq-content">
+          <div class="asap-faq-content-inner">
+            <p>
+              Most first AI Employees go live within [number] weeks of the design session, after your team has tested them.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 7 (Open by default matching screenshot) -->
+      <div class="asap-faq-item">
+        <button class="asap-faq-button" aria-expanded="false">
+          <span>How much work is this for my team?</span>
+          <span class="asap-faq-toggle-circle">
+            <span class="asap-toggle-icon-minus"></span>
+            <span class="asap-toggle-icon-plus"></span>
+          </span>
+        </button>
+        <div class="asap-faq-content">
+          <div class="asap-faq-content-inner">
+            <p>
+              A design session, a review and a test before launch. We handle the setup, training and connections. After launch, your team picks up only the conversations it hands over.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 8 (Open by default matching screenshot) -->
+      <div class="asap-faq-item">
+        <button class="asap-faq-button" aria-expanded="false">
+          <span>Is my customers' data safe?</span>
+          <span class="asap-faq-toggle-circle">
+            <span class="asap-toggle-icon-minus"></span>
+            <span class="asap-toggle-icon-plus"></span>
+          </span>
+        </button>
+        <div class="asap-faq-content">
+          <div class="asap-faq-content-inner">
+            <p>
+              We handle personal data in line with Singapore's Personal Data Protection Act. In your design session we show you what is stored, where, for how long and who can see it.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const faqButtons = document.querySelectorAll('.asap-faq-button');
+(function() {
+  function toggleFaqItem(button) {
+    if (!button) return;
+    const item = button.closest('.asap-faq-item');
+    if (!item) return;
+
+    const isCurrentlyActive = item.classList.contains('active');
     
-    faqButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const item = button.closest('.asap-faq-item');
-        const isExpanded = button.getAttribute('aria-expanded') === 'true';
-        
-        // Close all other items
-        document.querySelectorAll('.asap-faq-item').forEach(otherItem => {
-          if (otherItem !== item) {
-            otherItem.classList.remove('active');
-            otherItem.querySelector('.asap-faq-button').setAttribute('aria-expanded', 'false');
-          }
-        });
-        
-        // Toggle current item
-        if (isExpanded) {
-          item.classList.remove('active');
-          button.setAttribute('aria-expanded', 'false');
-        } else {
-          item.classList.add('active');
-          button.setAttribute('aria-expanded', 'true');
-        }
-      });
+    // Toggle active state
+    if (isCurrentlyActive) {
+      item.classList.remove('active');
+      button.setAttribute('aria-expanded', 'false');
+    } else {
+      item.classList.add('active');
+      button.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  // Delegated click handler on document - works even if GHL dynamically moves or re-renders DOM
+  document.addEventListener('click', function(e) {
+    const button = e.target.closest('.asap-faq-button');
+    if (button) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleFaqItem(button);
+    }
+  }, true); // Use capture phase so GHL parent handlers don't swallow the click
+
+  // Fallback direct attachment
+  function bindFaqButtons() {
+    const buttons = document.querySelectorAll('.asap-faq-button');
+    buttons.forEach(function(btn) {
+      btn.style.cursor = 'pointer';
+      btn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleFaqItem(btn);
+      };
     });
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindFaqButtons);
+  } else {
+    bindFaqButtons();
+  }
+  setTimeout(bindFaqButtons, 500);
+  setTimeout(bindFaqButtons, 1500);
+})();
 </script>

@@ -1,0 +1,183 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap');
+
+  /* ========================================================
+     LEFT SIDE: EDITORIAL 4:5 PORTRAIT POSTER CARD
+     Targets GHL Element: #image-feature-cWvXEulJvE
+     ======================================================== */
+  #image-feature-cWvXEulJvE,
+  .image-feature-cWvXEulJvE {
+    width: 100% !important;
+    max-width: 440px !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  }
+
+  #image-feature-cWvXEulJvE .img-feature-container {
+    position: relative !important;
+    width: 100% !important;
+    aspect-ratio: 4 / 5 !important;
+    min-height: 480px !important;
+    border-radius: 32px !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.16) !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    background-color: #d6cebe !important;
+    background: radial-gradient(circle at 50% 25%, #ede6d8 0%, #cfc5b4 55%, #2a2826 100%) !important;
+  }
+
+  /* Force full-cover absolute positioning for the image */
+  #image-feature-cWvXEulJvE .img-container {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 1 !important;
+  }
+
+  #image-feature-cWvXEulJvE .image-container,
+  #image-feature-cWvXEulJvE .hl-image-picture,
+  #image-feature-cWvXEulJvE img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  /* Dark gradient overlay for text readability */
+  #image-feature-cWvXEulJvE .img-feature-container::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(
+      to top,
+      rgba(24, 23, 22, 0.92) 0%,
+      rgba(35, 33, 31, 0.55) 45%,
+      rgba(0, 0, 0, 0.02) 80%
+    ) !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+  }
+
+  /* Editorial Top Pill Badge */
+  #image-feature-cWvXEulJvE .asap-editorial-badge {
+    position: absolute !important;
+    top: 20px !important;
+    left: 20px !important;
+    background: rgba(28, 25, 23, 0.65) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    color: #f3f4f6 !important;
+    font-size: 10.5px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    padding: 6px 14px !important;
+    border-radius: 9999px !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    z-index: 4 !important;
+    margin: 0 !important;
+    user-select: none !important;
+  }
+
+  /* Glass reflection sheen at top right */
+  #image-feature-cWvXEulJvE .asap-card-sheen {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: 65% !important;
+    height: 65% !important;
+    background: radial-gradient(ellipse at 85% 15%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 70%) !important;
+    z-index: 3 !important;
+    pointer-events: none !important;
+  }
+
+  /* Text Container: Overlayed at bottom */
+  #image-feature-cWvXEulJvE .txt-container {
+    position: relative !important;
+    z-index: 4 !important;
+    padding: 32px 30px !important;
+    margin: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+  }
+
+  /* Editorial Quote Styling */
+  #image-feature-cWvXEulJvE .asap-editorial-quote {
+    font-family: 'Newsreader', Georgia, 'Times New Roman', serif !important;
+    font-size: 24px !important;
+    line-height: 1.35 !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
+  }
+
+  #image-feature-cWvXEulJvE .asap-quote-coral {
+    color: #e58371 !important;
+    font-style: italic !important;
+  }
+
+  /* Hide default unused GHL text nodes if present */
+  #image-feature-cWvXEulJvE .featureHeadline h2 {
+    display: none !important;
+  }
+  #image-feature-cWvXEulJvE .featureText p {
+    display: none !important;
+  }
+
+  @media (max-width: 480px) {
+    #image-feature-cWvXEulJvE .img-feature-container {
+      min-height: 420px !important;
+      border-radius: 26px !important;
+    }
+    #image-feature-cWvXEulJvE .txt-container {
+      padding: 24px 22px !important;
+    }
+    #image-feature-cWvXEulJvE .asap-editorial-quote {
+      font-size: 20px !important;
+    }
+  }
+</style>
+
+<!-- GHL Element Code with Editorial Poster Enhancements -->
+<div id="image-feature-cWvXEulJvE" data-animation-class="" class="c-image-feature c-wrapper image-feature-cWvXEulJvE">
+  <div class="img-feature-container feature-img-left feature-cols-70-30 cimage-feature-cWvXEulJvE feature-cols-70-30 feature-img-left">
+    
+    <!-- Top Editorial Tag -->
+    <div class="asap-editorial-badge">PHOTO &middot; Business owner, editorial portrait &middot; 4:5</div>
+
+    <!-- Glass reflection sheen -->
+    <div class="asap-card-sheen"></div>
+
+    <!-- Image Container with User's Asset -->
+    <div class="img-container text-center">
+      <div class="image-container" style="cursor: default;">
+        <div>
+          <div>
+            <picture class="hl-image-picture" style="display: block;">
+              <source media="(max-width:900px) and (min-width: 768px)" srcset="https://images.leadconnectorhq.com/image/f_webp/q_80/r_900/u_https://assets.cdn.filesafe.space/YzdUoBRFcujSI4N6tUdf/media/67d2a651794ed91c15995628.png">
+              <source media="(max-width:768px) and (min-width: 640px)" srcset="https://images.leadconnectorhq.com/image/f_webp/q_80/r_768/u_https://assets.cdn.filesafe.space/YzdUoBRFcujSI4N6tUdf/media/67d2a651794ed91c15995628.png">
+              <source media="(max-width:640px) and (min-width: 480px)" srcset="https://images.leadconnectorhq.com/image/f_webp/q_80/r_640/u_https://assets.cdn.filesafe.space/YzdUoBRFcujSI4N6tUdf/media/67d2a651794ed91c15995628.png">
+              <source media="(max-width:480px) and (min-width: 320px)" srcset="https://images.leadconnectorhq.com/image/f_webp/q_80/r_768/u_https://assets.cdn.filesafe.space/YzdUoBRFcujSI4N6tUdf/media/67d2a651794ed91c15995628.png">
+              <source media="(max-width:320px)" srcset="https://images.leadconnectorhq.com/image/f_webp/q_80/r_320/u_https://assets.cdn.filesafe.space/YzdUoBRFcujSI4N6tUdf/media/67d2a651794ed91c15995628.png">
+              <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/YzdUoBRFcujSI4N6tUdf/media/67d2a651794ed91c15995628.png" alt="Business owner, editorial portrait" class="hl-optimized mw-100 feature-cols-70-30 feature-img-left img-shadow-none img-effects-none" loading="lazy" fetchpriority="auto" data-animation-class="">
+            </picture>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Text Container with Custom Editorial Quote -->
+    <div class="txt-container">
+      <p class="asap-editorial-quote">
+        &ldquo;I don't need to understand AI. <span class="asap-quote-coral">I need to see what it could do for my business.&rdquo;</span>
+      </p>
+    </div>
+
+  </div>
+</div>

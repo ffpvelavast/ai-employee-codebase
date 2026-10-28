@@ -1,0 +1,330 @@
+<!-- ========================================================
+     ASAP AI - "THIS IS ONLY THE DEMO" COMPARISON SECTION
+     Self-contained file for GoHighLevel Custom HTML/JS element
+     ======================================================== -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,600;1,700&display=swap');
+
+  .asap-demo-prod-section {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    background-color: #141416; /* Deep dark background matching screenshot */
+    color: #ffffff;
+    padding: 80px 24px;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .asap-demo-prod-container {
+    max-width: 1160px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  /* Red Eyebrow Kicker */
+  .asap-demo-prod-eyebrow {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #e52e2e;
+    margin: 0 0 20px 0;
+    display: block;
+    line-height: 1.2;
+  }
+
+  /* Two-tier Main Headline */
+  .asap-demo-prod-heading {
+    margin: 0 0 48px 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+  }
+
+  .asap-demo-prod-title-bold {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 54px;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .asap-demo-prod-title-serif {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-style: italic;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    color: #f3f4f6;
+    margin: 6px 0 0 0;
+  }
+
+  /* ========================================================
+     COMPARISON TABLE CARD
+     ======================================================== */
+  .asap-demo-prod-card {
+    background-color: #1a1a1e; /* Slightly elevated dark card surface */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Table Header Row */
+  .asap-dpt-header-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 1.6fr;
+    gap: 24px;
+    padding: 22px 36px 18px 36px;
+    background-color: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .asap-dpt-th-col {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .asap-dpt-th-in-demo {
+    color: #8e8e93;
+  }
+
+  .asap-dpt-th-in-real {
+    color: #e52e2e;
+  }
+
+  /* Table Content Rows */
+  .asap-dpt-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .asap-dpt-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 1.6fr;
+    gap: 24px;
+    padding: 20px 36px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    align-items: center;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease;
+  }
+
+  .asap-dpt-row:last-child {
+    border-bottom: none;
+  }
+
+  .asap-dpt-row:hover {
+    background-color: rgba(255, 255, 255, 0.025);
+  }
+
+  /* Column 1: Feature Label */
+  .asap-dpt-label {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.35;
+  }
+
+  /* Column 2: In This Demo */
+  .asap-dpt-demo-val {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: #8e8e93;
+    font-weight: 400;
+  }
+
+  /* Column 3: In Your Real AI Employee */
+  .asap-dpt-real-val {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: #e5e5e5;
+    font-weight: 400;
+  }
+
+  /* ========================================================
+     RESPONSIVE BREAKPOINTS
+     ======================================================== */
+  @media (max-width: 1024px) {
+    .asap-demo-prod-title-bold {
+      font-size: 44px;
+    }
+    .asap-demo-prod-title-serif {
+      font-size: 38px;
+    }
+    .asap-dpt-header-row,
+    .asap-dpt-row {
+      grid-template-columns: 160px 1fr 1.3fr;
+      padding: 18px 24px;
+      gap: 18px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .asap-demo-prod-section {
+      padding: 60px 18px;
+    }
+    .asap-demo-prod-heading {
+      margin-bottom: 36px;
+    }
+    .asap-demo-prod-title-bold {
+      font-size: 34px;
+      line-height: 1.08;
+    }
+    .asap-demo-prod-title-serif {
+      font-size: 30px;
+      line-height: 1.15;
+    }
+    .asap-demo-prod-card {
+      border-radius: 20px;
+    }
+    .asap-dpt-header-row {
+      display: none; /* Switch to stacked card format on mobile */
+    }
+    .asap-dpt-row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 18px 18px;
+    }
+    .asap-dpt-label {
+      font-size: 15px;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+    .asap-dpt-demo-val::before {
+      content: "IN THIS DEMO: ";
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: #71717a;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .asap-dpt-real-val::before {
+      content: "IN YOUR REAL AI EMPLOYEE: ";
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: #e52e2e;
+      display: block;
+      margin-top: 6px;
+      margin-bottom: 2px;
+    }
+    .asap-dpt-demo-val,
+    .asap-dpt-real-val {
+      font-size: 13.5px;
+    }
+  }
+</style>
+
+<div class="asap-demo-prod-section" id="from-demo-to-production">
+  <div class="asap-demo-prod-container">
+
+    <!-- Red Eyebrow Kicker -->
+    <span class="asap-demo-prod-eyebrow">FROM DEMO TO PRODUCTION</span>
+
+    <!-- Two-tier Main Headline -->
+    <div class="asap-demo-prod-heading">
+      <h2 class="asap-demo-prod-title-bold">This is only the demo.</h2>
+      <h3 class="asap-demo-prod-title-serif">The real one knows how your business works.</h3>
+    </div>
+
+    <!-- Comparison Table Card -->
+    <div class="asap-demo-prod-card">
+
+      <!-- Header Row -->
+      <div class="asap-dpt-header-row">
+        <div></div>
+        <div class="asap-dpt-th-col asap-dpt-th-in-demo">IN THIS DEMO</div>
+        <div class="asap-dpt-th-col asap-dpt-th-in-real">IN YOUR REAL AI EMPLOYEE</div>
+      </div>
+
+      <!-- Table Body with 8 Comparison Features -->
+      <div class="asap-dpt-body">
+
+        <!-- Row 1: Knowledge -->
+        <div class="asap-dpt-row">
+          <div class="asap-dpt-label">Knowledge</div>
+          <div class="asap-dpt-demo-val">Your public website</div>
+          <div class="asap-dpt-real-val">Your price list, policies, FAQs and approved answers</div>
+        </div>
+
+        <!-- Row 2: Voice -->
+        <div class="asap-dpt-row">
+          <div class="asap-dpt-label">Voice</div>
+          <div class="asap-dpt-demo-val">Friendly and neutral</div>
+          <div class="asap-dpt-real-val">Your tone and greetings, in your customers' languages</div>
+        </div>
+
+        <!-- Row 3: Rules -->
+        <div class="asap-dpt-row">
+          <div class="asap-dpt-label">Rules</div>
+          <div class="asap-dpt-demo-val">Sensible defaults</div>
+          <div class="asap-dpt-real-val">Your rules: what it may say, do and never do</div>
+        </div>
+
+        <!-- Row 4: Channels -->
+        <div class="asap-dpt-row">
+          <div class="asap-dpt-label">Channels</div>
+          <div class="asap-dpt-demo-val">Website chat and a WhatsApp preview</div>
+          <div class="asap-dpt-real-val">Your WhatsApp number, phone line, website, Instagram and more</div>
+        </div>
+
+        <!-- Row 5: Actions -->
+        <div class="asap-dpt-row">
+          <div class="asap-dpt-label">Actions</div>
+          <div class="asap-dpt-demo-val">Simulated</div>
+          <div class="asap-dpt-real-val">Real bookings, reminders, CRM updates and payment links</div>
+        </div>
+
+        <!-- Row 6: Hand-over -->
+        <div class="asap-dpt-row">
+          <div class="asap-dpt-label">Hand-over</div>
+          <div class="asap-dpt-demo-val">Shown, not sent</div>
+          <div class="asap-dpt-real-val">To the right person, by WhatsApp, email or your CRM</div>
+        </div>
+
+        <!-- Row 7: Safeguards -->
+        <div class="asap-dpt-row">
+          <div class="asap-dpt-label">Safeguards</div>
+          <div class="asap-dpt-demo-val">General</div>
+          <div class="asap-dpt-real-val">Specific to your industry, reviewed with you</div>
+        </div>
+
+        <!-- Row 8: Results -->
+        <div class="asap-dpt-row">
+          <div class="asap-dpt-label">Results</div>
+          <div class="asap-dpt-demo-val">Not tracked</div>
+          <div class="asap-dpt-real-val">The business result this role is meant to improve, reported to you</div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -1,338 +1,472 @@
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-  .asap-calc-right {
-    font-family: 'Inter', sans-serif;
-  }
-
-  .asap-calc-card {
-    border-radius: 24px;
-    border: 1px solid #e2e8f0;
-    background-color: #ffffff;
-    padding: 24px;
-    box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.15);
-  }
-
-  @media (min-width: 640px) {
-    .asap-calc-card {
-      padding: 32px;
-    }
-  }
-
-  .asap-calc-grid {
-    display: grid;
-    gap: 40px;
-    grid-template-columns: 1fr;
-  }
-
-  @media (min-width: 768px) {
-    .asap-calc-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-    }
-  }
-
-  .asap-calc-inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  .asap-input-group {
+  .asap-calc-right-container {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 16px;
-  }
-
-  .asap-input-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .asap-input-label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #0f172a;
-  }
-
-  .asap-input-badge {
-    border-radius: 9999px;
-    background-color: #eff4ff;
-    padding: 4px 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #155EEF;
-  }
-
-  .asap-slider-container {
-    padding: 8px 0;
-  }
-
-  .asap-slider {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    height: 8px;
-    border-radius: 4px;
-    background: #e2e8f0;
-    outline: none;
-  }
-
-  .asap-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #155EEF;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-
-  .asap-slider-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: #64748b;
-  }
-
-  .asap-text-input-wrap {
-    position: relative;
-  }
-
-  .asap-text-input-prefix {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-weight: 500;
-    color: #64748b;
-  }
-
-  .asap-text-input {
-    width: 100%;
-    height: 44px;
-    border-radius: 12px;
-    border: 1px solid #e2e8f0;
-    padding-left: 32px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #0f172a;
     box-sizing: border-box;
-    font-family: inherit;
   }
 
-  .asap-text-input:focus {
-    outline: none;
-    border-color: #155EEF;
-  }
-
-  .asap-calc-results {
+  /* ========================================================
+     CARD 1: TOP INPUT CONTROLS CARD (WHITE / LIGHT)
+     ======================================================== */
+  .asap-calc-input-card {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #ffffff;
+    border-radius: 24px;
+    padding: 28px 30px;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.35);
     display: flex;
     flex-direction: column;
+    gap: 24px;
+    box-sizing: border-box;
+  }
+
+  .asap-calc-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .asap-control-header {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    border-radius: 16px;
-    background-color: #f8fafc;
-    padding: 24px;
-    text-align: center;
-    border: 1px solid #e2e8f0;
-    position: relative;
-    overflow: hidden;
+    justify-content: space-between;
   }
 
-  .asap-results-icon {
-    position: absolute;
-    left: 16px;
-    top: 16px;
-    display: grid;
-    place-items: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: #fef2f2;
-    color: #ef4444;
-  }
-
-  .asap-results-title {
-    margin: 24px 0 0 0;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #0f172a;
-  }
-
-  .asap-results-main {
-    margin: 12px 0 0 0;
-    font-family: 'Sora', sans-serif;
-    font-size: 2.25rem;
+  .asap-control-label {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 14.5px;
     font-weight: 700;
-    color: #f59e0b;
+    color: #1c1917;
+    margin: 0;
   }
 
-  @media (min-width: 640px) {
-    .asap-results-main {
-      font-size: 3rem;
-    }
+  .asap-control-val {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #1c1917;
   }
 
-  .asap-results-sub {
-    margin: 8px 0 0 0;
-    font-size: 0.75rem;
-    color: #64748b;
-  }
-
-  .asap-results-grid {
-    margin-top: 32px;
-    display: grid;
+  /* Range Sliders */
+  .asap-range-wrapper {
+    position: relative;
     width: 100%;
+    height: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  .asap-custom-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 9999px;
+    background: #e7e5e4;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .asap-custom-slider::-webkit-slider-runnable-track {
+    background: transparent;
+    height: 6px;
+    border-radius: 9999px;
+    border: none;
+  }
+
+  .asap-custom-slider::-moz-range-track {
+    background: transparent;
+    height: 6px;
+    border-radius: 9999px;
+    border: none;
+  }
+
+  /* WebKit Slider Thumb (Red Ring) - Centered precisely on 6px track */
+  .asap-custom-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 3.5px solid #e52e2e;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(229, 46, 46, 0.35);
+    margin-top: -8px; /* (6px - 22px)/2 = -8px centers perfectly */
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-sizing: border-box;
+  }
+
+  .asap-custom-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.12);
+    box-shadow: 0 4px 10px rgba(229, 46, 46, 0.45);
+  }
+
+  /* Mozilla Slider Thumb */
+  .asap-custom-slider::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 3.5px solid #e52e2e;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(229, 46, 46, 0.35);
+    box-sizing: border-box;
+  }
+
+  /* Mozilla Range Progress Fill */
+  .asap-custom-slider::-moz-range-progress {
+    background-color: #e52e2e;
+    height: 6px;
+    border-radius: 9999px;
+  }
+
+  /* Average Sale Value Input Box */
+  .asap-input-box-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1.5px solid #e7e5e4;
+    border-radius: 14px;
+    background-color: #ffffff;
+    height: 50px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .asap-input-box-wrap:focus-within {
+    border-color: #e52e2e;
+    box-shadow: 0 0 0 3px rgba(229, 46, 46, 0.12);
+  }
+
+  .asap-input-currency-prefix {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #57534e;
+    margin-right: 8px;
+    user-select: none;
+  }
+
+  .asap-number-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1c1917;
+    background: transparent;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .asap-number-input::-webkit-outer-spin-button,
+  .asap-number-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .asap-number-input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  /* ========================================================
+     CARD 2: BOTTOM RESULTS CARD (DARK / OBSIDIAN)
+     ======================================================== */
+  .asap-calc-result-card {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #1a1a1d;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .asap-result-kicker {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #e52e2e;
+    margin: 0 0 10px 0;
+  }
+
+  .asap-result-hero-amount {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin: 0 0 28px 0;
+    transition: all 0.2s ease;
+  }
+
+  /* Mini Metric Cards Grid */
+  .asap-mini-metrics-grid {
+    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
 
-  .asap-results-card {
-    border-radius: 12px;
-    border: 1px solid #e2e8f0;
-    background-color: #ffffff;
-    padding: 12px;
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+  .asap-mini-card {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #242429;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 14px;
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
 
-  .asap-results-card-title {
-    margin: 0 0 4px 0;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    color: #64748b;
-    text-transform: uppercase;
-  }
-
-  .asap-results-card-value {
+  .asap-mini-label {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px;
+    color: #9ca3af;
     margin: 0;
-    font-size: 1.125rem;
+    font-weight: 500;
+  }
+
+  .asap-mini-val {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 20px;
     font-weight: 700;
-    color: #0f172a;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  /* Footnote */
+  .asap-calc-footnote {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: #71717a;
+    margin: 22px 0 0 0;
+  }
+
+  @media (max-width: 480px) {
+    .asap-calc-input-card, .asap-calc-result-card {
+      padding: 22px 20px;
+    }
+    .asap-result-hero-amount {
+      font-size: 38px;
+    }
+    .asap-mini-val {
+      font-size: 17px;
+    }
   }
 </style>
 
-<div class="asap-calc-right">
-  <div class="asap-calc-card">
-    <div class="asap-calc-grid">
-      
-      <!-- Inputs -->
-      <div class="asap-calc-inputs">
-        <!-- Calls Per Week -->
-        <div class="asap-input-group">
-          <div class="asap-input-header">
-            <label class="asap-input-label">Missed Calls / Week</label>
-            <div class="asap-input-badge" id="asap-calls-badge">20</div>
-          </div>
-          <div class="asap-slider-container">
-            <input type="range" id="asap-calls-slider" class="asap-slider" min="0" max="300" step="1" value="20">
-          </div>
-          <div class="asap-slider-labels">
-            <span>0</span>
-            <span>300</span>
-          </div>
-        </div>
-
-        <!-- Average Sale Value -->
-        <div class="asap-input-group">
-          <label class="asap-input-label">Average Sale Value</label>
-          <div class="asap-text-input-wrap">
-            <span class="asap-text-input-prefix">$</span>
-            <input type="number" id="asap-value-input" class="asap-text-input" value="300">
-          </div>
-        </div>
-
-        <!-- Close Rate -->
-        <div class="asap-input-group">
-          <div class="asap-input-header">
-            <label class="asap-input-label">Close Rate</label>
-            <div class="asap-input-badge" id="asap-close-badge">30%</div>
-          </div>
-          <div class="asap-slider-container">
-            <input type="range" id="asap-close-slider" class="asap-slider" min="1" max="100" step="1" value="30">
-          </div>
-          <div class="asap-slider-labels">
-            <span>1%</span>
-            <span>100%</span>
-          </div>
-        </div>
+<div class="asap-calc-right-container">
+  
+  <!-- TOP CARD: CONTROLS (WHITE) -->
+  <div class="asap-calc-input-card">
+    
+    <!-- 1. Missed enquiries a week -->
+    <div class="asap-calc-control-group">
+      <div class="asap-control-header">
+        <label class="asap-control-label" for="asapMissedSlider">Missed enquiries a week</label>
+        <span class="asap-control-val" id="asapMissedVal">20</span>
       </div>
-
-      <!-- Results -->
-      <div class="asap-calc-results">
-        <div class="asap-results-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"></polyline><polyline points="16 17 22 17 22 11"></polyline></svg>
-        </div>
-        
-        <p class="asap-results-title">Lost to Competitors</p>
-        <p class="asap-results-main" id="asap-yearly-result">$312,000</p>
-        <p class="asap-results-sub">Per Year</p>
-
-        <div class="asap-results-grid">
-          <div class="asap-results-card">
-            <p class="asap-results-card-title">Weekly</p>
-            <p class="asap-results-card-value" id="asap-weekly-result">$6,000</p>
-          </div>
-          <div class="asap-results-card">
-            <p class="asap-results-card-title">Monthly</p>
-            <p class="asap-results-card-value" id="asap-monthly-result">$26,000</p>
-          </div>
-        </div>
+      <div class="asap-range-wrapper">
+        <input 
+          type="range" 
+          id="asapMissedSlider" 
+          class="asap-custom-slider" 
+          min="1" 
+          max="150" 
+          step="1" 
+          value="20"
+          style="background: linear-gradient(to right, #e52e2e 0%, #e52e2e 14.5%, #e7e5e4 14.5%, #e7e5e4 100%);"
+          oninput="window.asapCalcUpdate && window.asapCalcUpdate()"
+          onchange="window.asapCalcUpdate && window.asapCalcUpdate()"
+        />
       </div>
-
     </div>
+
+    <!-- 2. Average sale value -->
+    <div class="asap-calc-control-group">
+      <div class="asap-control-header">
+        <label class="asap-control-label" for="asapAvgSaleInput">Average sale value</label>
+      </div>
+      <div class="asap-input-box-wrap">
+        <span class="asap-input-currency-prefix">$</span>
+        <input 
+          type="number" 
+          id="asapAvgSaleInput" 
+          class="asap-number-input" 
+          value="300" 
+          min="1" 
+          step="10" 
+          oninput="window.asapCalcUpdate && window.asapCalcUpdate()"
+          onchange="window.asapCalcUpdate && window.asapCalcUpdate()"
+        />
+      </div>
+    </div>
+
+    <!-- 3. Close rate -->
+    <div class="asap-calc-control-group">
+      <div class="asap-control-header">
+        <label class="asap-control-label" for="asapCloseSlider">Close rate</label>
+        <span class="asap-control-val" id="asapCloseVal">30%</span>
+      </div>
+      <div class="asap-range-wrapper">
+        <input 
+          type="range" 
+          id="asapCloseSlider" 
+          class="asap-custom-slider" 
+          min="1" 
+          max="100" 
+          step="1" 
+          value="30"
+          style="background: linear-gradient(to right, #e52e2e 0%, #e52e2e 30.3%, #e7e5e4 30.3%, #e7e5e4 100%);"
+          oninput="window.asapCalcUpdate && window.asapCalcUpdate()"
+          onchange="window.asapCalcUpdate && window.asapCalcUpdate()"
+        />
+      </div>
+    </div>
+
   </div>
+
+  <!-- BOTTOM CARD: RESULTS (DARK OBSIDIAN) -->
+  <div class="asap-calc-result-card">
+    <div class="asap-result-kicker">AT RISK EACH YEAR</div>
+    
+    <!-- Hero Yearly Amount -->
+    <div class="asap-result-hero-amount" id="asapYearlyAmount">$93,600</div>
+
+    <!-- Mini Metrics Grid -->
+    <div class="asap-mini-metrics-grid">
+      <div class="asap-mini-card">
+        <span class="asap-mini-label">A week</span>
+        <span class="asap-mini-val" id="asapWeeklyAmount">$1,800</span>
+      </div>
+      <div class="asap-mini-card">
+        <span class="asap-mini-label">A month</span>
+        <span class="asap-mini-val" id="asapMonthlyAmount">$7,800</span>
+      </div>
+    </div>
+
+    <!-- Footnote Equation -->
+    <p class="asap-calc-footnote">
+      Estimate: missed enquiries &times; average sale &times; close rate, over 52 weeks.
+    </p>
+  </div>
+
 </div>
 
+<!-- Guaranteed Execution Trigger for Page Builders -->
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" onerror="window.asapCalcInit && window.asapCalcInit()" style="display:none !important;" />
+
+<!-- Bulletproof Real-Time Calculation Engine -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const callsSlider = document.getElementById('asap-calls-slider');
-    const callsBadge = document.getElementById('asap-calls-badge');
-    const valueInput = document.getElementById('asap-value-input');
-    const closeSlider = document.getElementById('asap-close-slider');
-    const closeBadge = document.getElementById('asap-close-badge');
-    
-    const yearlyEl = document.getElementById('asap-yearly-result');
-    const weeklyEl = document.getElementById('asap-weekly-result');
-    const monthlyEl = document.getElementById('asap-monthly-result');
+(function() {
+  function updateSliderFill(slider) {
+    if (!slider) return;
+    const min = parseFloat(slider.min) || 0;
+    const max = parseFloat(slider.max) || 100;
+    const val = parseFloat(slider.value) || 0;
+    const rawPct = (val - min) / (max - min); // 0 to 1
 
-    const formatCurrency = (val) => {
-      return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        maximumFractionDigits: 0
-      }).format(val);
-    };
+    // Slider thumb is 22px wide. In browser range inputs, the thumb's center
+    // moves from (thumbWidth / 2) to (sliderWidth - thumbWidth / 2).
+    // To keep the filled bar and thumb 100% in sync without the bar bleeding past the circle:
+    const thumbWidth = 22;
+    const sliderWidth = slider.offsetWidth || 300;
+    const usableWidth = sliderWidth - thumbWidth;
+    const thumbCenterPx = (thumbWidth / 2) + (rawPct * usableWidth);
+    const correctedPct = (thumbCenterPx / sliderWidth) * 100;
 
-    const calculate = () => {
-      const callsPerWeek = parseInt(callsSlider.value) || 0;
-      const closeRate = parseInt(closeSlider.value) || 0;
-      const avgSaleValue = parseInt(valueInput.value) || 0;
+    slider.style.background = 'linear-gradient(to right, #e52e2e 0%, #e52e2e ' + correctedPct.toFixed(2) + '%, #e7e5e4 ' + correctedPct.toFixed(2) + '%, #e7e5e4 100%)';
+  }
 
-      callsBadge.textContent = callsPerWeek;
-      closeBadge.textContent = closeRate + '%';
+  function formatSGD(amount) {
+    const rounded = Math.round(amount);
+    return 'S$' + rounded.toLocaleString('en-US');
+  }
 
-      const callsPerYear = callsPerWeek * 52;
-      const missedDealsPerYear = callsPerYear * (closeRate / 100);
-      const missedRevenuePerYear = missedDealsPerYear * avgSaleValue;
-      
-      const weeklyMissed = missedRevenuePerYear / 52;
-      const monthlyMissed = missedRevenuePerYear / 12;
+  window.asapCalcUpdate = function() {
+    const missedSlider = document.getElementById('asapMissedSlider') || document.getElementById('asapFullMissedSlider');
+    const missedVal = document.getElementById('asapMissedVal') || document.getElementById('asapFullMissedVal');
+    const avgSaleInput = document.getElementById('asapAvgSaleInput') || document.getElementById('asapFullAvgSaleInput');
+    const closeSlider = document.getElementById('asapCloseSlider') || document.getElementById('asapFullCloseSlider');
+    const closeVal = document.getElementById('asapCloseVal') || document.getElementById('asapFullCloseVal');
 
-      yearlyEl.textContent = formatCurrency(missedRevenuePerYear);
-      weeklyEl.textContent = formatCurrency(weeklyMissed);
-      monthlyEl.textContent = formatCurrency(monthlyMissed);
-    };
+    const yearlyEl = document.getElementById('asapYearlyAmount') || document.getElementById('asapFullYearlyAmount');
+    const weeklyEl = document.getElementById('asapWeeklyAmount') || document.getElementById('asapFullWeeklyAmount');
+    const monthlyEl = document.getElementById('asapMonthlyAmount') || document.getElementById('asapFullMonthlyAmount');
 
-    callsSlider.addEventListener('input', calculate);
-    valueInput.addEventListener('input', calculate);
-    closeSlider.addEventListener('input', calculate);
+    if (!missedSlider || !avgSaleInput || !closeSlider) return false;
 
-    // Initial calculation
-    calculate();
-  });
+    const missed = parseInt(missedSlider.value, 10) || 0;
+    const avgSale = parseFloat(avgSaleInput.value) || 0;
+    const closeRate = parseInt(closeSlider.value, 10) || 0;
+
+    if (missedVal) missedVal.textContent = missed;
+    if (closeVal) closeVal.textContent = closeRate + '%';
+
+    updateSliderFill(missedSlider);
+    updateSliderFill(closeSlider);
+
+    const annualDeals = (missed * 52) * (closeRate / 100);
+    const annualLoss = annualDeals * avgSale;
+    const weeklyLoss = annualLoss / 52;
+    const monthlyLoss = annualLoss / 12;
+
+    if (yearlyEl) yearlyEl.textContent = formatSGD(annualLoss);
+    if (weeklyEl) weeklyEl.textContent = formatSGD(weeklyLoss);
+    if (monthlyEl) monthlyEl.textContent = formatSGD(monthlyLoss);
+
+    return true;
+  };
+
+  window.asapCalcInit = function() {
+    window.asapCalcUpdate();
+  };
+
+  // Delegated event listener for instant responsiveness
+  document.addEventListener('input', function(e) {
+    if (e.target && (e.target.id === 'asapMissedSlider' || e.target.id === 'asapAvgSaleInput' || e.target.id === 'asapCloseSlider' || e.target.id === 'asapFullMissedSlider' || e.target.id === 'asapFullAvgSaleInput' || e.target.id === 'asapFullCloseSlider')) {
+      window.asapCalcUpdate();
+    }
+  }, true);
+
+  document.addEventListener('change', function(e) {
+    if (e.target && (e.target.id === 'asapMissedSlider' || e.target.id === 'asapAvgSaleInput' || e.target.id === 'asapCloseSlider' || e.target.id === 'asapFullMissedSlider' || e.target.id === 'asapFullAvgSaleInput' || e.target.id === 'asapFullCloseSlider')) {
+      window.asapCalcUpdate();
+    }
+  }, true);
+
+  // Ready hook
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", window.asapCalcInit);
+  } else {
+    window.asapCalcInit();
+  }
+
+  // Polling retry to guarantee execution inside builders/iframes
+  let attempts = 0;
+  const poll = setInterval(function() {
+    attempts++;
+    const ready = window.asapCalcUpdate();
+    if (ready || attempts > 30) {
+      clearInterval(poll);
+    }
+  }, 200);
+})();
 </script>

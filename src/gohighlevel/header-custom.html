@@ -1,0 +1,551 @@
+<!-- ==========================================================================
+     ASAP AI - STANDALONE CUSTOM HTML NAVIGATION HEADER
+     Component File: src/gohighlevel/header-custom.html
+     
+     Usage:
+     1. Add a single "Custom HTML / JS" element in GoHighLevel at the very top of your page.
+     2. Paste this entire file into it.
+     3. You can completely hide/delete the old GHL header section (section-IiulQh_Vv9).
+     
+     Features:
+     - 100% self-contained (HTML markup, styling, and interactivity all included).
+     - Page-aware logic:
+         * When on https://demo.asapai.ai/landing-page-page (or /):
+           "How it Works", "AI Roles", and "FAQ" links are visible.
+         * When on https://demo.asapai.ai/thank-you-page-page (or /thank-you-page):
+           The navigation menus and hamburger toggle are automatically HIDDEN.
+     - Smooth scrolling to target sections with automatic header height offset.
+     - Fully optimized for Mobile, Tablet, and Desktop screens.
+     - Animated hamburger icon + high-end backdrop-blur slide drawer for mobile/tablet.
+     ========================================================================== -->
+
+<header id="asapMainHeader" class="asap-header-root">
+  <div class="asap-header-container">
+    
+    <!-- 1. Brand Logo -->
+    <a href="https://demo.asapai.ai/landing-page-page" class="asap-header-logo" aria-label="ASAP AI Home">
+      <picture>
+        <source media="(max-width: 640px)" srcset="https://images.leadconnectorhq.com/image/f_webp/q_80/r_480/u_https://assets.cdn.filesafe.space/VU1vYA2ZpTbrXSZ2wwtg/media/6a980b5f738fb3768deca63e.svg">
+        <img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/VU1vYA2ZpTbrXSZ2wwtg/media/6a980b5f738fb3768deca63e.svg" alt="ASAP AI" class="asap-logo-img">
+      </picture>
+    </a>
+
+    <!-- 2. Desktop Navigation Menu Links -->
+    <nav class="asap-header-nav" id="asapDesktopNav" aria-label="Main Navigation">
+      <a href="#how-it-works" class="asap-nav-link" data-scroll="how-it-works">How it Works</a>
+      <a href="#ai-roles" class="asap-nav-link" data-scroll="ai-roles">AI Roles</a>
+      <a href="#faq" class="asap-nav-link" data-scroll="faq">FAQ</a>
+    </nav>
+
+    <!-- 3. Right Action Area: Support Email & Mobile Hamburger -->
+    <div class="asap-header-actions">
+      <!-- Support Email Badge -->
+      <a href="mailto:support@asapai.com" class="asap-support-badge" aria-label="Contact Support">
+        <span class="asap-status-dot"></span>
+        <span class="asap-support-email">support@asapai.com</span>
+      </a>
+
+      <!-- Mobile / Tablet Hamburger Toggle Button -->
+      <button type="button" id="asapBurgerBtn" class="asap-burger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="asap-burger-bar"></span>
+        <span class="asap-burger-bar"></span>
+        <span class="asap-burger-bar"></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- 4. Mobile & Tablet Slide-down Navigation Drawer -->
+  <div id="asapNavDrawer" class="asap-nav-drawer" aria-hidden="true">
+    <div class="asap-drawer-inner">
+      <a href="#how-it-works" class="asap-drawer-link" data-scroll="how-it-works">
+        <span>How it Works</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+      <a href="#ai-roles" class="asap-drawer-link" data-scroll="ai-roles">
+        <span>AI Roles</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+      <a href="#faq" class="asap-drawer-link" data-scroll="faq">
+        <span>FAQ</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+      <div class="asap-drawer-footer">
+        <a href="mailto:support@asapai.com" class="asap-drawer-email-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          support@asapai.com
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  /* If the old GHL section-IiulQh_Vv9 is still present in the page, keep it cleanly hidden */
+  #section-IiulQh_Vv9 {
+    display: none !important;
+  }
+
+  /* Root Header Element */
+  .asap-header-root {
+    width: 100% !important;
+    background-color: #0d0d0f !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    box-sizing: border-box !important;
+    transition: background 0.3s ease, border-color 0.3s ease !important;
+  }
+
+  .asap-header-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-sizing: border-box;
+  }
+
+  /* Brand Logo */
+  .asap-header-logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .asap-header-logo:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+  }
+
+  .asap-logo-img {
+    height: 38px;
+    width: auto;
+    max-height: 38px;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* Desktop Navigation */
+  .asap-header-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto 0 32px; /* slight left-center anchor */
+  }
+
+  .asap-nav-link {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 14.5px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    letter-spacing: -0.01em;
+  }
+
+  .asap-nav-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Right Action Area */
+  .asap-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  /* Support Badge */
+  .asap-support-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    background: rgba(229, 46, 46, 0.08);
+    border: 1px solid rgba(229, 46, 46, 0.25);
+    padding: 7px 16px;
+    border-radius: 9999px;
+    color: #ff4d4d;
+    font-size: 13.5px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+  }
+
+  .asap-support-badge:hover {
+    background: rgba(229, 46, 46, 0.18);
+    border-color: rgba(229, 46, 46, 0.45);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(229, 46, 46, 0.2);
+  }
+
+  .asap-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #22c55e;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  /* Mobile Hamburger Button */
+  .asap-burger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    margin-left: 4px;
+  }
+
+  .asap-burger-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+
+  .asap-burger-bar {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  /* Hamburger transform when open */
+  .asap-burger-btn.active .asap-burger-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .asap-burger-btn.active .asap-burger-bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .asap-burger-btn.active .asap-burger-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile Drawer Menu */
+  .asap-nav-drawer {
+    display: none;
+    width: 100%;
+    background: rgba(13, 13, 15, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+    box-sizing: border-box;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+    opacity: 0;
+  }
+
+  .asap-nav-drawer.open {
+    max-height: 400px;
+    opacity: 1;
+  }
+
+  .asap-drawer-inner {
+    padding: 18px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .asap-drawer-link {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-size: 15.5px;
+    font-weight: 500;
+    padding: 13px 18px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+  }
+
+  .asap-drawer-link:hover,
+  .asap-drawer-link:active {
+    background: rgba(229, 46, 46, 0.12);
+    border-color: rgba(229, 46, 46, 0.3);
+    color: #ffffff;
+    transform: translateX(4px);
+  }
+
+  .asap-drawer-footer {
+    margin-top: 8px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .asap-drawer-email-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(229, 46, 46, 0.08);
+    border: 1px solid rgba(229, 46, 46, 0.25);
+    color: #ff4d4d;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .asap-drawer-email-btn:hover {
+    background: rgba(229, 46, 46, 0.18);
+    color: #ffffff;
+  }
+
+  /* ==========================================================================
+     PAGE AWARE BEHAVIOR: THANK YOU PAGE HIDING
+     ========================================================================== */
+  .asap-is-thankyou .asap-header-nav,
+  .asap-is-thankyou .asap-burger-btn,
+  .asap-is-thankyou .asap-nav-drawer {
+    display: none !important;
+  }
+
+  /* ==========================================================================
+     RESPONSIVE BREAKPOINTS (Tablets & Mobile)
+     ========================================================================== */
+  @media (max-width: 991px) {
+    .asap-header-container {
+      padding: 12px 20px;
+    }
+
+    /* Hide desktop links */
+    .asap-header-nav {
+      display: none !important;
+    }
+
+    /* Show hamburger unless on thank you page */
+    .asap-burger-btn {
+      display: flex;
+    }
+
+    .asap-nav-drawer {
+      display: block;
+    }
+
+    .asap-logo-img {
+      height: 32px;
+      max-height: 32px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .asap-header-container {
+      padding: 10px 16px;
+    }
+
+    .asap-logo-img {
+      height: 28px;
+      max-height: 28px;
+    }
+
+    .asap-support-badge {
+      font-size: 11.5px;
+      padding: 5px 12px;
+      max-width: 145px;
+    }
+
+    .asap-support-email {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .asap-burger-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+
+    .asap-burger-bar {
+      width: 18px;
+    }
+  }
+</style>
+
+<script>
+(function() {
+  const HEADER_TARGETS = {
+    'how-it-works': ['section-wpApvuEa-n', 'asap-hiw-headline'],
+    'ai-roles': ['section-O_cxp_c5WE', 'section-real-business-roles'],
+    'faq': ['section-TKbM_hcXdN', 'asap-faq-container', 'asap-faq-section']
+  };
+
+  /**
+   * 1. Check if current page is the Thank You page
+   */
+  function evaluatePageContext() {
+    const header = document.getElementById('asapMainHeader');
+    if (!header) return;
+
+    const path = window.location.pathname.toLowerCase();
+    const href = window.location.href.toLowerCase();
+
+    // Check if URL indicates thank you page
+    const isThankYou = path.includes('thank-you') || href.includes('thank-you');
+
+    if (isThankYou) {
+      header.classList.add('asap-is-thankyou');
+    } else {
+      header.classList.remove('asap-is-thankyou');
+    }
+  }
+
+  /**
+   * 2. Smoothly scroll to a section or navigate cross-page
+   */
+  function handleNavigate(targetKey) {
+    const isThankYou = window.location.pathname.toLowerCase().includes('thank-you');
+
+    // If clicking from Thank You page, navigate back to Landing Page with hash
+    if (isThankYou) {
+      window.location.href = 'https://demo.asapai.ai/landing-page-page#' + targetKey;
+      return;
+    }
+
+    const selectors = HEADER_TARGETS[targetKey] || [];
+    let targetEl = null;
+
+    for (let i = 0; i < selectors.length; i++) {
+      const el = document.getElementById(selectors[i]) || document.querySelector('.' + selectors[i]);
+      if (el) {
+        targetEl = el;
+        break;
+      }
+    }
+
+    if (targetEl) {
+      const headerEl = document.getElementById('asapMainHeader');
+      const headerHeight = headerEl ? headerEl.offsetHeight : 70;
+      const elementPosition = targetEl.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - (headerHeight + 10);
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  /**
+   * 3. Bind Hamburger & Drawer Events
+   */
+  function initNavigation() {
+    evaluatePageContext();
+
+    const burgerBtn = document.getElementById('asapBurgerBtn');
+    const drawer = document.getElementById('asapNavDrawer');
+
+    if (burgerBtn && drawer && !burgerBtn.dataset.bound) {
+      burgerBtn.dataset.bound = 'true';
+
+      burgerBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const isOpen = drawer.classList.contains('open');
+        if (isOpen) {
+          drawer.classList.remove('open');
+          burgerBtn.classList.remove('active');
+          burgerBtn.setAttribute('aria-expanded', 'false');
+          drawer.setAttribute('aria-hidden', 'true');
+        } else {
+          drawer.classList.add('open');
+          burgerBtn.classList.add('active');
+          burgerBtn.setAttribute('aria-expanded', 'true');
+          drawer.setAttribute('aria-hidden', 'false');
+        }
+      });
+
+      // Close drawer when clicking anywhere outside
+      document.addEventListener('click', function(e) {
+        if (!drawer.contains(e.target) && !burgerBtn.contains(e.target)) {
+          drawer.classList.remove('open');
+          burgerBtn.classList.remove('active');
+          burgerBtn.setAttribute('aria-expanded', 'false');
+          drawer.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }
+
+    // Attach click listeners to desktop and drawer nav links
+    const allLinks = document.querySelectorAll('.asap-nav-link, .asap-drawer-link');
+    allLinks.forEach(function(link) {
+      if (!link.dataset.bound) {
+        link.dataset.bound = 'true';
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          if (drawer && burgerBtn) {
+            drawer.classList.remove('open');
+            burgerBtn.classList.remove('active');
+            burgerBtn.setAttribute('aria-expanded', 'false');
+            drawer.setAttribute('aria-hidden', 'true');
+          }
+
+          const target = link.getAttribute('data-scroll');
+          if (target) handleNavigate(target);
+        });
+      }
+    });
+  }
+
+  // Run on load and periodically in case of client routing
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavigation);
+  } else {
+    initNavigation();
+  }
+
+  setInterval(function() {
+    evaluatePageContext();
+  }, 600);
+
+  // If page loaded with an anchor hash (e.g. #faq), scroll to it after render
+  window.addEventListener('load', function() {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && HEADER_TARGETS[hash]) {
+      setTimeout(function() {
+        handleNavigate(hash);
+      }, 450);
+    }
+  });
+})();
+</script>

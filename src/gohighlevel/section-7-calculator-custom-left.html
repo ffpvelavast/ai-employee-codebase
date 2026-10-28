@@ -1,60 +1,102 @@
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,500;1,600;1,700&display=swap');
 
-  .asap-calc-left {
-    max-width: 600px;
-    font-family: 'Inter', sans-serif;
+  .asap-calc-left-container {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #ffffff;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    box-sizing: border-box;
   }
 
-  .asap-eyebrow {
-    letter-spacing: 0.18em;
+  /* Eyebrow in red */
+  .asap-calc-eyebrow {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #155EEF;
-    font-size: 0.72rem;
-    font-weight: 700;
-    margin: 0;
+    color: #e52e2e;
+    margin: 0 0 24px 0;
+    display: block;
   }
 
+  /* Main Title with Editorial Serif */
   .asap-calc-title {
-    font-family: 'Sora', sans-serif;
-    font-size: 2rem;
-    line-height: 1.08;
-    font-weight: 700;
-    color: #0f172a;
-    margin: 16px 0 0 0;
-    letter-spacing: -0.028em;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 54px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin: 0 0 24px 0;
   }
 
-  @media (min-width: 640px) {
-    .asap-calc-title {
-      font-size: 3rem;
-    }
+  .asap-calc-title .asap-title-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: -0.01em;
+    display: block;
+    color: #f3f4f6;
   }
 
-  .asap-calc-title span {
-    color: #155EEF;
-  }
-
+  /* Description paragraph */
   .asap-calc-desc {
-    margin: 24px 0 0 0;
-    font-size: 1rem;
-    line-height: 1.625;
-    color: #64748b;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 17px;
+    line-height: 1.62;
+    color: #9ca3af;
+    margin: 0 0 36px 0;
+    font-weight: 400;
+    max-width: 480px;
   }
 
-  @media (min-width: 640px) {
+  /* Italic Serif Question */
+  .asap-calc-quote {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 26px;
+    line-height: 1.35;
+    color: #e5e7eb;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .asap-calc-title {
+      font-size: 40px;
+      line-height: 1.08;
+    }
+    .asap-calc-quote {
+      font-size: 22px;
+    }
     .asap-calc-desc {
-      font-size: 1.125rem;
+      font-size: 15.5px;
     }
   }
 </style>
 
-<div class="asap-calc-left">
-  <p class="asap-eyebrow">Revenue leak</p>
+<div class="asap-calc-left-container">
+  <!-- Eyebrow Tag -->
+  <span class="asap-calc-eyebrow">REVENUE AT RISK</span>
+  
+  <!-- Main Heading -->
   <h2 class="asap-calc-title">
-    Calculate Your <span>Missed Revenue.</span>
+    Calculate your
+    <span class="asap-title-serif">missed revenue.</span>
   </h2>
+  
+  <!-- Description -->
   <p class="asap-calc-desc">
-    Every missed call could be a missed customer. See how much money is slipping through the cracks, and how an AI Employee can capture it.
+    Every missed call or unanswered message could be a customer who went elsewhere. Move the sliders to see what that costs you.
+  </p>
+  
+  <!-- Italic Editorial Accent Question -->
+  <p class="asap-calc-quote">
+    What if your business never missed that first moment?
   </p>
 </div>

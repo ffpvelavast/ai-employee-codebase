@@ -1,0 +1,368 @@
+<!-- ========================================================
+     ASAP AI - "YOU DON'T NEED ANOTHER AI TOOL" SECTION
+     Single self-contained file for GoHighLevel Custom HTML/JS element
+     ======================================================== -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,500;1,600;1,700&display=swap');
+
+  .asap-partner-section {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f5f2eb; /* Warm premium beige tone matching design */
+    color: #171717;
+    padding: 100px 24px;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .asap-partner-container {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  /* Main Headline */
+  .asap-partner-heading {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 54px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: #1a1a1a;
+    margin: 0 0 24px 0;
+    text-transform: uppercase;
+  }
+
+  .asap-partner-heading .asap-period-red {
+    color: #e52e2e;
+    font-size: 1.05em;
+  }
+
+  /* Subtitle in elegant italic serif */
+  .asap-partner-subheading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #262626;
+    margin: 0 0 20px 0;
+    letter-spacing: -0.01em;
+  }
+
+  /* Explanatory Paragraph */
+  .asap-partner-description {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.62;
+    color: #404040;
+    max-width: 680px;
+    margin: 0 0 48px 0;
+    font-weight: 400;
+  }
+
+  /* Comparison Cards Grid */
+  .asap-partner-cards-grid {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 1.08fr;
+    gap: 28px;
+    width: 100%;
+    align-items: stretch;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+  }
+
+  /* Common Card Styles */
+  .asap-comp-card {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    border-radius: 28px;
+    padding: 36px 36px 36px 36px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .asap-comp-card:hover {
+    transform: translateY(-3px);
+  }
+
+  /* Card 1: Light Card (Buying AI Software) */
+  .asap-comp-card-light {
+    background-color: #ede7dc; /* Slightly deeper warm contrast card */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Card 2: Dark Card (Hiring with ASAP AI) */
+  .asap-comp-card-dark {
+    background-color: #171717; /* Deep rich dark background */
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Card Title / Kicker */
+  .asap-comp-card-header {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    min-height: 28px;
+  }
+
+  .asap-comp-card-light .asap-comp-card-header {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #737373;
+  }
+
+  .asap-comp-card-dark .asap-comp-card-header {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
+  .asap-comp-logo {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: inline-flex;
+    align-items: baseline;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-transform: lowercase;
+    font-size: 13.5px;
+  }
+
+  .asap-comp-logo .asap-logo-red {
+    color: #e52e2e;
+  }
+
+  .asap-comp-logo .asap-logo-white {
+    color: #ffffff;
+  }
+
+  /* Comparison Item Lists */
+  .asap-comp-list {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  .asap-comp-item {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding: 13px 0;
+    font-size: 14.5px;
+    line-height: 1.45;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Divider borders between rows */
+  .asap-comp-card-light .asap-comp-item {
+    color: #666666;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .asap-comp-card-light .asap-comp-item:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .asap-comp-card-light .asap-comp-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .asap-comp-card-dark .asap-comp-item {
+    color: #e5e5e5;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  }
+
+  .asap-comp-card-dark .asap-comp-item:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+  }
+
+  .asap-comp-card-dark .asap-comp-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  /* Red bullets in dark card */
+  .asap-comp-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #e52e2e;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+
+  /* Bottom Statement Footer Note */
+  .asap-partner-footer {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #1f2937;
+    margin-top: 10px;
+    font-weight: 500;
+  }
+
+  .asap-partner-footer strong {
+    font-weight: 800;
+    color: #000000;
+  }
+
+  /* ========================================================
+     RESPONSIVE BREAKPOINTS
+     ======================================================== */
+  @media (max-width: 1024px) {
+    .asap-partner-heading {
+      font-size: 42px;
+      line-height: 1.08;
+    }
+    .asap-partner-subheading {
+      font-size: 26px;
+    }
+    .asap-partner-cards-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .asap-partner-section {
+      padding: 70px 18px;
+    }
+    .asap-partner-heading {
+      font-size: 34px;
+      line-height: 1.1;
+    }
+    .asap-partner-subheading {
+      font-size: 22px;
+      line-height: 1.3;
+      margin-bottom: 18px;
+    }
+    .asap-partner-description {
+      font-size: 15px;
+      margin-bottom: 36px;
+    }
+    .asap-comp-card {
+      padding: 26px 20px;
+      border-radius: 22px;
+    }
+    .asap-comp-item {
+      font-size: 13.5px;
+      padding: 11px 0;
+    }
+    .asap-partner-footer {
+      font-size: 13px;
+    }
+  }
+</style>
+
+<div class="asap-partner-section" id="ai-transformation-partner">
+  <div class="asap-partner-container">
+
+    <!-- Big Headline -->
+    <h1 class="asap-partner-heading">
+      YOU DON'T<br>
+      NEED ANOTHER<br>
+      AI TOOL<span class="asap-period-red">.</span>
+    </h1>
+
+    <!-- Subtitle in Serif Italic -->
+    <h2 class="asap-partner-subheading">
+      You need a partner in your AI transformation.
+    </h2>
+
+    <!-- Explanatory Text -->
+    <p class="asap-partner-description">
+      AI software gives you the parts. Making it work with your services, rules,
+      WhatsApp, calendar and team is the real work. That's the work we do.
+    </p>
+
+    <!-- Side-by-side Comparison Cards -->
+    <div class="asap-partner-cards-grid">
+
+      <!-- LEFT: Buying AI Software -->
+      <div class="asap-comp-card asap-comp-card-light">
+        <div class="asap-comp-card-header">
+          <span>BUYING AI SOFTWARE</span>
+        </div>
+        <ul class="asap-comp-list">
+          <li class="asap-comp-item">You set it up.</li>
+          <li class="asap-comp-item">You write everything it knows.</li>
+          <li class="asap-comp-item">You connect it to WhatsApp, phone and calendar.</li>
+          <li class="asap-comp-item">You decide what it must never say.</li>
+          <li class="asap-comp-item">You fix it when something goes wrong.</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT: Hiring with ASAP AI -->
+      <div class="asap-comp-card asap-comp-card-dark">
+        <div class="asap-comp-card-header">
+          <span>HIRING WITH&nbsp;</span>
+          <span class="asap-comp-logo">
+            <span class="asap-logo-red">asap</span><span class="asap-logo-white">ai</span>
+          </span>
+        </div>
+        <ul class="asap-comp-list">
+          <li class="asap-comp-item">
+            <span class="asap-comp-dot"></span>
+            <span>We learn how your business runs.</span>
+          </li>
+          <li class="asap-comp-item">
+            <span class="asap-comp-dot"></span>
+            <span>We design the role, the rules and the voice.</span>
+          </li>
+          <li class="asap-comp-item">
+            <span class="asap-comp-dot"></span>
+            <span>We train it on your information.</span>
+          </li>
+          <li class="asap-comp-item">
+            <span class="asap-comp-dot"></span>
+            <span>We connect it to your channels and calendar.</span>
+          </li>
+          <li class="asap-comp-item">
+            <span class="asap-comp-dot"></span>
+            <span>We test it with your team before customers see it.</span>
+          </li>
+          <li class="asap-comp-item">
+            <span class="asap-comp-dot"></span>
+            <span>We keep improving it after launch.</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Reassurance Note -->
+    <div class="asap-partner-footer">
+      <strong>We build on leading AI models.</strong> The difference is how your AI Employee is designed, trained and managed.
+    </div>
+
+  </div>
+</div>

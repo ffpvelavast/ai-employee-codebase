@@ -1,231 +1,650 @@
+<!-- ========================================================
+     ASAP AI - "AI HANDLES THE ROUTINE. YOUR PEOPLE HANDLE WHAT MATTERS." SECTION
+     Replacement for src/gohighlevel/section-8-human-ai-custom.html
+     Self-contained file for GoHighLevel Custom HTML/JS element
+     ======================================================== -->
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap');
 
-  /* Container & Utilities */
-  .asap-human-ai-section {
-    font-family: 'Inter', sans-serif;
-    color: #0f172a;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .asap-section-white {
+  .asap-hai-section {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: #ffffff;
-    padding: 100px 20px;
+    color: #171717;
+    padding: 100px 24px;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
   }
 
-  .asap-container {
-    max-width: 1200px;
+  .asap-hai-container {
+    max-width: 1060px;
     margin: 0 auto;
     width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
   }
 
-  .asap-eyebrow {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
+  /* Red Eyebrow Kicker */
+  .asap-hai-eyebrow {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #3b82f6; /* Blue */
-    margin-bottom: 16px;
+    color: #e52e2e;
+    margin: 0 0 20px 0;
     display: block;
+    line-height: 1.2;
   }
 
-  /* ---------------- PART 1: HUMAN + AI ---------------- */
-  .asap-human-ai-grid {
+  /* Two-tier Main Headline */
+  .asap-hai-heading {
+    margin: 0 0 44px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .asap-hai-heading-main {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 54px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: #141416;
+  }
+
+  .asap-hai-heading-sub {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #242426;
+  }
+
+  /* Top 2 Comparison Cards (AI vs Human Team) */
+  .asap-hai-cards-row {
     display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 64px;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+  }
+
+  .asap-hai-card {
+    background-color: #f5f2eb; /* Warm light beige matching screenshot */
+    border-radius: 28px;
+    padding: 34px 34px 28px 34px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .asap-hai-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .asap-hai-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  /* Left avatar: Lowercase bold 'a' badge */
+  .asap-hai-badge-ai {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #171717;
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-family: 'Inter', sans-serif;
+    flex-shrink: 0;
+  }
+
+  /* Right avatar: Warm brown/tan circular disc */
+  .asap-hai-badge-team {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #926f4f;
+    flex-shrink: 0;
+  }
+
+  .asap-hai-card-title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #171717;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  /* Red subtitle in uppercase */
+  .asap-hai-card-kicker-red {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #e52e2e;
+    margin: 0 0 20px 0;
+    line-height: 1.25;
+  }
+
+  /* Muted grey subtitle in uppercase */
+  .asap-hai-card-kicker-muted {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #737373;
+    margin: 0 0 20px 0;
+    line-height: 1.25;
+  }
+
+  /* Card rows list */
+  .asap-hai-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .asap-hai-item {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
+    color: #383838;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    box-sizing: border-box;
+  }
+
+  .asap-hai-item:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.07);
+  }
+
+  .asap-hai-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  /* Interstitial reassurance paragraph */
+  .asap-hai-middle-note {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    color: #1f2937;
+    font-weight: 600;
+    margin: 24px 0 44px 0;
+    max-width: 650px;
+  }
+
+  /* ========================================================
+     BOTTOM BIG CARD (HANDOFF & RULES)
+     ======================================================== */
+  .asap-hai-bottom-banner {
+    background-color: #f5f2eb; /* Same warm beige as design */
+    border-radius: 32px;
+    padding: 44px 40px;
+    width: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 48px;
     align-items: center;
   }
 
-  @media (max-width: 1024px) {
-    .asap-human-ai-grid {
-      grid-template-columns: 1fr;
-      gap: 48px;
-    }
-  }
-
-  .asap-human-title {
-    font-size: 44px;
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: #0f172a;
-    margin: 0 0 20px 0;
-  }
-
-  .asap-human-desc {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #64748b;
-    max-width: 450px;
-    margin: 0;
-  }
-
-  /* Comparison Cards */
-  .asap-comparison-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  @media (max-width: 640px) {
-    .asap-comparison-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* Without AI */
-  .asap-card-without {
-    background-color: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 24px;
-    padding: 24px;
-    height: 100%;
-    transition: transform 0.3s ease;
-    cursor: default;
-  }
-  .asap-card-without:hover {
-    transform: translateY(-4px);
-  }
-
-  .asap-card-without-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: #64748b;
-    margin: 0 0 20px 0;
-  }
-
-  /* With AI */
-  .asap-card-with {
-    background-color: #ffffff;
-    border: 1px solid rgba(59, 130, 246, 0.2); /* blue/20 */
-    border-radius: 24px;
-    padding: 24px;
-    height: 100%;
-    box-shadow: 0 12px 32px -18px rgba(15, 23, 42, 0.15);
-    transition: transform 0.3s ease, border-color 0.3s ease;
-    cursor: default;
-  }
-  .asap-card-with:hover {
-    transform: translateY(-4px);
-    border-color: rgba(59, 130, 246, 0.5);
-  }
-
-  .asap-card-with-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: #3b82f6; /* Blue */
-    margin: 0 0 20px 0;
-  }
-
-  /* Lists */
-  .asap-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  /* Left sub-column */
+  .asap-hai-bottom-left {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    align-items: flex-start;
   }
 
-  .asap-list-item {
+  .asap-hai-bottom-title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    color: #171717;
+    margin: 0 0 28px 0;
+  }
+
+  .asap-hai-bottom-title .asap-period-red {
+    color: #e52e2e;
+  }
+
+  /* 2x2 Mini Feature Cards Grid */
+  .asap-hai-rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .asap-hai-rule-box {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 22px 20px;
     display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.04);
+  }
+
+  .asap-hai-rule-name {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #171717;
+    margin: 0 0 8px 0;
+    line-height: 1.25;
+  }
+
+  .asap-hai-rule-desc {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: #666666;
+    margin: 0;
+  }
+
+  /* Right sub-column: Dark Handover Card & Footer text */
+  .asap-hai-bottom-right {
+    display: flex;
+    flex-direction: column;
     align-items: flex-start;
+    width: 100%;
+  }
+
+  /* Dark Dashboard Widget Card */
+  .asap-handoff-dark-card {
+    background-color: #171717;
+    color: #ffffff;
+    border-radius: 24px;
+    padding: 26px 24px 22px 24px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.35);
+    margin-bottom: 20px;
+  }
+
+  .asap-handoff-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    width: 100%;
+  }
+
+  .asap-handoff-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .asap-handoff-live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #e52e2e;
+  }
+
+  .asap-handoff-live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #e52e2e;
+    display: inline-block;
+    animation: asapLivePulse 1.8s infinite ease-in-out;
+  }
+
+  @keyframes asapLivePulse {
+    0%, 100% { opacity: 0.35; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+
+  /* Handover Graphic connector (AI icon to Team icon with red bridge line) */
+  .asap-handoff-bridge {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .asap-handoff-node-ai {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #171717;
+    font-size: 14px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .asap-handoff-track {
+    flex: 1;
+    height: 2px;
+    background-color: #e52e2e;
+    position: relative;
+    border-radius: 1px;
+  }
+
+  .asap-handoff-node-rep {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #926f4f;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  /* Handover Data Table */
+  .asap-handoff-table {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
-    font-size: 15px;
+    width: 100%;
+    margin-bottom: 18px;
+  }
+
+  .asap-handoff-row {
+    display: grid;
+    grid-template-columns: 85px 1fr;
+    gap: 12px;
+    font-size: 12.5px;
     line-height: 1.4;
   }
 
-  .asap-list-item.muted {
-    color: #64748b;
-  }
-  .asap-list-item.navy {
-    color: #0f172a;
+  .asap-handoff-label {
+    color: #737373;
+    font-weight: 500;
   }
 
-  .asap-list-icon {
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .asap-list-icon.gray {
-    color: rgba(100, 116, 139, 0.6);
-  }
-  .asap-list-icon.blue {
-    color: #3b82f6;
+  .asap-handoff-val {
+    color: #e5e5e5;
+    font-weight: 450;
   }
 
+  /* Suggested Reply Status */
+  .asap-handoff-footer-status {
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: #a3a3a3;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+  }
+
+  /* Side explanation below dark card */
+  .asap-handoff-side-note {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #262626;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  /* ========================================================
+     RESPONSIVE BREAKPOINTS
+     ======================================================== */
+  @media (max-width: 980px) {
+    .asap-hai-heading-main {
+      font-size: 42px;
+    }
+    .asap-hai-heading-sub {
+      font-size: 38px;
+    }
+    .asap-hai-cards-row {
+      grid-template-columns: 1fr;
+    }
+    .asap-hai-bottom-banner {
+      grid-template-columns: 1fr;
+      padding: 34px 24px;
+      gap: 36px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .asap-hai-section {
+      padding: 70px 18px;
+    }
+    .asap-hai-heading-main {
+      font-size: 32px;
+      line-height: 1.08;
+    }
+    .asap-hai-heading-sub {
+      font-size: 28px;
+      line-height: 1.15;
+    }
+    .asap-hai-card {
+      padding: 24px 20px;
+      border-radius: 22px;
+    }
+    .asap-hai-item {
+      font-size: 13.5px;
+      padding: 10.5px 0;
+    }
+    .asap-hai-bottom-title {
+      font-size: 28px;
+    }
+    .asap-hai-rules-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .asap-handoff-dark-card {
+      padding: 20px 18px;
+    }
+    .asap-handoff-row {
+      grid-template-columns: 75px 1fr;
+      font-size: 12px;
+    }
+  }
 </style>
 
-<div class="asap-human-ai-section">
-  
-  <!-- Part 1: Human + AI -->
-  <section class="asap-section-white" id="human-ai">
-    <div class="asap-container asap-human-ai-grid">
-      
-      <!-- Left side -->
-      <div>
-        <span class="asap-eyebrow">Human + AI, not human vs AI</span>
-        <h2 class="asap-human-title">Your Team Stays Focused on What Humans Do Best.</h2>
-        <p class="asap-human-desc">
-          When a customer needs a real person, your team is alerted with the conversation context already available.
-        </p>
-      </div>
+<div class="asap-hai-section" id="human-ai-division">
+  <div class="asap-hai-container">
 
-      <!-- Right side: Comparison -->
-      <div class="asap-comparison-grid">
-        
-        <!-- Without AI -->
-        <div class="asap-card-without">
-          <h3 class="asap-card-without-title">Without AI</h3>
-          <ul class="asap-list">
-            <li class="asap-list-item muted">
-              <svg class="asap-list-icon gray" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-              Interrupted staff
-            </li>
-            <li class="asap-list-item muted">
-              <svg class="asap-list-icon gray" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-              Missed calls
-            </li>
-            <li class="asap-list-item muted">
-              <svg class="asap-list-icon gray" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-              Slow replies
-            </li>
-            <li class="asap-list-item muted">
-              <svg class="asap-list-icon gray" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-              Manual qualification
-            </li>
-            <li class="asap-list-item muted">
-              <svg class="asap-list-icon gray" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-              Repetitive questions
-            </li>
-          </ul>
-        </div>
+    <!-- Red Eyebrow Kicker -->
+    <span class="asap-hai-eyebrow">HUMAN + AI</span>
 
-        <!-- With AI -->
-        <div class="asap-card-with">
-          <h3 class="asap-card-with-title">With AI Employees</h3>
-          <ul class="asap-list">
-            <li class="asap-list-item navy">
-              <svg class="asap-list-icon blue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              AI handles routine enquiries
-            </li>
-            <li class="asap-list-item navy">
-              <svg class="asap-list-icon blue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Customers get instant answers
-            </li>
-            <li class="asap-list-item navy">
-              <svg class="asap-list-icon blue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Serious opportunities are identified
-            </li>
-            <li class="asap-list-item navy">
-              <svg class="asap-list-icon blue" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Your team joins when they are actually needed
-            </li>
-          </ul>
-        </div>
-        
-      </div>
+    <!-- Two-tier Main Headline -->
+    <div class="asap-hai-heading">
+      <h2 class="asap-hai-heading-main">
+        AI handles the routine<span style="letter-spacing: -0.05em;">.</span>
+      </h2>
+      <h3 class="asap-hai-heading-sub">
+        Your people handle what matters.
+      </h3>
     </div>
-  </section>
+
+    <!-- PART 1: Top 2 Comparison Cards -->
+    <div class="asap-hai-cards-row">
+
+      <!-- LEFT: Your AI Employee -->
+      <div class="asap-hai-card">
+        <div class="asap-hai-card-header">
+          <span class="asap-hai-badge-ai">a</span>
+          <h4 class="asap-hai-card-title">Your AI Employee</h4>
+        </div>
+        <div class="asap-hai-card-kicker-red">
+          SPEED, AVAILABILITY, CONSISTENCY
+        </div>
+        <ul class="asap-hai-list">
+          <li class="asap-hai-item">Replies in seconds, at any hour</li>
+          <li class="asap-hai-item">Answers the questions you hear every day</li>
+          <li class="asap-hai-item">Asks the first qualifying questions</li>
+          <li class="asap-hai-item">Finds a slot and books it</li>
+          <li class="asap-hai-item">Follows up so nobody is forgotten</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT: Your Team -->
+      <div class="asap-hai-card">
+        <div class="asap-hai-card-header">
+          <span class="asap-hai-badge-team"></span>
+          <h4 class="asap-hai-card-title">Your team</h4>
+        </div>
+        <div class="asap-hai-card-kicker-muted">
+          JUDGEMENT, EXPERTISE, RELATIONSHIPS
+        </div>
+        <ul class="asap-hai-list">
+          <li class="asap-hai-item">Empathy and judgement</li>
+          <li class="asap-hai-item">Complex and sensitive cases</li>
+          <li class="asap-hai-item">Negotiation and relationships</li>
+          <li class="asap-hai-item">Exceptions and special requests</li>
+          <li class="asap-hai-item">The decisions that matter</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Interstitial Clarification Text -->
+    <p class="asap-hai-middle-note">
+      It expands what your team can handle. It doesn't replace the people your customers come back for.
+    </p>
+
+    <!-- PART 2: Bottom Rules & Handover Container -->
+    <div class="asap-hai-bottom-banner">
+
+      <!-- Left Side: Headline & 4 Feature Boxes -->
+      <div class="asap-hai-bottom-left">
+        <h3 class="asap-hai-bottom-title">
+          It follows your rules.<br>
+          When it shouldn't<br>
+          answer, it hands over<span class="asap-period-red">.</span>
+        </h3>
+
+        <div class="asap-hai-rules-grid">
+
+          <!-- Box 1 -->
+          <div class="asap-hai-rule-box">
+            <h5 class="asap-hai-rule-name">What it knows</h5>
+            <p class="asap-hai-rule-desc">
+              Only your approved services, prices, policies and answers.
+            </p>
+          </div>
+
+          <!-- Box 2 -->
+          <div class="asap-hai-rule-box">
+            <h5 class="asap-hai-rule-name">What it can do</h5>
+            <p class="asap-hai-rule-desc">
+              Only the actions you allow: book, send links, take details.
+            </p>
+          </div>
+
+          <!-- Box 3 -->
+          <div class="asap-hai-rule-box">
+            <h5 class="asap-hai-rule-name">What it never does</h5>
+            <p class="asap-hai-rule-desc">
+              Give medical, legal or financial advice, or promise what you haven't approved.
+            </p>
+          </div>
+
+          <!-- Box 4 -->
+          <div class="asap-hai-rule-box">
+            <h5 class="asap-hai-rule-name">When it hands over</h5>
+            <p class="asap-hai-rule-desc">
+              Complaints, sensitive cases, key clients, or whenever a customer asks for a person.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Side: Dark Live Handoff Card & Footnote -->
+      <div class="asap-hai-bottom-right">
+
+        <!-- Dark Dashboard Widget Card -->
+        <div class="asap-handoff-dark-card">
+          <div class="asap-handoff-header">
+            <span class="asap-handoff-title">Handed to Rachel, front desk</span>
+            <span class="asap-handoff-live-pill">
+              <span class="asap-handoff-live-dot"></span>
+              LIVE
+            </span>
+          </div>
+
+          <!-- Bridge Connection -->
+          <div class="asap-handoff-bridge">
+            <span class="asap-handoff-node-ai">a</span>
+            <div class="asap-handoff-track"></div>
+            <span class="asap-handoff-node-rep">R</span>
+          </div>
+
+          <!-- Handoff Details -->
+          <div class="asap-handoff-table">
+            <div class="asap-handoff-row">
+              <span class="asap-handoff-label">Reason</span>
+              <span class="asap-handoff-val">Customer asked to speak to someone</span>
+            </div>
+            <div class="asap-handoff-row">
+              <span class="asap-handoff-label">Customer</span>
+              <span class="asap-handoff-val">First visit, wants Saturday afternoon</span>
+            </div>
+            <div class="asap-handoff-row">
+              <span class="asap-handoff-label">Asked about</span>
+              <span class="asap-handoff-val">Package pricing</span>
+            </div>
+            <div class="asap-handoff-row">
+              <span class="asap-handoff-label">Channel</span>
+              <span class="asap-handoff-val">WhatsApp, 9:14 pm</span>
+            </div>
+          </div>
+
+          <!-- Footer Status -->
+          <div class="asap-handoff-footer-status">
+            Suggested reply ready for Rachel to send or edit.
+          </div>
+        </div>
+
+        <!-- Explanation Note Below Card -->
+        <p class="asap-handoff-side-note">
+          If the answer isn't in what you've approved, it asks a clarifying question or brings in your team. It doesn't guess.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
 </div>

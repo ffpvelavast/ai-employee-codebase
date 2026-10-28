@@ -1,151 +1,167 @@
 import { useState } from "react";
-import { Slider } from "@/components/ui/slider";
-import { Input } from "@/components/ui/input";
-import { TrendingDown } from "lucide-react";
 import { Reveal } from "./Reveal";
-import { Section, Eyebrow, Cta } from "./ui";
 
 export default function MissedRevenueCalculator() {
-  const [callsPerWeek, setCallsPerWeek] = useState(20);
-  const [closeRate, setCloseRate] = useState(30);
+  const [missedPerWeek, setMissedPerWeek] = useState(20);
   const [avgSaleValue, setAvgSaleValue] = useState(300);
+  const [closeRate, setCloseRate] = useState(30);
 
-  // Math
-  const callsPerYear = callsPerWeek * 52;
-  const missedDealsPerYear = callsPerYear * (closeRate / 100);
-  const missedRevenuePerYear = missedDealsPerYear * avgSaleValue;
-  
-  const weeklyMissed = missedRevenuePerYear / 52;
-  const monthlyMissed = missedRevenuePerYear / 12;
+  // Core Math
+  const annualDeals = (missedPerWeek * 52) * (closeRate / 100);
+  const annualLoss = annualDeals * avgSaleValue;
+  const weeklyLoss = annualLoss / 52;
+  const monthlyLoss = annualLoss / 12;
 
-  // Formatting
-  const formatCurrency = (val: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      maximumFractionDigits: 0
-    }).format(val);
+  // Currency Formatter
+  const formatSGD = (val: number) => {
+    return "S$" + Math.round(val).toLocaleString("en-US");
+  };
+
+  // Helper for slider track gradient fill
+  const getSliderTrack = (val: number, min: number, max: number) => {
+    const pct = ((val - min) / (max - min)) * 100;
+    return `linear-gradient(to right, #e52e2e 0%, #e52e2e ${pct}%, #e7e5e4 ${pct}%, #e7e5e4 100%)`;
   };
 
   return (
-    <Section id="calculator" tone="surface">
-      <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16 items-center">
+    <section id="calculator" className="relative bg-[#111113] py-24 sm:py-32 text-white overflow-hidden">
+      <div className="container-page relative grid gap-14 lg:grid-cols-[1.05fr_1fr] lg:gap-16 items-center">
         
-        {/* Left: Text & CTA */}
+        {/* LEFT COLUMN */}
         <div>
           <Reveal>
-            <Eyebrow>Revenue leak</Eyebrow>
-            <h2 className="mt-4 text-[2rem] leading-[1.08] font-bold text-navy sm:text-5xl">
-              Calculate Your <span className="text-blue">Missed Revenue.</span>
+            <span className="text-xs font-extrabold tracking-[0.14em] uppercase text-[#e52e2e] block mb-5">
+              REVENUE AT RISK
+            </span>
+          </Reveal>
+
+          <Reveal delay={80}>
+            <h2 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
+              Calculate your
+              <span className="block font-serif font-normal italic text-neutral-100 mt-1">
+                missed revenue.
+              </span>
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg max-w-xl">
-              Every missed call could be a missed customer. See how much money is slipping through the cracks, and how an AI Employee can capture it.
+          </Reveal>
+
+          <Reveal delay={140}>
+            <p className="mt-6 text-base sm:text-lg leading-relaxed text-neutral-400 max-w-xl">
+              Every missed call or unanswered message could be a customer who went elsewhere. Move the sliders to
+              see what that costs you.
             </p>
           </Reveal>
-          
-          <Reveal delay={100}>
-            <div className="mt-10">
-              <Cta href="#demo" size="lg">
-                Stop Losing Money
-              </Cta>
-            </div>
+
+          <Reveal delay={200}>
+            <p className="mt-8 font-serif italic text-2xl sm:text-3xl text-neutral-200 leading-snug">
+              What if your business never missed that first moment?
+            </p>
           </Reveal>
         </div>
 
-        {/* Right: Calculator Card */}
-        <Reveal delay={150}>
-          <div className="rounded-3xl border border-hairline bg-card p-6 shadow-soft sm:p-8">
-            <div className="grid gap-10 md:grid-cols-2 md:gap-8">
+        {/* RIGHT COLUMN (DUAL STACKED CARDS) */}
+        <Reveal delay={160}>
+          <div className="mx-auto w-full max-w-[500px] flex flex-col gap-4">
+            
+            {/* CARD 1: INPUT CONTROLS (LIGHT/WHITE) */}
+            <div className="rounded-[24px] bg-white p-7 sm:p-8 text-neutral-900 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.4)] flex flex-col gap-6">
               
-              {/* Inputs */}
-              <div className="space-y-8">
-                {/* Calls Per Week */}
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <label className="text-sm font-semibold text-navy">Missed Calls / Week</label>
-                    <div className="rounded-full bg-blue-soft px-3 py-1 text-xs font-semibold text-blue">
-                      {callsPerWeek}
-                    </div>
-                  </div>
-                  <Slider 
-                    value={[callsPerWeek]} 
-                    onValueChange={(val) => setCallsPerWeek(val[0])} 
-                    max={300} 
-                    step={1} 
-                    className="py-2"
-                  />
-                  <div className="flex justify-between text-[0.7rem] font-medium text-muted-foreground">
-                    <span>0</span>
-                    <span>300</span>
-                  </div>
+              {/* Control 1: Missed enquiries */}
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center justify-between text-sm sm:text-base font-bold text-neutral-900">
+                  <label htmlFor="react-missed-slider">Missed enquiries a week</label>
+                  <span className="text-base font-bold text-neutral-900">{missedPerWeek}</span>
                 </div>
-
-                {/* Average Sale Value */}
-                <div className="space-y-4">
-                  <label className="text-sm font-semibold text-navy">Average Sale Value</label>
-                  <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 font-medium text-muted-foreground">$</span>
-                    <Input 
-                      type="number" 
-                      value={avgSaleValue} 
-                      onChange={(e) => setAvgSaleValue(Number(e.target.value) || 0)} 
-                      className="h-11 rounded-xl pl-8 text-sm font-medium"
-                    />
-                  </div>
-                </div>
-
-                {/* Close Rate */}
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <label className="text-sm font-semibold text-navy">Close Rate</label>
-                    <div className="rounded-full bg-blue-soft px-3 py-1 text-xs font-semibold text-blue">
-                      {closeRate}%
-                    </div>
-                  </div>
-                  <Slider 
-                    value={[closeRate]} 
-                    onValueChange={(val) => setCloseRate(val[0])} 
-                    max={100} 
+                <div className="relative flex items-center h-5 w-full">
+                  <input
+                    id="react-missed-slider"
+                    type="range"
                     min={1}
-                    step={1} 
-                    className="py-2"
+                    max={150}
+                    step={1}
+                    value={missedPerWeek}
+                    onChange={(e) => setMissedPerWeek(Number(e.target.value))}
+                    style={{ background: getSliderTrack(missedPerWeek, 1, 150) }}
+                    className="w-full h-1.5 rounded-full appearance-none cursor-pointer outline-none transition-all [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-[3.5px] [&::-webkit-slider-thumb]:border-[#e52e2e] [&::-webkit-slider-thumb]:shadow-[0_2px_6px_rgba(229,46,46,0.35)]"
                   />
-                  <div className="flex justify-between text-[0.7rem] font-medium text-muted-foreground">
-                    <span>1%</span>
-                    <span>100%</span>
-                  </div>
                 </div>
               </div>
 
-              {/* Results */}
-              <div className="flex flex-col items-center justify-center rounded-2xl bg-surface-2 p-6 text-center border border-hairline relative overflow-hidden">
-                <div className="absolute left-4 top-4 grid h-8 w-8 place-items-center rounded-full bg-red-50 text-red-500">
-                  <TrendingDown className="h-4 w-4" />
+              {/* Control 2: Average sale value */}
+              <div className="flex flex-col gap-2.5">
+                <label htmlFor="react-avg-sale" className="text-sm sm:text-base font-bold text-neutral-900">
+                  Average sale value
+                </label>
+                <div className="flex items-center h-12 w-full rounded-xl border border-neutral-200 bg-white px-4 transition-all focus-within:border-[#e52e2e] focus-within:ring-2 focus-within:ring-[#e52e2e]/20">
+                  <span className="font-bold text-neutral-500 mr-2 select-none">S$</span>
+                  <input
+                    id="react-avg-sale"
+                    type="number"
+                    min={1}
+                    step={10}
+                    value={avgSaleValue}
+                    onChange={(e) => setAvgSaleValue(Math.max(1, Number(e.target.value)))}
+                    className="w-full border-none bg-transparent font-bold text-base text-neutral-900 outline-none"
+                  />
                 </div>
-                
-                <p className="mt-6 text-sm font-semibold text-navy">Lost to Competitors</p>
-                <p className="mt-3 font-display text-4xl font-bold text-amber sm:text-5xl">
-                  {formatCurrency(missedRevenuePerYear)}
-                </p>
-                <p className="mt-2 text-xs text-muted-foreground">Per Year</p>
+              </div>
 
-                <div className="mt-8 grid w-full grid-cols-2 gap-3">
-                  <div className="rounded-xl border border-hairline bg-card p-3 shadow-sm">
-                    <p className="mb-1 text-[0.65rem] font-semibold tracking-wider text-muted-foreground uppercase">Weekly</p>
-                    <p className="text-lg font-bold text-navy">{formatCurrency(weeklyMissed)}</p>
-                  </div>
-                  <div className="rounded-xl border border-hairline bg-card p-3 shadow-sm">
-                    <p className="mb-1 text-[0.65rem] font-semibold tracking-wider text-muted-foreground uppercase">Monthly</p>
-                    <p className="text-lg font-bold text-navy">{formatCurrency(monthlyMissed)}</p>
-                  </div>
+              {/* Control 3: Close rate */}
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center justify-between text-sm sm:text-base font-bold text-neutral-900">
+                  <label htmlFor="react-close-slider">Close rate</label>
+                  <span className="text-base font-bold text-neutral-900">{closeRate}%</span>
+                </div>
+                <div className="relative flex items-center h-5 w-full">
+                  <input
+                    id="react-close-slider"
+                    type="range"
+                    min={1}
+                    max={100}
+                    step={1}
+                    value={closeRate}
+                    onChange={(e) => setCloseRate(Number(e.target.value))}
+                    style={{ background: getSliderTrack(closeRate, 1, 100) }}
+                    className="w-full h-1.5 rounded-full appearance-none cursor-pointer outline-none transition-all [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-[3.5px] [&::-webkit-slider-thumb]:border-[#e52e2e] [&::-webkit-slider-thumb]:shadow-[0_2px_6px_rgba(229,46,46,0.35)]"
+                  />
                 </div>
               </div>
 
             </div>
+
+            {/* CARD 2: RESULTS (DARK OBSIDIAN) */}
+            <div className="rounded-[24px] bg-[#1a1a1d] border border-white/[0.07] p-7 sm:p-8 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]">
+              <span className="text-[11px] font-extrabold tracking-[0.12em] uppercase text-[#e52e2e] block mb-2">
+                AT RISK EACH YEAR
+              </span>
+              
+              <div className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-6">
+                {formatSGD(annualLoss)}
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div className="rounded-xl bg-[#242429] border border-white/[0.05] p-3.5 sm:p-4">
+                  <span className="text-xs text-neutral-400 block font-medium">A week</span>
+                  <span className="text-lg sm:text-xl font-bold text-white block mt-1">
+                    {formatSGD(weeklyLoss)}
+                  </span>
+                </div>
+                <div className="rounded-xl bg-[#242429] border border-white/[0.05] p-3.5 sm:p-4">
+                  <span className="text-xs text-neutral-400 block font-medium">A month</span>
+                  <span className="text-lg sm:text-xl font-bold text-white block mt-1">
+                    {formatSGD(monthlyLoss)}
+                  </span>
+                </div>
+              </div>
+
+              <p className="mt-5 text-[11.5px] leading-relaxed text-neutral-500">
+                Estimate: missed enquiries × average sale × close rate, over 52 weeks.
+              </p>
+            </div>
+
           </div>
         </Reveal>
 
       </div>
-    </Section>
+    </section>
   );
 }

@@ -1,22 +1,29 @@
+<!-- ========================================================
+     ASAP AI - HERO SECTION (FULL INTEGRATED COMPONENT)
+     Ready to paste into GoHighLevel Custom HTML element
+     ======================================================== -->
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
   .asap-hero-wrapper {
-    font-family: 'Inter', sans-serif;
-    background-color: #f8fafc;
-    color: #0f172a;
-    padding: 80px 20px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #faf9f6;
+    color: #111827;
+    padding: 80px 24px;
     display: flex;
     justify-content: center;
     box-sizing: border-box;
     width: 100%;
+    position: relative;
+    overflow: hidden;
   }
   
   .asap-hero-container {
-    max-width: 1200px;
+    max-width: 1220px;
     width: 100%;
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1.1fr 1fr;
     gap: 60px;
     align-items: center;
   }
@@ -24,268 +31,531 @@
   @media (max-width: 1024px) {
     .asap-hero-container {
       grid-template-columns: 1fr;
-      gap: 40px;
+      gap: 50px;
     }
   }
 
-  /* Left Column */
+  /* ========================================================
+     LEFT COLUMN
+     ======================================================== */
   .asap-hero-left {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    text-align: left;
+    max-width: 580px;
   }
   
-  .asap-eyebrow {
-    display: flex !important;
+  .asap-eyebrow-red {
+    display: inline-flex !important;
     align-items: center;
     gap: 8px;
-    background-color: #ffffff;
-    border: 1px solid #e2e8f0;
-    padding: 6px 14px;
-    border-radius: 9999px;
-    font-size: 13px;
-    font-weight: 600;
-    color: #334155;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    margin-bottom: 24px;
-  }
-  
-  .asap-pulse-dot {
-    width: 8px;
-    height: 8px;
-    background-color: #f59e0b; /* Amber */
-    border-radius: 50%;
-    animation: asap-pulse 1.5s infinite;
-  }
-  
-  @keyframes asap-pulse {
-    0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
-    70% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #e52e2e;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 22px;
   }
 
-  .asap-hero-title {
-    font-size: 64px;
+  .asap-eyebrow-red::before {
+    content: "—";
+    color: #e52e2e;
     font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    margin: 0 0 4px 0;
-    color: #0f172a;
+    margin-right: 2px;
   }
-  
-  .asap-hero-subtitle {
+
+  .asap-hero-heading {
     font-size: 64px;
     font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
     margin: 0 0 24px 0;
-    color: #64748b; /* Soft slate */
+    color: #111827;
+  }
+
+  .asap-hero-heading .asap-highlight-red {
+    color: #e52e2e;
+    display: inline;
   }
 
   .asap-hero-desc {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #64748b;
-    max-width: 500px;
-    margin-bottom: 32px;
+    font-size: 17.5px;
+    line-height: 1.62;
+    color: #4b5563;
+    max-width: 520px;
+    margin: 0 0 28px 0;
+    font-weight: 400;
   }
 
-  .asap-buttons {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 32px;
-  }
-
-  .asap-btn-primary {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 16px 32px;
-    border-radius: 9999px;
-    text-decoration: none;
-    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-  }
-  
-  .asap-btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4);
-  }
-
-  .asap-btn-secondary {
-    background-color: #ffffff;
-    color: #0f172a;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 16px 32px;
-    border-radius: 9999px;
-    text-decoration: none;
-    border: 1px solid #e2e8f0;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .asap-btn-secondary:hover {
-    background-color: #f8fafc;
-    border-color: #cbd5e1;
-  }
-
-  .asap-hero-bottom-text {
-    font-size: 14px;
-    color: #94a3b8;
-  }
-
-  /* Right Column (Cards) */
-  .asap-hero-right {
-    background-color: #ffffff;
-    border-radius: 24px;
-    padding: 32px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
-    border: 1px solid #f1f5f9;
-  }
-
-  .asap-card {
-    background-color: #f8fafc;
-    border: 1px solid #f1f5f9;
-    border-radius: 12px;
-    padding: 16px 20px;
+  .asap-trust-badge {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 12px;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-  
-  .asap-card:hover {
-    transform: translateY(-2px);
-    border-color: #e2e8f0;
+    gap: 12px;
+    margin-bottom: 30px;
   }
 
-  .asap-card-icon {
-    width: 40px;
-    height: 40px;
-    background-color: #ffffff;
+  .asap-badge-logo {
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
+    background-color: #111827;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 1;
+    font-family: 'Inter', sans-serif;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  }
+
+  .asap-badge-text {
+    font-size: 13.5px;
+    line-height: 1.4;
+    color: #374151;
+  }
+
+  .asap-badge-text strong {
+    color: #111827;
+    font-weight: 700;
+    display: block;
+  }
+
+  .asap-badge-text span {
+    color: #6b7280;
+    font-weight: 400;
+  }
+
+  .asap-hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .asap-btn-primary-red {
+    background-color: #e52e2e;
+    color: #ffffff !important;
+    font-size: 15.5px;
+    font-weight: 600;
+    padding: 15px 30px;
+    border-radius: 9999px;
+    text-decoration: none !important;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 20px -4px rgba(229, 46, 46, 0.35);
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .asap-btn-primary-red:hover {
+    background-color: #d12222;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 24px -4px rgba(229, 46, 46, 0.45);
+  }
+
+  .asap-btn-secondary-film {
+    background-color: #ffffff;
+    color: #1f2937 !important;
+    font-size: 15.5px;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 9999px;
+    text-decoration: none !important;
+    border: 1.5px solid #e5e7eb;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-    color: #3b82f6;
+  }
+
+  .asap-btn-secondary-film:hover {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+    transform: translateY(-2px);
+  }
+
+  .asap-play-icon {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 8px solid #1f2937;
+    margin-right: 2px;
+  }
+
+  .asap-hero-disclaimer {
+    font-size: 13.5px;
+    color: #9ca3af;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  /* ========================================================
+     RIGHT COLUMN (TWO LAYERS)
+     ======================================================== */
+  .asap-hero-right-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+  }
+
+  .asap-bottom-art-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    min-height: 440px;
+    background-color: #f5f1eb;
+    background: radial-gradient(circle at 75% 25%, #ffffff 0%, #f6f2ec 45%, #ece6dc 100%);
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 34px;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+  }
+
+  .asap-art-typography {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.12em;
+    color: #8b8175;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .asap-art-typography div {
+    margin-bottom: 2px;
+  }
+
+  .asap-art-graphic-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 82%;
+    height: 82%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .asap-art-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 30px rgba(185, 28, 28, 0.15));
+  }
+
+  .asap-art-sheen {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(ellipse at 80% 20%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 65%);
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .asap-upper-chat-card {
+    position: absolute;
+    bottom: -15px;
+    left: -24px;
+    width: 380px;
+    max-width: 95%;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 25px 60px -12px rgba(17, 24, 39, 0.22), 0 0 0 1px rgba(0, 0, 0, 0.04);
+    padding: 18px 20px 16px 20px;
+    box-sizing: border-box;
+    z-index: 10;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .asap-upper-chat-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .asap-story-bars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 14px;
+    width: 100%;
+  }
+
+  .asap-story-bar-item {
+    flex: 1;
+    height: 3px;
+    background-color: #f1f5f9;
+    border-radius: 9999px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .asap-story-bar-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    background-color: #e52e2e;
+    transition: width 0.25s linear;
+  }
+
+  .asap-chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f3f4f6;
+    margin-bottom: 14px;
+  }
+
+  .asap-chat-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .asap-chat-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #111827;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
     flex-shrink: 0;
   }
 
-  .asap-card-content h3 {
-    margin: 0 0 4px 0;
-    font-size: 15px;
-    font-weight: 600;
-    color: #0f172a;
-  }
-  
-  .asap-card-content p {
-    margin: 0;
-    font-size: 13px;
-    color: #64748b;
-  }
-
-  .asap-divider {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin: 24px 0;
-    color: #94a3b8;
-    font-size: 11px;
+  .asap-chat-business-title {
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  
-  .asap-divider::before, .asap-divider::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px dashed #e2e8f0;
-  }
-  
-  .asap-divider:not(:empty)::before { margin-right: .5em; }
-  .asap-divider:not(:empty)::after { margin-left: .5em; }
-
-  .asap-intelligence {
-    background-color: #0f172a;
-    border-radius: 16px;
-    padding: 24px;
-    color: #ffffff;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    margin-bottom: 24px;
-  }
-  
-  .asap-intelligence-eyebrow {
-    font-size: 11px;
-    font-weight: 700;
-    color: #94a3b8;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    display: block;
-  }
-  
-  .asap-intelligence h3 {
-    margin: 0 0 8px 0;
-    font-size: 18px;
-    font-weight: 600;
-    color: #ffffff;
-  }
-  
-  .asap-intelligence p {
+    color: #111827;
     margin: 0;
-    font-size: 13px;
-    color: #cbd5e1;
-    line-height: 1.5;
+    line-height: 1.25;
+    transition: opacity 0.25s ease;
   }
 
-  .asap-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+  .asap-chat-channel {
+    font-size: 11.5px;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.3;
   }
 
-  .asap-action-btn {
-    background-color: #f8fafc;
-    border: 1px solid #f1f5f9;
-    border-radius: 12px;
-    padding: 12px;
-    display: flex;
+  .asap-chat-live-pill {
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    color: #334155;
-    transition: background-color 0.2s ease;
-    cursor: default;
-  }
-  
-  .asap-action-btn:hover {
-    background-color: #f1f5f9;
-  }
-  
-  .asap-action-icon {
-    color: #3b82f6;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #e52e2e;
+    letter-spacing: 0.05em;
   }
 
-  /* Responsive styling */
-  @media (max-width: 768px) {
-    .asap-hero-title, .asap-hero-subtitle {
-      font-size: 42px;
+  .asap-live-pulse {
+    width: 7px;
+    height: 7px;
+    background-color: #e52e2e;
+    border-radius: 50%;
+    animation: asap-live-blink 1.4s infinite ease-in-out;
+  }
+
+  @keyframes asap-live-blink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+
+  .asap-chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 165px;
+    justify-content: flex-start;
+  }
+
+  @keyframes asapBubblePopIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px) scale(0.97);
     }
-    .asap-grid {
-      grid-template-columns: 1fr;
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .asap-msg-user {
+    align-self: flex-end;
+    background-color: #18181b;
+    color: #ffffff;
+    font-size: 13.5px;
+    line-height: 1.42;
+    padding: 10px 16px;
+    border-radius: 18px 18px 4px 18px;
+    max-width: 82%;
+    word-break: break-word;
+    box-sizing: border-box;
+    animation: asapBubblePopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .asap-msg-bot {
+    align-self: flex-start;
+    background-color: #f4efe9;
+    color: #1f2937;
+    font-size: 13.5px;
+    line-height: 1.45;
+    padding: 11px 16px;
+    border-radius: 18px 18px 18px 4px;
+    max-width: 85%;
+    word-break: break-word;
+    box-sizing: border-box;
+    animation: asapBubblePopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .asap-typing-bubble {
+    align-self: flex-start;
+    background-color: #f4efe9;
+    padding: 8px 14px;
+    border-radius: 16px;
+    display: none;
+    align-items: center;
+    gap: 4px;
+    width: fit-content;
+    margin-bottom: 2px;
+    animation: asapBubblePopIn 0.25s ease forwards;
+  }
+
+  .asap-typing-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #9ca3af;
+    border-radius: 50%;
+    animation: asap-bounce 1.3s infinite ease-in-out;
+  }
+
+  .asap-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .asap-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes asap-bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-4px); }
+  }
+
+  .asap-chat-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid #f3f4f6;
+  }
+
+  .asap-chat-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #4b5563;
+  }
+
+  .asap-chat-status-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #e52e2e;
+    border-radius: 50%;
+  }
+
+  .asap-scenario-pill-nav {
+    display: flex;
+    gap: 4px;
+  }
+
+  .asap-scenario-mini-btn {
+    background: none;
+    border: none;
+    font-size: 11px;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .asap-scenario-mini-btn:hover,
+  .asap-scenario-mini-btn.active {
+    color: #e52e2e;
+    font-weight: 700;
+    background-color: #fef2f2;
+  }
+
+  @media (max-width: 900px) {
+    .asap-hero-heading {
+      font-size: 42px;
+      line-height: 1.08;
+    }
+    .asap-hero-desc {
+      font-size: 16px;
+    }
+    .asap-hero-buttons {
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .asap-btn-primary-red, .asap-btn-secondary-film {
+      width: 100%;
+      text-align: center;
+    }
+    .asap-hero-right-wrapper {
+      max-width: 440px;
+      padding-bottom: 20px;
+    }
+    .asap-bottom-art-card {
+      min-height: 380px;
+      border-radius: 28px;
+      padding: 24px;
+    }
+    .asap-upper-chat-card {
+      position: relative;
+      bottom: auto;
+      left: 0;
+      width: 100%;
+      margin-top: -80px;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.16);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .asap-bottom-art-card {
+      min-height: 320px;
+      padding: 20px;
+    }
+    .asap-upper-chat-card {
+      margin-top: -60px;
+      padding: 16px;
     }
   }
 </style>
@@ -293,96 +563,367 @@
 <div class="asap-hero-wrapper">
   <div class="asap-hero-container">
     
-    <!-- LEFT COLUMN -->
+    <!-- LEFT SIDE -->
     <div class="asap-hero-left">
-      <div class="asap-eyebrow">
-        <div class="asap-pulse-dot"></div>
-        AI Employees for phone, WhatsApp &amp; web
+      <div class="asap-eyebrow-red">
+        AI EMPLOYEES FOR SINGAPORE BUSINESSES
       </div>
       
-      <h1 class="asap-hero-title">Your Business<br>Doesn't Work 9 to 5.</h1>
-      <h1 class="asap-hero-subtitle">Neither Should<br>Your Customer<br>Experience.</h1>
+      <h1 class="asap-hero-heading">
+        Put AI<br>
+        to work<br>
+        for your<br>
+        business.<br>
+        <span class="asap-highlight-red">As soon as<br>possible.</span>
+      </h1>
       
       <p class="asap-hero-desc">
-        ASAP AI gives your business AI Employees that answer calls, respond to messages, handle enquiries and help customers move forward &mdash; 24/7.
+        Your AI Employee answers WhatsApp, calls and website enquiries day and night, qualifies every customer and books the appointment. Your team steps in when a person should.
       </p>
-      
-      <div class="asap-buttons">
-        <button class="asap-btn-primary">Meet Your First AI Employee</button>
-        <button class="asap-btn-secondary">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
-          What AI Employees Can Do for You?
-        </button>
+
+      <div class="asap-trust-badge">
+        <div class="asap-badge-logo">a</div>
+        <div class="asap-badge-text">
+          <strong>Designed, trained and managed by ASAP AI.</strong>
+          <span>You don't need to learn AI.</span>
+        </div>
       </div>
-      
-      <div class="asap-hero-bottom-text">Every call. Every message. Every enquiry.</div>
+
+      <div class="asap-hero-buttons">
+        <a href="#demo" class="asap-btn-primary-red">
+          Meet My AI Employee
+        </a>
+        <a href="#how-it-works" class="asap-btn-secondary-film">
+          <span class="asap-play-icon"></span>
+          Watch the 60-sec film
+        </a>
+      </div>
+
+      <p class="asap-hero-disclaimer">
+        Free. Built from your own website in about a minute.
+      </p>
     </div>
 
-    <!-- RIGHT COLUMN -->
-    <div class="asap-hero-right">
+    <!-- RIGHT SIDE (TWO LAYERS) -->
+    <div class="asap-hero-right-wrapper">
       
-      <!-- Phone Card -->
-      <div class="asap-card">
-        <div class="asap-card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      <!-- Layer 1: Art poster -->
+      <div class="asap-bottom-art-card">
+        <div class="asap-art-sheen"></div>
+        <div class="asap-art-typography">
+          <div>PEOPLE</div>
+          <div>+ AI</div>
+          <div>= A BRIGHTER</div>
+          <div>TOMORROW</div>
         </div>
-        <div class="asap-card-content">
-          <h3>Phone</h3>
-          <p>Incoming customer call</p>
-        </div>
-      </div>
-      
-      <!-- WhatsApp Card -->
-      <div class="asap-card">
-        <div class="asap-card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-        </div>
-        <div class="asap-card-content">
-          <h3>WhatsApp</h3>
-          <p>Customer asks a question</p>
-        </div>
-      </div>
-      
-      <!-- Website Card -->
-      <div class="asap-card">
-        <div class="asap-card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-        </div>
-        <div class="asap-card-content">
-          <h3>Website</h3>
-          <p>Customer enquiry</p>
+
+        <div class="asap-art-graphic-container">
+          <svg class="asap-art-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="asapRedArchFull" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" stop-color="#ef4444" />
+                <stop offset="60%" stop-color="#dc2626" />
+                <stop offset="100%" stop-color="#991b1b" />
+              </linearGradient>
+              <linearGradient id="asapRedInnerFull" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" stop-color="#b91c1c" />
+                <stop offset="100%" stop-color="#580e0e" />
+              </linearGradient>
+              <radialGradient id="asapSphereGradFull" cx="35%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#ff7b7b" />
+                <stop offset="35%" stop-color="#ef4444" />
+                <stop offset="75%" stop-color="#b91c1c" />
+                <stop offset="100%" stop-color="#670d0d" />
+              </radialGradient>
+              <linearGradient id="asapPedestalGradFull" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f5f1eb" />
+                <stop offset="50%" stop-color="#e6dfd5" />
+                <stop offset="100%" stop-color="#d4cbbe" />
+              </linearGradient>
+              <linearGradient id="asapPillarGradFull" x1="0%" y1="50%" x2="100%" y2="50%">
+                <stop offset="0%" stop-color="#d6cebf" />
+                <stop offset="40%" stop-color="#fdfbf9" />
+                <stop offset="85%" stop-color="#bfb5a3" />
+                <stop offset="100%" stop-color="#a49987" />
+              </linearGradient>
+              <filter id="asapSoftGlowFull" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#991b1b" flood-opacity="0.3" />
+              </filter>
+              <filter id="asapSphereShadowFull" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="4" dy="16" stdDeviation="10" flood-color="#000000" flood-opacity="0.35" />
+              </filter>
+            </defs>
+
+            <path d="M120 330 L380 330 L380 390 L120 390 Z" fill="url(#asapPedestalGradFull)" opacity="0.95" />
+            <path d="M140 310 L360 310 L360 330 L140 330 Z" fill="#ded5c6" />
+            <path d="M165 295 L335 295 L335 310 L165 310 Z" fill="#ece4d6" />
+            <rect x="225" y="195" width="50" height="100" rx="3" fill="url(#asapPillarGradFull)" />
+            <path d="M140 300 V180 A110 110 0 0 1 360 180 V300 H320 V180 A70 70 0 0 0 180 180 V300 Z" fill="url(#asapRedArchFull)" filter="url(#asapSoftGlowFull)" />
+            <path d="M180 300 V180 A70 70 0 0 1 320 180 V300 Z" fill="url(#asapRedInnerFull)" />
+            <rect x="235" y="270" width="70" height="30" rx="2" fill="#ece5d8" />
+            <circle cx="242" cy="188" r="26" fill="url(#asapSphereGradFull)" filter="url(#asapSphereShadowFull)" />
+            <ellipse cx="234" cy="178" rx="7" ry="4" transform="rotate(-30 234 178)" fill="#ffffff" opacity="0.65" />
+          </svg>
         </div>
       </div>
 
-      <div class="asap-divider">ROUTED TO</div>
+      <!-- Layer 2: Floating Chat Card (Video/GIF Animation) -->
+      <div class="asap-upper-chat-card">
+        <div class="asap-story-bars" id="asapHeroStoryBars">
+          <div class="asap-story-bar-item" onclick="window.asapPlayHeroFullScenario && window.asapPlayHeroFullScenario(0)"><div class="asap-story-bar-fill" style="width: 100%;"></div></div>
+          <div class="asap-story-bar-item" onclick="window.asapPlayHeroFullScenario && window.asapPlayHeroFullScenario(1)"><div class="asap-story-bar-fill"></div></div>
+          <div class="asap-story-bar-item" onclick="window.asapPlayHeroFullScenario && window.asapPlayHeroFullScenario(2)"><div class="asap-story-bar-fill"></div></div>
+          <div class="asap-story-bar-item" onclick="window.asapPlayHeroFullScenario && window.asapPlayHeroFullScenario(3)"><div class="asap-story-bar-fill"></div></div>
+          <div class="asap-story-bar-item" onclick="window.asapPlayHeroFullScenario && window.asapPlayHeroFullScenario(4)"><div class="asap-story-bar-fill"></div></div>
+        </div>
 
-      <!-- Intelligence Layer -->
-      <div class="asap-intelligence">
-        <span class="asap-intelligence-eyebrow">Intelligence Layer</span>
-        <h3>Your AI Employee</h3>
-        <p>Understands the enquiry, replies instantly, decides the next step.</p>
+        <div class="asap-chat-header">
+          <div class="asap-chat-profile">
+            <div class="asap-chat-avatar">a</div>
+            <div>
+              <h4 class="asap-chat-business-title" id="asapHeroChatBusiness">Lumen Skin Clinic</h4>
+              <p class="asap-chat-channel" id="asapHeroChatChannel">WhatsApp &middot; 11:42 pm</p>
+            </div>
+          </div>
+          <div class="asap-chat-live-pill">
+            <span class="asap-live-pulse"></span>
+            LIVE
+          </div>
+        </div>
+
+        <!-- Pre-rendered Default Scenario 1 -->
+        <div class="asap-chat-messages" id="asapHeroChatMessages">
+          <div class="asap-msg-user">Hi, first time here. Do you have a facial consultation this Saturday?</div>
+          <div class="asap-msg-bot">Welcome! Saturday has 11:30 am or 3:00 pm. A first consultation takes about 45 minutes. Which suits you?</div>
+          <div class="asap-msg-user">3pm please</div>
+          <div class="asap-msg-bot">All booked for Saturday at 3:00 pm with Dr. Claire! A confirmation has been sent to your WhatsApp.</div>
+        </div>
+
+        <div class="asap-typing-bubble" id="asapHeroTypingBubble">
+          <div class="asap-typing-dot"></div>
+          <div class="asap-typing-dot"></div>
+          <div class="asap-typing-dot"></div>
+        </div>
+
+        <div class="asap-chat-footer">
+          <div class="asap-chat-status">
+            <span class="asap-chat-status-dot"></span>
+            <span id="asapHeroChatStatusText">Booked &middot; replied in 2.8 s</span>
+          </div>
+          <div class="asap-scenario-pill-nav" id="asapHeroScenarioNav">
+            <button class="asap-scenario-mini-btn active" onclick="window.asapPlayHeroFullScenario && window.asapPlayHeroFullScenario(0)">1</button>
+            <button class="asap-scenario-mini-btn" onclick="window.asapPlayHeroFullScenario && window.asapPlayHeroFullScenario(1)">2</button>
+            <button class="asap-scenario-mini-btn" onclick="window.asapPlayHeroFullScenario && window.asapPlayHeroFullScenario(2)">3</button>
+            <button class="asap-scenario-mini-btn" onclick="window.asapPlayHeroFullScenario && window.asapPlayHeroFullScenario(3)">4</button>
+            <button class="asap-scenario-mini-btn" onclick="window.asapPlayHeroFullScenario && window.asapPlayHeroFullScenario(4)">5</button>
+          </div>
+        </div>
       </div>
 
-      <!-- Action Buttons Grid -->
-      <div class="asap-grid">
-        <div class="asap-action-btn">
-          <svg class="asap-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          Answered
-        </div>
-        <div class="asap-action-btn">
-          <svg class="asap-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          Qualified
-        </div>
-        <div class="asap-action-btn">
-          <svg class="asap-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          Booked
-        </div>
-        <div class="asap-action-btn">
-          <svg class="asap-action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-          Escalated
-        </div>
-      </div>
-      
     </div>
+
   </div>
 </div>
+
+<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" onerror="window.initAsapHeroFullChat && window.initAsapHeroFullChat()" style="display:none !important;" />
+
+<script>
+(function() {
+  const scenarios = [
+    {
+      business: "Lumen Skin Clinic",
+      channel: "WhatsApp · 11:42 pm",
+      status: "Booked · replied in 2.8 s",
+      messages: [
+        { sender: "user", text: "Hi, first time here. Do you have a facial consultation this Saturday?" },
+        { sender: "bot", text: "Welcome! Saturday has 11:30 am or 3:00 pm. A first consultation takes about 45 minutes. Which suits you?" },
+        { sender: "user", text: "3pm please" },
+        { sender: "bot", text: "All booked for Saturday at 3:00 pm with Dr. Claire! A confirmation has been sent to your WhatsApp." }
+      ]
+    },
+    {
+      business: "Apex Dental Studio",
+      channel: "WhatsApp · 8:15 pm",
+      status: "CHAS Qualified & Booked · replied in 1.9 s",
+      messages: [
+        { sender: "user", text: "Hey! Do you accept CHAS subsidy for wisdom tooth extraction?" },
+        { sender: "bot", text: "Yes, we are full CHAS & Medisave accredited. Can we reserve a slot for you with Dr. Tan this Thursday?" },
+        { sender: "user", text: "Thursday 4pm works best" },
+        { sender: "bot", text: "Confirmed for Thursday 4:00 pm! We've prepared your file and sent your clinic pass." }
+      ]
+    },
+    {
+      business: "Prime Realty SG",
+      channel: "WhatsApp · 10:28 pm",
+      status: "Lead Qualified & Scheduled · replied in 2.1 s",
+      messages: [
+        { sender: "user", text: "Hi, is the 3-bed unit at Marina One still open for private viewing tomorrow?" },
+        { sender: "bot", text: "Yes! Two exclusive slots remain: 2:00 pm and 5:30 pm. Would you like our senior specialist to meet you there?" },
+        { sender: "user", text: "5:30 pm please" },
+        { sender: "bot", text: "Confirmed! Viewing pass and Marcus's direct line have been dispatched to your WhatsApp." }
+      ]
+    },
+    {
+      business: "AutoPro Detailing",
+      channel: "WhatsApp · 9:05 pm",
+      status: "Inquiry Converted & Reserved · replied in 2.4 s",
+      messages: [
+        { sender: "user", text: "Hi, how much is full ceramic coating for a Mercedes C200?" },
+        { sender: "bot", text: "Our 9H ceramic package is $488, including 3-stage paint correction and 3-year warranty. Can we book your car this Friday?" },
+        { sender: "user", text: "Can I drop off Friday 9:00 am?" },
+        { sender: "bot", text: "All set for Friday 9:00 am! Service Bay #2 is reserved for your vehicle." }
+      ]
+    },
+    {
+      business: "Nexus Legal Chambers",
+      channel: "WhatsApp · 11:10 pm",
+      status: "Urgent Briefing Secured · replied in 1.8 s",
+      messages: [
+        { sender: "user", text: "Urgent: I need legal advice regarding an employment contract dispute." },
+        { sender: "bot", text: "Understood. Our commercial partner can hold a confidential 20-min briefing tomorrow at 9:00 am or 2:30 pm. Which fits?" },
+        { sender: "user", text: "Tomorrow 9am please" },
+        { sender: "bot", text: "Secured for 9:00 am. Confidential video link and NDA have been sent to your email." }
+      ]
+    }
+  ];
+
+  let currentScenarioIndex = 0;
+  let activeTimeouts = [];
+  let isRunning = false;
+
+  function clearAllTimers() {
+    activeTimeouts.forEach(t => clearTimeout(t));
+    activeTimeouts = [];
+  }
+
+  function addTimer(fn, delay) {
+    const t = setTimeout(fn, delay);
+    activeTimeouts.push(t);
+    return t;
+  }
+
+  function getElements() {
+    return {
+      businessEl: document.getElementById("asapHeroChatBusiness"),
+      channelEl: document.getElementById("asapHeroChatChannel"),
+      messagesEl: document.getElementById("asapHeroChatMessages"),
+      typingEl: document.getElementById("asapHeroTypingBubble"),
+      statusTextEl: document.getElementById("asapHeroChatStatusText"),
+      navBtns: document.querySelectorAll("#asapHeroScenarioNav .asap-scenario-mini-btn"),
+      storyFills: document.querySelectorAll("#asapHeroStoryBars .asap-story-bar-fill")
+    };
+  }
+
+  function updateStoryBars(index, progress) {
+    const { storyFills, navBtns } = getElements();
+    if (!storyFills) return;
+
+    storyFills.forEach((fill, i) => {
+      if (i < index) fill.style.width = "100%";
+      else if (i === index) fill.style.width = progress + "%";
+      else fill.style.width = "0%";
+    });
+
+    if (navBtns) {
+      navBtns.forEach((btn, i) => {
+        btn.classList.toggle("active", i === index);
+      });
+    }
+  }
+
+  function playScenario(index) {
+    clearAllTimers();
+    currentScenarioIndex = index;
+    const scenario = scenarios[index];
+    const els = getElements();
+
+    if (!els.messagesEl) return;
+
+    if (els.businessEl) {
+      els.businessEl.style.opacity = "0";
+      setTimeout(() => {
+        if (els.businessEl) els.businessEl.textContent = scenario.business;
+        if (els.channelEl) els.channelEl.textContent = scenario.channel;
+        if (els.businessEl) els.businessEl.style.opacity = "1";
+      }, 150);
+    }
+
+    els.messagesEl.innerHTML = "";
+    if (els.typingEl) els.typingEl.style.display = "none";
+    if (els.statusTextEl) els.statusTextEl.textContent = "AI Employee active · standby";
+    updateStoryBars(index, 0);
+
+    let delay = 400;
+    const totalSteps = scenario.messages.length;
+
+    scenario.messages.forEach((msg, mIndex) => {
+      if (msg.sender === "bot") {
+        addTimer(() => {
+          const currentEls = getElements();
+          if (currentEls.typingEl && currentEls.messagesEl) {
+            currentEls.typingEl.style.display = "inline-flex";
+            currentEls.messagesEl.appendChild(currentEls.typingEl);
+          }
+        }, delay);
+        delay += 950;
+      }
+
+      addTimer(() => {
+        const currentEls = getElements();
+        if (currentEls.typingEl) currentEls.typingEl.style.display = "none";
+        if (!currentEls.messagesEl) return;
+
+        const bubble = document.createElement("div");
+        bubble.className = msg.sender === "user" ? "asap-msg-user" : "asap-msg-bot";
+        bubble.textContent = msg.text;
+        currentEls.messagesEl.appendChild(bubble);
+
+        const pct = Math.round(((mIndex + 1) / totalSteps) * 100);
+        updateStoryBars(index, pct);
+
+        if (mIndex === totalSteps - 1 && currentEls.statusTextEl) {
+          currentEls.statusTextEl.textContent = scenario.status;
+        }
+      }, delay);
+
+      delay += (msg.sender === "user" ? 1100 : 1600);
+    });
+
+    addTimer(() => {
+      const next = (currentScenarioIndex + 1) % scenarios.length;
+      playScenario(next);
+    }, delay + 3500);
+  }
+
+  window.asapPlayHeroFullScenario = function(idx) {
+    playScenario(idx);
+  };
+
+  window.initAsapHeroFullChat = function() {
+    if (isRunning) return;
+    const els = getElements();
+    if (!els.messagesEl) {
+      setTimeout(window.initAsapHeroFullChat, 150);
+      return;
+    }
+    isRunning = true;
+    playScenario(0);
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", window.initAsapHeroFullChat);
+  } else {
+    window.initAsapHeroFullChat();
+  }
+
+  let attempts = 0;
+  const poll = setInterval(function() {
+    attempts++;
+    if (isRunning || attempts > 30) {
+      clearInterval(poll);
+    } else {
+      window.initAsapHeroFullChat();
+    }
+  }, 250);
+})();
+</script>
